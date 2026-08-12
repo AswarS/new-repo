@@ -1,0 +1,66 @@
+{
+  "task_idx": 13,
+  "goal": "Instruction: i need a long lasting 6.76 fl oz bottle of l'eau d'issey, and price lower than 100.00 dollars",
+  "reward": 0.6666666666666666,
+  "done": true,
+  "steps": 3,
+  "max_steps": 30,
+  "error": "",
+  "steps_log": [
+    {
+      "step": 1,
+      "observation": "WebShop [SEP] Instruction: [SEP] i need a long lasting 6.76 fl oz bottle of l'eau d'issey, and price lower than 100.00 dollars [SEP] Search",
+      "action": "search[l'eau d'issey 6.76 fl oz bottle]",
+      "response": "search[l'eau d'issey 6.76 fl oz bottle]",
+      "content_blocks": [
+        {
+          "type": "tool_use",
+          "id": "fc_0a91922e9f334f6a016a7abe295fd08196b87c4624f1ced75c",
+          "name": "Skill",
+          "input": {
+            "args": "i need a long lasting 6.76 fl oz bottle of l'eau d'issey, and price lower than 100.00 dollars",
+            "skill": "webshop-build-constraint-led-query"
+          }
+        },
+        {
+          "type": "text",
+          "text": "search[l'eau d'issey 6.76 fl oz bottle]"
+        }
+      ],
+      "latency_s": 4.97
+    },
+    {
+      "step": 2,
+      "observation": "Instruction: [SEP] i need a long lasting 6.76 fl oz bottle of l'eau d'issey, and price lower than 100.00 dollars [SEP] Back to Search [SEP] Page 1 (Total results: 50) [SEP] Next > [SEP] B000VOHH8I [SEP] L'eau D'issey By Issey Miyake for MenEau De Toilette Spray, 6.7 Fl Oz Bottle [SEP] $64.98 [SEP] B000MJZOPK [SEP] L'eau d'Issey by Issey Miyake for Women 3.3 oz Eau de Toilette Spray [SEP] $49.98 [SEP] B0012S249E [SEP] L'eau D'issey By Issey Miyake For Women. Shower Cream 6.7-Ounces [SEP] $31.36 [",
+      "action": "click[b000vohh8i]",
+      "response": "click[b000vohh8i]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[b000vohh8i]"
+        }
+      ],
+      "latency_s": 1.74
+    },
+    {
+      "step": 3,
+      "observation": "Instruction: [SEP] i need a long lasting 6.76 fl oz bottle of l'eau d'issey, and price lower than 100.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] size [SEP] 2.5 fl oz [SEP] 6.76 fl oz (pack of 1) [SEP] L'eau D'issey By Issey Miyake for MenEau De Toilette Spray, 6.7 Fl Oz Bottle [SEP] Price: $64.98 [SEP] Rating: N.A. [SEP] Description [SEP] Features [SEP] Reviews [SEP] Buy Now",
+      "action": "click[buy now]",
+      "response": "click[buy now]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[buy now]"
+        }
+      ],
+      "latency_s": 2.02
+    },
+    {
+      "step": 4,
+      "observation": "Thank you for shopping with us! [SEP] Your code: [SEP] None [SEP] (Paste it in your MTurk interface.) [SEP] Purchased [SEP] asin [SEP] B000VOHH8I [SEP] options [SEP] {} [SEP] attrs [SEP] None [SEP] category [SEP] None [SEP] query [SEP] None [SEP] product category [SEP] None [SEP] Target [SEP] asin [SEP] options [SEP] attrs [SEP] price upper [SEP] instuction text [SEP] category [SEP] product category [SEP] query [SEP] Goal [SEP] None [SEP] Reward [SEP] Your score (min 0.0, max 1.0) [SEP] 0.666666",
+      "action": "[DONE]",
+      "reward": 0.6666666666666666
+    }
+  ],
+  "messages_count": 106
+}

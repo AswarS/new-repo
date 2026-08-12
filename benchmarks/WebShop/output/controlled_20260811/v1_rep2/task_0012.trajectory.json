@@ -1,0 +1,65 @@
+{
+  "task_idx": 12,
+  "goal": "Instruction: i am looking for a remote control for an lg blu-ray dvd home theater system, and price lower than 70.00 dollars",
+  "reward": 0.5,
+  "done": true,
+  "steps": 3,
+  "max_steps": 30,
+  "error": "",
+  "steps_log": [
+    {
+      "step": 1,
+      "observation": "WebShop [SEP] Instruction: [SEP] i am looking for a remote control for an lg blu-ray dvd home theater system, and price lower than 70.00 dollars [SEP] Search",
+      "action": "search[LG blu-ray DVD home theater system remote control]",
+      "response": "search[LG blu-ray DVD home theater system remote control]",
+      "content_blocks": [
+        {
+          "type": "tool_use",
+          "id": "tooluse_pECUKw712390stHYtHj3yC",
+          "name": "Skill",
+          "input": {
+            "skill": "webshop-v1-constraint-ledger"
+          }
+        },
+        {
+          "type": "text",
+          "text": "search[LG blu-ray DVD home theater system remote control]"
+        }
+      ],
+      "latency_s": 6.82
+    },
+    {
+      "step": 2,
+      "observation": "Instruction: [SEP] i am looking for a remote control for an lg blu-ray dvd home theater system, and price lower than 70.00 dollars [SEP] Back to Search [SEP] Page 1 (Total results: 50) [SEP] Next > [SEP] B08B5XZ7LR [SEP] New AKB73775801 Remote for LG Blu-ray Disc Player Home Theater System BH5140 S54S1-S S54T1-W BH5440P S54T1-S S54T1-C BH5540T BH5140SF0 LHB655 S65T1-S S65T1-C S65T1-W LHB655FB LHB675 LHB675FB S65T3-S [SEP] $7.95 [SEP] B088WYLKNG [SEP] AKB73596102 Replace Remote Control Sub AKB735",
+      "action": "click[b088wylkng]",
+      "response": "click[b088wylkng]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[b088wylkng]"
+        }
+      ],
+      "latency_s": 2.79
+    },
+    {
+      "step": 3,
+      "observation": "Instruction: [SEP] i am looking for a remote control for an lg blu-ray dvd home theater system, and price lower than 70.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] AKB73596102 Replace Remote Control Sub AKB73596101 fit for LG LG 3D Blu-ray Disc DVD Home Theater Cinema System BH6220S BH6420 BH6620P BH6720 BH6720S BH6820 S62D3-W S62S1-S S62S1-W S62T1-C S62T1-S [SEP] Price: $8.97 [SEP] Rating: N.A. [SEP] Description [SEP] Features [SEP] Reviews [SEP] Buy Now",
+      "action": "click[buy now]",
+      "response": "click[buy now]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[buy now]"
+        }
+      ],
+      "latency_s": 2.86
+    },
+    {
+      "step": 4,
+      "observation": "Thank you for shopping with us! [SEP] Your code: [SEP] None [SEP] (Paste it in your MTurk interface.) [SEP] Purchased [SEP] asin [SEP] B088WYLKNG [SEP] options [SEP] {} [SEP] attrs [SEP] None [SEP] category [SEP] None [SEP] query [SEP] None [SEP] product category [SEP] None [SEP] Target [SEP] asin [SEP] options [SEP] attrs [SEP] price upper [SEP] instuction text [SEP] category [SEP] product category [SEP] query [SEP] Goal [SEP] None [SEP] Reward [SEP] Your score (min 0.0, max 1.0) [SEP] 0.5 [SEP",
+      "action": "[DONE]",
+      "reward": 0.5
+    }
+  ],
+  "messages_count": 46
+}

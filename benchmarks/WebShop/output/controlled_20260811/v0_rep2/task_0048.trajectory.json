@@ -1,0 +1,66 @@
+{
+  "task_idx": 48,
+  "goal": "Instruction: find me a motion detection high definition outdoor camera with 1080p hd definition, and price lower than 180.00 dollars",
+  "reward": 0.75,
+  "done": true,
+  "steps": 3,
+  "max_steps": 30,
+  "error": "",
+  "steps_log": [
+    {
+      "step": 1,
+      "observation": "WebShop [SEP] Instruction: [SEP] find me a motion detection high definition outdoor camera with 1080p hd definition, and price lower than 180.00 dollars [SEP] Search",
+      "action": "search[motion detection 1080p HD outdoor camera]",
+      "response": "search[motion detection 1080p HD outdoor camera]",
+      "content_blocks": [
+        {
+          "id": "tooluse_2uMUyD3eJGTNAE1RnREfCt",
+          "input": {
+            "skill": "webshop-v0-common-control",
+            "args": "Instruction: find me a motion detection high definition outdoor camera with 1080p hd definition, and price lower than 180.00 dollars\n\nObservation:\nWebShop [SEP] Instruction: [SEP] find me a motion detection high definition outdoor camera with 1080p hd definition, and price lower than 180.00 dollars [SEP] Search\n\nAvailable actions:\n- search[query]\n- click[element]: Available: [search]"
+          },
+          "name": "Skill",
+          "type": "tool_use"
+        },
+        {
+          "text": "search[motion detection 1080p HD outdoor camera]",
+          "type": "text"
+        }
+      ],
+      "latency_s": 15.19
+    },
+    {
+      "step": 2,
+      "observation": "Instruction: [SEP] find me a motion detection high definition outdoor camera with 1080p hd definition, and price lower than 180.00 dollars [SEP] Back to Search [SEP] Page 1 (Total results: 50) [SEP] Next > [SEP] B09N6S4L38 [SEP] Hidden Camera Mini Spy Camera with Night Vision, 1080P HD Spy Camera ,Nanny Cam for Home Secuirity, Motion Detection for Car, Pet, Office Indoor/Outdoor [SEP] $29.99 [SEP] B099JWKSMX [SEP] Topiacam Security Camera Outdoor, 360°View Pan-Tilt Home 1080P Dual Lens, 2-Way Au",
+      "action": "click[b07hf174wm]",
+      "response": "click[b07hf174wm]",
+      "content_blocks": [
+        {
+          "text": "click[b07hf174wm]",
+          "type": "text"
+        }
+      ],
+      "latency_s": 3.58
+    },
+    {
+      "step": 3,
+      "observation": "Instruction: [SEP] find me a motion detection high definition outdoor camera with 1080p hd definition, and price lower than 180.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] SENS8 Outdoor Camera with Light, 1080p HD, Wi-Fi Home Security Camera, No Subscription, Customized Motion Zone, Motion Detection, Night Vision, Two-Way Audio and Siren Alarm [SEP] Price: $100.0 [SEP] Rating: N.A. [SEP] Description [SEP] Features [SEP] Reviews [SEP] Buy Now",
+      "action": "click[buy now]",
+      "response": "click[buy now]",
+      "content_blocks": [
+        {
+          "text": "click[buy now]",
+          "type": "text"
+        }
+      ],
+      "latency_s": 8.32
+    },
+    {
+      "step": 4,
+      "observation": "Thank you for shopping with us! [SEP] Your code: [SEP] None [SEP] (Paste it in your MTurk interface.) [SEP] Purchased [SEP] asin [SEP] B07HF174WM [SEP] options [SEP] {} [SEP] attrs [SEP] None [SEP] category [SEP] None [SEP] query [SEP] None [SEP] product category [SEP] None [SEP] Target [SEP] asin [SEP] options [SEP] attrs [SEP] price upper [SEP] instuction text [SEP] category [SEP] product category [SEP] query [SEP] Goal [SEP] None [SEP] Reward [SEP] Your score (min 0.0, max 1.0) [SEP] 0.75 [SE",
+      "action": "[DONE]",
+      "reward": 0.75
+    }
+  ],
+  "messages_count": 111
+}

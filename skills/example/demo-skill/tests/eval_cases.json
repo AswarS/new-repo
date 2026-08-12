@@ -1,0 +1,40 @@
+{
+  "skill_id": "demo-skill",
+  "positive_cases": [
+    {
+      "id": "pos_001",
+      "user_query": "Help me organize my thoughts about transitioning from backend development to machine learning.",
+      "available_context": {
+        "user_background": "3 years backend Python developer"
+      },
+      "expected_behavior": "Provide a structured breakdown with clear action items.",
+      "must_include": ["structured_response", "action_items"],
+      "must_not_include": ["unsubstantiated claims"]
+    },
+    {
+      "id": "pos_002",
+      "user_query": "Give me a structured breakdown of how to learn system design.",
+      "available_context": {},
+      "expected_behavior": "Produce organized steps with priorities.",
+      "must_include": ["structured_response"],
+      "must_not_include": []
+    }
+  ],
+  "negative_cases": [
+    {
+      "id": "neg_001",
+      "user_query": "What is 2 + 2?",
+      "reason_should_not_trigger": "Simple factual question, no structure needed.",
+      "better_skill": "general_qa"
+    },
+    {
+      "id": "neg_002",
+      "user_query": "Tell me a joke about programmers.",
+      "reason_should_not_trigger": "Entertainment request, not a structuring task.",
+      "better_skill": "general_qa"
+    }
+  ],
+  "ambiguous_cases": [],
+  "handoff_cases": [],
+  "regression_cases": []
+}

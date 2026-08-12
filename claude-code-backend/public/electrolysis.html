@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>电解水演示</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Microsoft YaHei', sans-serif;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    overflow-x: hidden;
+  }
+  h1 { margin: 24px 0 8px; font-size: 28px; letter-spacing: 2px; }
+  .subtitle { font-size: 14px; color: #aaa; margin-bottom: 18px; }
+
+  .container {
+    position: relative;
+    width: 700px;
+    height: 480px;
+    margin: 0 auto;
+  }
+
+  /* 水槽 */
+  .tank {
+    position: absolute;
+    left: 100px; top: 80px;
+    width: 500px; height: 320px;
+    border: 3px solid #5599cc;
+    border-top: none;
+    border-radius: 0 0 18px 18px;
+    background: linear-gradient(180deg, rgba(30,120,200,0.15) 0%, rgba(30,120,200,0.35) 100%);
+    overflow: hidden;
+  }
+
+  /* 水面波纹 */
+  .water-surface {
+    position: absolute;
+    top: 0; left: -10%;
+    width: 120%; height: 18px;
+    background: repeating-linear-gradient(90deg,
+      rgba(100,180,255,0.0) 0%, rgba(100,180,255,0.3) 25%,
+      rgba(100,180,255,0.0) 50%);
+    animation: wave 3s ease-in-out infinite;
+  }
+  @keyframes wave {
+    0%,100% { transform: translateX(0); }
+    50% { transform: translateX(-30px); }
+  }
+
+  /* 电极 */
+  .electrode {
+    position: absolute;
+    width: 30px;
+    height: 200px;
+    top: 60px;
+    border-radius: 4px;
+    z-index: 2;
+  }
+  .electrode.cathode {
+    left: 160px;
+    background: linear-gradient(180deg, #666, #444);
+    box-shadow: 0 0 12px rgba(100,100,255,0.5);
+  }
+  .electrode.anode {
+    left: 510px;
+    background: linear-gradient(180deg, #666, #444);
+    box-shadow: 0 0 12px rgba(255,100,100,0.5);
+  }
+
+  /* 电极标签 */
+  .electrode-label {
+    position: absolute;
+    top: 42px;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    width: 80px;
+    z-index: 3;
+  }
+  .electrode-label.cathode-label {
+    left: 135px;
+    color: #88bbff;
+  }
+  .electrode-label.anode-label {
+    left: 485px;
+    color: #ff8888;
+  }
+
+  /* 导线 */
+  .wire {
+    position: absolute;
+    height: 3px;
+    top: 78px;
+    z-index: 1;
+  }
+  .wire.left {
+    left: 100px; width: 90px;
+    background: #88bbff;
+  }
+  .wire.right {
+    left: 510px; width: 90px;
+    background: #ff8888;
+  }
+
+  /* 电池 */
+  .battery {
+    position: absolute;
+    top: 10px; left: 290px;
+    width: 120px; height: 50px;
+    background: linear-gradient(90deg, #88bbff 50%, #ff8888 50%);
+    border-radius: 8px;
+    border: 2px solid #888;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+    z-index: 3;
+  }
+  .battery::before {
+    content: '⊖';
+    position: absolute;
+    left: -24px;
+    color: #88bbff;
+    font-size: 20px;
+  }
+  .battery::after {
+    content: '⊕';
+    position: absolute;
+    right: -24px;
+    color: #ff8888;
+    font-size: 20px;
+  }
+
+  /* 连接线到电池 */
+  .conn-wire {
+    position: absolute;
+    background: #888;
+    z-index: 0;
+  }
+  .conn-wire.left-v { left: 175px; top: 35px; width: 3px; height: 46px; background: #88bbff; }
+  .conn-wire.left-h { left: 175px; top: 35px; width: 118px; height: 3px; background: #88bbff; }
+  .conn-wire.right-v { left: 525px; top: 35px; width: 3px; height: 46px; background: #ff8888; }
+  .conn-wire.right-h { left: 407px; top: 35px; width: 121px; height: 3px; background: #ff8888; }
+
+  /* 气泡容器 */
+  .bubbles-container {
+    position: absolute;
+    top: 80px; left: 100px;
+    width: 500px; height: 320px;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 4;
+  }
+
+  /* 气泡 */
+  .bubble {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: rise linear forwards;
+  }
+  .bubble.h2 {
+    background: radial-gradient(circle at 30% 30%, rgba(150,200,255,0.9), rgba(80,140,255,0.4));
+  }
+  .bubble.o2 {
+    background: radial-gradient(circle at 30% 30%, rgba(255,160,160,0.9), rgba(255,80,80,0.4));
+  }
+  @keyframes rise {
+    0% { transform: translateY(0) scale(1); opacity: 0.8; }
+    80% { opacity: 0.6; }
+    100% { transform: translateY(-300px) scale(1.2); opacity: 0; }
+  }
+
+  /* 收集管 */
+  .tube {
+    position: absolute;
+    width: 60px;
+    border: 2px solid rgba(200,220,255,0.5);
+    border-bottom: none;
+    border-radius: 10px 10px 0 0;
+    z-index: 1;
+    overflow: hidden;
+  }
+  .tube.h2-tube {
+    left: 145px; top: 90px; height: 160px;
+  }
+  .tube.o2-tube {
+    left: 495px; top: 90px; height: 160px;
+  }
+  .tube .gas-fill {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    transition: height 0.5s;
+  }
+  .tube.h2-tube .gas-fill {
+    background: rgba(100,160,255,0.25);
+  }
+  .tube.o2-tube .gas-fill {
+    background: rgba(255,100,100,0.2);
+  }
+  .tube-label {
+    position: absolute;
+    top: 72px;
+    font-size: 16px;
+    font-weight: bold;
+    z-index: 5;
+  }
+  .tube-label.h2-label { left: 155px; color: #88bbff; }
+  .tube-label.o2-label { left: 505px; color: #ff8888; }
+
+  /* 方程式 */
+  .equation {
+    margin-top: 16px;
+    font-size: 20px;
+    background: rgba(255,255,255,0.08);
+    padding: 12px 28px;
+    border-radius: 10px;
+    letter-spacing: 1px;
+  }
+  .equation span.h2o { color: #66bbff; }
+  .equation span.h2 { color: #88bbff; }
+  .equation span.o2 { color: #ff8888; }
+  .equation span.arrow { margin: 0 8px; }
+
+  /* 控制按钮 */
+  .controls {
+    margin-top: 18px;
+    display: flex;
+    gap: 16px;
+  }
+  .btn {
+    padding: 10px 28px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .btn:hover { transform: scale(1.05); }
+  .btn-start {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    color: #000;
+  }
+  .btn-stop {
+    background: linear-gradient(135deg, #f5576c, #ff6a88);
+    color: #fff;
+  }
+
+  /* 说明 */
+  .info {
+    margin-top: 20px;
+    max-width: 650px;
+    font-size: 14px;
+    color: #bbb;
+    line-height: 1.8;
+    text-align: center;
+  }
+
+  /* 电流动画 */
+  .current-dot {
+    position: absolute;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #ffee55;
+    opacity: 0;
+    z-index: 5;
+  }
+</style>
+</head>
+<body>
+
+<h1>⚡ 电解水实验演示</h1>
+<p class="subtitle">2H₂O → 2H₂↑ + O₂↑</p>
+
+<div class="container">
+  <!-- 电池 -->
+  <div class="battery">🔋 DC</div>
+
+  <!-- 连接线 -->
+  <div class="conn-wire left-v"></div>
+  <div class="conn-wire left-h"></div>
+  <div class="conn-wire right-v"></div>
+  <div class="conn-wire right-h"></div>
+
+  <!-- 电极标签 -->
+  <div class="electrode-label cathode-label">阴极 (−)</div>
+  <div class="electrode-label anode-label">阳极 (+)</div>
+
+  <!-- 收集管标签 -->
+  <div class="tube-label h2-label">H₂</div>
+  <div class="tube-label o2-label">O₂</div>
+
+  <!-- 收集管 -->
+  <div class="tube h2-tube"><div class="gas-fill" id="h2Fill"></div></div>
+  <div class="tube o2-tube"><div class="gas-fill" id="o2Fill"></div></div>
+
+  <!-- 水槽 -->
+  <div class="tank">
+    <div class="water-surface"></div>
+  </div>
+
+  <!-- 电极 -->
+  <div class="electrode cathode"></div>
+  <div class="electrode anode"></div>
+
+  <!-- 气泡容器 -->
+  <div class="bubbles-container" id="bubblesContainer"></div>
+</div>
+
+<div class="equation">
+  <span class="h2o">2H₂O</span>
+  <span class="arrow">—— 通电 ——→</span>
+  <span class="h2">2H₂↑</span> +
+  <span class="o2">O₂↑</span>
+</div>
+
+<div class="controls">
+  <button class="btn btn-start" id="startBtn" onclick="startElectrolysis()">开始通电</button>
+  <button class="btn btn-stop" id="stopBtn" onclick="stopElectrolysis()" disabled>停止</button>
+</div>
+
+<div class="info">
+  💡 电解水时，水分子在直流电作用下分解：<br>
+  阴极（−）产生 <b style="color:#88bbff">氢气 H₂</b>（体积较多），
+  阳极（+）产生 <b style="color:#ff8888">氧气 O₂</b>（体积较少）。<br>
+  氢气与氧气的体积比约为 <b>2 : 1</b>。
+</div>
+
+<script>
+let running = false;
+let intervalId = null;
+let h2Level = 0;
+let o2Level = 0;
+
+function createBubble(type) {
+  const container = document.getElementById('bubblesContainer');
+  const bubble = document.createElement('div');
+  bubble.className = `bubble ${type}`;
+
+  const size = 4 + Math.random() * 8;
+  bubble.style.width = size + 'px';
+  bubble.style.height = size + 'px';
+
+  if (type === 'h2') {
+    bubble.style.left = (55 + Math.random() * 30) + 'px';
+  } else {
+    bubble.style.left = (400 + Math.random() * 30) + 'px';
+  }
+
+  bubble.style.bottom = '10px';
+  const duration = 1.5 + Math.random() * 1.5;
+  bubble.style.animationDuration = duration + 's';
+
+  container.appendChild(bubble);
+  setTimeout(() => bubble.remove(), duration * 1000);
+}
+
+function startElectrolysis() {
+  if (running) return;
+  running = true;
+  document.getElementById('startBtn').disabled = true;
+  document.getElementById('stopBtn').disabled = false;
+
+  h2Level = 0;
+  o2Level = 0;
+
+  intervalId = setInterval(() => {
+    // 氢气气泡多（2倍）
+    createBubble('h2');
+    createBubble('h2');
+    if (Math.random() > 0.3) createBubble('h2');
+
+    // 氧气气泡少
+    createBubble('o2');
+    if (Math.random() > 0.5) createBubble('o2');
+
+    // 更新收集管气体量
+    if (h2Level < 140) h2Level += 0.5;
+    if (o2Level < 70) o2Level += 0.25;
+
+    document.getElementById('h2Fill').style.height = h2Level + 'px';
+    document.getElementById('o2Fill').style.height = o2Level + 'px';
+  }, 100);
+}
+
+function stopElectrolysis() {
+  running = false;
+  clearInterval(intervalId);
+  document.getElementById('startBtn').disabled = false;
+  document.getElementById('stopBtn').disabled = true;
+}
+</script>
+
+</body>
+</html>

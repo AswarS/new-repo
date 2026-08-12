@@ -1,0 +1,66 @@
+{
+  "task_idx": 28,
+  "goal": "Instruction: i am looking for an oral hygiene toothbrush. it should be easy to carry, and price lower than 50.00 dollars",
+  "reward": 0.6666666666666666,
+  "done": true,
+  "steps": 3,
+  "max_steps": 30,
+  "error": "",
+  "steps_log": [
+    {
+      "step": 1,
+      "observation": "WebShop [SEP] Instruction: [SEP] i am looking for an oral hygiene toothbrush. it should be easy to carry, and price lower than 50.00 dollars [SEP] Search",
+      "action": "search[oral hygiene toothbrush travel]",
+      "response": "search[oral hygiene toothbrush travel]",
+      "content_blocks": [
+        {
+          "type": "tool_use",
+          "id": "fc_0147c0679a26f489016a7ac0a9a5a08191814b1e63888bd610",
+          "name": "Skill",
+          "input": {
+            "args": "oral hygiene toothbrush easy to carry under $50",
+            "skill": "webshop-build-constraint-led-query"
+          }
+        },
+        {
+          "type": "text",
+          "text": "search[oral hygiene toothbrush travel]"
+        }
+      ],
+      "latency_s": 4.42
+    },
+    {
+      "step": 2,
+      "observation": "Instruction: [SEP] i am looking for an oral hygiene toothbrush. it should be easy to carry, and price lower than 50.00 dollars [SEP] Back to Search [SEP] Page 1 (Total results: 50) [SEP] Next > [SEP] B09MTQBMTB [SEP] SWAGOFKGys Travel Toothbrushes， Ultra-fine Soft Hair Friendly Travel Toothbrush Soft Fiber Nano Manual Toothbrush Oral Hygiene Care Tools (Color : White) [SEP] $23.18 [SEP] B09MW5S1R5 [SEP] SWAGOFKGys Travel Toothbrushes， Toothbrush Oral Hygiene Convenient Simple to Clean Easy to Us",
+      "action": "click[b09msy1xw9]",
+      "response": "click[b09msy1xw9]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[b09msy1xw9]"
+        }
+      ],
+      "latency_s": 2.26
+    },
+    {
+      "step": 3,
+      "observation": "Instruction: [SEP] i am looking for an oral hygiene toothbrush. it should be easy to carry, and price lower than 50.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] SWAGOFKGys Travel Toothbrushes， Toothbrush Including Travel Box Toothbrush Adult Oral Cleaning Teeth Couple [SEP] Price: $21.11 [SEP] Rating: N.A. [SEP] Description [SEP] Features [SEP] Reviews [SEP] Buy Now",
+      "action": "click[buy now]",
+      "response": "click[buy now]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[buy now]"
+        }
+      ],
+      "latency_s": 1.9
+    },
+    {
+      "step": 4,
+      "observation": "Thank you for shopping with us! [SEP] Your code: [SEP] None [SEP] (Paste it in your MTurk interface.) [SEP] Purchased [SEP] asin [SEP] B09MSY1XW9 [SEP] options [SEP] {} [SEP] attrs [SEP] None [SEP] category [SEP] None [SEP] query [SEP] None [SEP] product category [SEP] None [SEP] Target [SEP] asin [SEP] options [SEP] attrs [SEP] price upper [SEP] instuction text [SEP] category [SEP] product category [SEP] query [SEP] Goal [SEP] None [SEP] Reward [SEP] Your score (min 0.0, max 1.0) [SEP] 0.666666",
+      "action": "[DONE]",
+      "reward": 0.6666666666666666
+    }
+  ],
+  "messages_count": 80
+}

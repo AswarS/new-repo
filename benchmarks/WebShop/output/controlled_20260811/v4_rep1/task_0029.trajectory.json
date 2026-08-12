@@ -1,0 +1,65 @@
+{
+  "task_idx": 29,
+  "goal": "Instruction: i need a long lasting fragrance gift set for women, and price lower than 90.00 dollars",
+  "reward": 1.0,
+  "done": true,
+  "steps": 3,
+  "max_steps": 30,
+  "error": "",
+  "steps_log": [
+    {
+      "step": 1,
+      "observation": "WebShop [SEP] Instruction: [SEP] i need a long lasting fragrance gift set for women, and price lower than 90.00 dollars [SEP] Search",
+      "action": "search[long lasting fragrance gift set for women]",
+      "response": "search[long lasting fragrance gift set for women]",
+      "content_blocks": [
+        {
+          "type": "tool_use",
+          "id": "tooluse_rdkbmeebsefUZPc4BmuMUf",
+          "name": "Skill",
+          "input": {
+            "skill": "webshop-v4-option-gate"
+          }
+        },
+        {
+          "type": "text",
+          "text": "search[long lasting fragrance gift set for women]"
+        }
+      ],
+      "latency_s": 6.15
+    },
+    {
+      "step": 2,
+      "observation": "Instruction: [SEP] i need a long lasting fragrance gift set for women, and price lower than 90.00 dollars [SEP] Back to Search [SEP] Page 1 (Total results: 50) [SEP] Next > [SEP] B0999DWR51 [SEP] Glamorous Hub Bella Vita Organic Woman Perfume Gift Set For Women 6X10 Ml Perfumes Luxury Scent Long Lasting Fragrance [SEP] $41.99 [SEP] B09DGKHPY6 [SEP] Mini Perfume Set, Deluxe Mini Trio Gift Set, Gold Plated Perfume Mix of Contrasting Fragrances Long Lasting Elegant Fragrance Perfume Spray Gift Set ",
+      "action": "click[b0999dwr51]",
+      "response": "click[b0999dwr51]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[b0999dwr51]"
+        }
+      ],
+      "latency_s": 3.47
+    },
+    {
+      "step": 3,
+      "observation": "Instruction: [SEP] i need a long lasting fragrance gift set for women, and price lower than 90.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] Glamorous Hub Bella Vita Organic Woman Perfume Gift Set For Women 6X10 Ml Perfumes Luxury Scent Long Lasting Fragrance [SEP] Price: $41.99 [SEP] Rating: N.A. [SEP] Description [SEP] Features [SEP] Reviews [SEP] Buy Now",
+      "action": "click[Buy Now]",
+      "response": "The product matches: long lasting fragrance gift set for women, price $41.99 < $90.00, no required options to select.\n\nclick[Buy Now]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "The product matches: long lasting fragrance gift set for women, price $41.99 < $90.00, no required options to select.\n\nclick[Buy Now]"
+        }
+      ],
+      "latency_s": 3.71
+    },
+    {
+      "step": 4,
+      "observation": "Thank you for shopping with us! [SEP] Your code: [SEP] None [SEP] (Paste it in your MTurk interface.) [SEP] Purchased [SEP] asin [SEP] B0999DWR51 [SEP] options [SEP] {} [SEP] attrs [SEP] None [SEP] category [SEP] None [SEP] query [SEP] None [SEP] product category [SEP] None [SEP] Target [SEP] asin [SEP] options [SEP] attrs [SEP] price upper [SEP] instuction text [SEP] category [SEP] product category [SEP] query [SEP] Goal [SEP] None [SEP] Reward [SEP] Your score (min 0.0, max 1.0) [SEP] 1.0 [SEP",
+      "action": "[DONE]",
+      "reward": 1.0
+    }
+  ],
+  "messages_count": 51
+}

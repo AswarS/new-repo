@@ -1,0 +1,92 @@
+{
+  "task_idx": 47,
+  "goal": "Instruction: i want capri sun pacific cooler mixed fruit naturally flavored juice drinks, and price lower than 30.00 dollars",
+  "reward": 1.0,
+  "done": true,
+  "steps": 5,
+  "max_steps": 30,
+  "error": "",
+  "steps_log": [
+    {
+      "step": 1,
+      "observation": "WebShop [SEP] Instruction: [SEP] i want capri sun pacific cooler mixed fruit naturally flavored juice drinks, and price lower than 30.00 dollars [SEP] Search",
+      "action": "search[capri sun pacific cooler mixed fruit juice drinks]",
+      "response": "search[capri sun pacific cooler mixed fruit juice drinks]",
+      "content_blocks": [
+        {
+          "id": "tooluse_g9iR19ilBd4SixTPVZHKcW",
+          "input": {
+            "skill": "webshop-v2-enforced-loop",
+            "args": "Instruction: i want capri sun pacific cooler mixed fruit naturally flavored juice drinks, and price lower than 30.00 dollars\n\nObservation:\nWebShop [SEP] Instruction: [SEP] i want capri sun pacific cooler mixed fruit naturally flavored juice drinks, and price lower than 30.00 dollars [SEP] Search\n\nAvailable actions:\n- search[query]\n- click[element]: Available: [search]"
+          },
+          "name": "Skill",
+          "type": "tool_use"
+        },
+        {
+          "text": "search[capri sun pacific cooler mixed fruit juice drinks]",
+          "type": "text"
+        }
+      ],
+      "latency_s": 14.84
+    },
+    {
+      "step": 2,
+      "observation": "Instruction: [SEP] i want capri sun pacific cooler mixed fruit naturally flavored juice drinks, and price lower than 30.00 dollars [SEP] Back to Search [SEP] Page 1 (Total results: 50) [SEP] Next > [SEP] B000R30X2A [SEP] Capri Sun Pacific Cooler Mixed Fruit Naturally Flavored Juice Drink Blend (Pack of 10) (Packaging May Vary) [SEP] $2.55 [SEP] B075CSWGJR [SEP] Capri Sun Pacific Cooler Ready-to-Drink Juice, 6 Fl Oz (Pack of 30) [SEP] $100.0 [SEP] B0083GG2SC [SEP] Capri Sun Coolers Variety Pack R",
+      "action": "click[b000r30x2a]",
+      "response": "click[b000r30x2a]",
+      "content_blocks": [
+        {
+          "text": "click[b000r30x2a]",
+          "type": "text"
+        }
+      ],
+      "latency_s": 3.67
+    },
+    {
+      "step": 3,
+      "observation": "Instruction: [SEP] i want capri sun pacific cooler mixed fruit naturally flavored juice drinks, and price lower than 30.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] flavor name [SEP] assorted [SEP] pacific cooler [SEP] strawberry kiwi [SEP] variety pack [SEP] size [SEP] 6 fl oz (pack of 10) [SEP] 6 fl oz (pack of 30) [SEP] Capri Sun Pacific Cooler Mixed Fruit Naturally Flavored Juice Drink Blend (Pack of 10) (Packaging May Vary) [SEP] Price: $2.55 [SEP] Rating: N.A. [SEP] Description [SEP]",
+      "action": "click[pacific cooler]",
+      "response": "click[pacific cooler]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[pacific cooler]"
+        }
+      ],
+      "latency_s": 8.39
+    },
+    {
+      "step": 4,
+      "observation": "Instruction: [SEP] i want capri sun pacific cooler mixed fruit naturally flavored juice drinks, and price lower than 30.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] flavor name [SEP] assorted [SEP] pacific cooler [SEP] strawberry kiwi [SEP] variety pack [SEP] size [SEP] 6 fl oz (pack of 10) [SEP] 6 fl oz (pack of 30) [SEP] Capri Sun Pacific Cooler Mixed Fruit Naturally Flavored Juice Drink Blend (Pack of 10) (Packaging May Vary) [SEP] Price: $2.55 [SEP] Rating: N.A. [SEP] Description [SEP]",
+      "action": "click[6 fl oz (pack of 10)]",
+      "response": "click[6 fl oz (pack of 10)]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[6 fl oz (pack of 10)]"
+        }
+      ],
+      "latency_s": 3.88
+    },
+    {
+      "step": 5,
+      "observation": "Instruction: [SEP] i want capri sun pacific cooler mixed fruit naturally flavored juice drinks, and price lower than 30.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] flavor name [SEP] assorted [SEP] pacific cooler [SEP] strawberry kiwi [SEP] variety pack [SEP] size [SEP] 6 fl oz (pack of 10) [SEP] 6 fl oz (pack of 30) [SEP] Capri Sun Pacific Cooler Mixed Fruit Naturally Flavored Juice Drink Blend (Pack of 10) (Packaging May Vary) [SEP] Price: $2.55 [SEP] Rating: N.A. [SEP] Description [SEP]",
+      "action": "click[buy now]",
+      "response": "click[buy now]",
+      "content_blocks": [
+        {
+          "text": "click[buy now]",
+          "type": "text"
+        }
+      ],
+      "latency_s": 4.42
+    },
+    {
+      "step": 6,
+      "observation": "Thank you for shopping with us! [SEP] Your code: [SEP] None [SEP] (Paste it in your MTurk interface.) [SEP] Purchased [SEP] asin [SEP] B000R30X2A [SEP] options [SEP] {\"flavor name\": \"pacific cooler\", \"size\": \"6 fl oz (pack of 10)\"} [SEP] attrs [SEP] None [SEP] category [SEP] None [SEP] query [SEP] None [SEP] product category [SEP] None [SEP] Target [SEP] asin [SEP] options [SEP] attrs [SEP] price upper [SEP] instuction text [SEP] category [SEP] product category [SEP] query [SEP] Goal [SEP] None ",
+      "action": "[DONE]",
+      "reward": 1.0
+    }
+  ],
+  "messages_count": 123
+}

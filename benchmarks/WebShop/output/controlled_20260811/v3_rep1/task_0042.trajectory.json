@@ -1,0 +1,65 @@
+{
+  "task_idx": 42,
+  "goal": "Instruction: i would like a 8 fluid ounce bottle of tea tree lotion, and price lower than 30.00 dollars",
+  "reward": 0.0,
+  "done": true,
+  "steps": 3,
+  "max_steps": 30,
+  "error": "",
+  "steps_log": [
+    {
+      "step": 1,
+      "observation": "WebShop [SEP] Instruction: [SEP] i would like a 8 fluid ounce bottle of tea tree lotion, and price lower than 30.00 dollars [SEP] Search",
+      "action": "search[tea tree lotion 8 fluid ounce]",
+      "response": "search[tea tree lotion 8 fluid ounce]",
+      "content_blocks": [
+        {
+          "type": "tool_use",
+          "id": "tooluse_G928HaUI8g80o9VGKJPR1W",
+          "name": "Skill",
+          "input": {
+            "skill": "webshop-v3-explicit-state"
+          }
+        },
+        {
+          "type": "text",
+          "text": "search[tea tree lotion 8 fluid ounce]"
+        }
+      ],
+      "latency_s": 9.8
+    },
+    {
+      "step": 2,
+      "observation": "Instruction: [SEP] i would like a 8 fluid ounce bottle of tea tree lotion, and price lower than 30.00 dollars [SEP] Back to Search [SEP] Page 1 (Total results: 50) [SEP] Next > [SEP] B07S2TG6W6 [SEP] Waxness Wax Necessities Dr Bump Natural Pre Post Lotion with Peppermint Sage Rosemary and Tea Tree 8 Ounces [SEP] $12.87 [SEP] B077H3JFS5 [SEP] Medicine Man’s Healing Body Lotion - Tea Tree Oil Moisturizer - Natural and Organic, Dermatitis, Psoriasis, Anti Acne Treatment - 8 Ounces - for Dry, Itchy,",
+      "action": "click[b077h3jfs5]",
+      "response": "click[b077h3jfs5]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[b077h3jfs5]"
+        }
+      ],
+      "latency_s": 4.51
+    },
+    {
+      "step": 3,
+      "observation": "Instruction: [SEP] i would like a 8 fluid ounce bottle of tea tree lotion, and price lower than 30.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] Medicine Man’s Healing Body Lotion - Tea Tree Oil Moisturizer - Natural and Organic, Dermatitis, Psoriasis, Anti Acne Treatment - 8 Ounces - for Dry, Itchy, Scaly Skin [SEP] Price: $26.0 [SEP] Rating: N.A. [SEP] Description [SEP] Features [SEP] Reviews [SEP] Buy Now",
+      "action": "click[buy now]",
+      "response": "click[buy now]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[buy now]"
+        }
+      ],
+      "latency_s": 4.16
+    },
+    {
+      "step": 4,
+      "observation": "Thank you for shopping with us! [SEP] Your code: [SEP] None [SEP] (Paste it in your MTurk interface.) [SEP] Purchased [SEP] asin [SEP] B077H3JFS5 [SEP] options [SEP] {} [SEP] attrs [SEP] None [SEP] category [SEP] None [SEP] query [SEP] None [SEP] product category [SEP] None [SEP] Target [SEP] asin [SEP] options [SEP] attrs [SEP] price upper [SEP] instuction text [SEP] category [SEP] product category [SEP] query [SEP] Goal [SEP] None [SEP] Reward [SEP] Your score (min 0.0, max 1.0) [SEP] 0.0 [SEP",
+      "action": "[DONE]",
+      "reward": 0.0
+    }
+  ],
+  "messages_count": 46
+}

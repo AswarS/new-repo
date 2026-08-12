@@ -1,0 +1,66 @@
+{
+  "task_idx": 9,
+  "goal": "Instruction: i am looking for a grey sectional sofa for my living room",
+  "reward": 0.6666666666666666,
+  "done": true,
+  "steps": 3,
+  "max_steps": 30,
+  "error": "",
+  "steps_log": [
+    {
+      "step": 1,
+      "observation": "WebShop [SEP] Instruction: [SEP] i am looking for a grey sectional sofa for my living room [SEP] Search",
+      "action": "search[grey sectional sofa living room]",
+      "response": "search[grey sectional sofa living room]",
+      "content_blocks": [
+        {
+          "id": "tooluse_EsKYIkcZxHRlXnEVcpGOww",
+          "input": {
+            "skill": "webshop-v0-common-control",
+            "args": "Instruction: i am looking for a grey sectional sofa for my living room\n\nObservation:\nWebShop [SEP] Instruction: [SEP] i am looking for a grey sectional sofa for my living room [SEP] Search\n\nAvailable actions:\n- search[query]\n- click[element]: Available: [search]"
+          },
+          "name": "Skill",
+          "type": "tool_use"
+        },
+        {
+          "text": "search[grey sectional sofa living room]",
+          "type": "text"
+        }
+      ],
+      "latency_s": 13.6
+    },
+    {
+      "step": 2,
+      "observation": "Instruction: [SEP] i am looking for a grey sectional sofa for my living room [SEP] Back to Search [SEP] Page 1 (Total results: 50) [SEP] Next > [SEP] B09JKW2W67 [SEP] 14-Position Floor Sofa, Grey Sectional Sofa Sofa Bed Futon Sofa Bed Couches for Living Room Sleeper Sofa Sofa Table Sofas for Living Room Living Room Sets Furniture Cool Stuff for Your Room [SEP] $100.0 [SEP] B09F2VQY3T [SEP] Sofa Sectional Sofa Furniture Set Futon Sofa Modern Convertible L-Shaped Couches Sofa Set Fabric Sofa Corne",
+      "action": "click[b09kxts4dz]",
+      "response": "click[b09kxts4dz]",
+      "content_blocks": [
+        {
+          "text": "click[b09kxts4dz]",
+          "type": "text"
+        }
+      ],
+      "latency_s": 3.49
+    },
+    {
+      "step": 3,
+      "observation": "Instruction: [SEP] i am looking for a grey sectional sofa for my living room [SEP] Back to Search [SEP] < Prev [SEP] Sectional Sofa Set for Living Room, HABITRIO Solid Wood Frame Grey Chenille Upholstered 3-Seat Sofa Couch with Storage Ottoman, Seating Furniture for Home Office [SEP] Price: $369.99 [SEP] Rating: N.A. [SEP] Description [SEP] Features [SEP] Reviews [SEP] Buy Now",
+      "action": "click[buy now]",
+      "response": "click[buy now]",
+      "content_blocks": [
+        {
+          "text": "click[buy now]",
+          "type": "text"
+        }
+      ],
+      "latency_s": 7.96
+    },
+    {
+      "step": 4,
+      "observation": "Thank you for shopping with us! [SEP] Your code: [SEP] None [SEP] (Paste it in your MTurk interface.) [SEP] Purchased [SEP] asin [SEP] B09KXTS4DZ [SEP] options [SEP] {} [SEP] attrs [SEP] None [SEP] category [SEP] None [SEP] query [SEP] None [SEP] product category [SEP] None [SEP] Target [SEP] asin [SEP] options [SEP] attrs [SEP] price upper [SEP] instuction text [SEP] category [SEP] product category [SEP] query [SEP] Goal [SEP] None [SEP] Reward [SEP] Your score (min 0.0, max 1.0) [SEP] 0.666666",
+      "action": "[DONE]",
+      "reward": 0.6666666666666666
+    }
+  ],
+  "messages_count": 98
+}

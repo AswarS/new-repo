@@ -1,0 +1,110 @@
+{
+  "positive_cases": [
+    {
+      "id": "pos_01_stuck_in_routine",
+      "user_query": "I've been working as a software engineer for 6 years and feel completely stuck. Every day is the same — meetings, code reviews, deploy. I keep thinking there must be something more fulfilling but I don't know what. How do I figure out what I actually want to do?",
+      "available_context": {
+        "current_role": "Senior Software Engineer",
+        "years_experience": "6",
+        "industry": "FinTech"
+      },
+      "expected_behavior": "Should apply the Genie Thought Experiment to help user identify their true desire by removing fear of failure, then use Nine Lives Exercise to brainstorm alternatives",
+      "must_include": ["genie", "failure", "play", "energy"],
+      "must_not_include": []
+    },
+    {
+      "id": "pos_02_two_job_offers",
+      "user_query": "I have two job offers: one is a stable VP role at a big bank with great pay, the other is Head of Product at an early-stage startup that excites me but scares me. My parents think the bank job is obviously better. How should I decide?",
+      "available_context": {
+        "offer_A": "VP Product at major bank, $280k TC",
+        "offer_B": "Head of Product at Series A startup, $180k + equity",
+        "family_pressure": "high"
+      },
+      "expected_behavior": "Should apply Internal vs External Scorecard check, identify that excitement/energy signals the Genie Goal, address family pressure as external scorecard, acknowledge Worse First reality",
+      "must_include": ["external scorecard", "internal", "energy", "worse first"],
+      "must_not_include": []
+    },
+    {
+      "id": "pos_03_fear_of_leaving",
+      "user_query": "I dream of starting my own consulting firm but I have $80k in student debt and a mortgage. It feels irresponsible to leave my corporate job. Am I being realistic or just making excuses?",
+      "available_context": {
+        "current_role": "Management Consultant at Big 4",
+        "debt": "$80k student loans",
+        "mortgage": "yes",
+        "dream": "independent consulting firm"
+      },
+      "expected_behavior": "Should apply Deconstructing Limiting Beliefs framework — write down fears, convert to to-do items, create financial runway plan",
+      "must_include": ["limiting belief", "to-do", "fear", "runway"],
+      "must_not_include": []
+    },
+    {
+      "id": "pos_04_autopilot_burnout",
+      "user_query": "I'm a product manager earning well but I feel like I'm on autopilot. I used to love teaching and mentoring but now all I do is write PRDs. I want to feel alive again at work. What should I do?",
+      "available_context": {
+        "current_role": "Senior PM",
+        "salary": "$200k",
+        "passion_signal": "teaching and mentoring"
+      },
+      "expected_behavior": "Should identify the Play vs Work signal (teaching feels like play), use Nine Lives exercise to explore an education/coaching life, suggest pulling a piece of that life into current reality",
+      "must_include": ["play", "work", "nine lives", "energy"],
+      "must_not_include": []
+    },
+    {
+      "id": "pos_05_major_pivot",
+      "user_query": "I'm 35, been in finance my whole career, but I keep fantasizing about becoming a therapist. Everyone says it would be crazy to throw away 12 years of finance experience. Is it too late to pivot?",
+      "available_context": {
+        "age": "35",
+        "current_field": "Investment Banking",
+        "years_in_field": "12",
+        "desired_field": "Psychology/Therapy"
+      },
+      "expected_behavior": "Should use the Genie Question to confirm this is the true desire, address the Not Now trap and time horizon pitfall, suggest Nine Lives approach to test the path",
+      "must_include": ["genie", "not now", "time horizon"],
+      "must_not_include": []
+    }
+  ],
+  "negative_cases": [
+    {
+      "id": "neg_01_salary_negotiation",
+      "user_query": "I just got a job offer for $150k but I think I'm worth $170k based on market data. How should I negotiate the salary?",
+      "reason_should_not_trigger": "This is a tactical negotiation question, not a career direction/identity question. The user already knows what they want.",
+      "better_skill": "offer_decision_analysis"
+    },
+    {
+      "id": "neg_02_resume_help",
+      "user_query": "Can you help me rewrite the experience section of my resume? I want to highlight my leadership achievements.",
+      "reason_should_not_trigger": "This is a resume writing task, not a career direction exploration question.",
+      "better_skill": "resume_optimization"
+    },
+    {
+      "id": "neg_03_interview_prep",
+      "user_query": "I have a system design interview at Google next week. What topics should I study and how should I structure my answers?",
+      "reason_should_not_trigger": "This is interview preparation, the user already has a clear direction and target.",
+      "better_skill": "interview_question_prediction"
+    },
+    {
+      "id": "neg_04_project_management",
+      "user_query": "How do I manage stakeholder expectations when my project timeline keeps slipping?",
+      "reason_should_not_trigger": "This is a tactical work problem about current role execution, not about career direction or identity.",
+      "better_skill": "work_task_coaching"
+    },
+    {
+      "id": "neg_05_skill_learning",
+      "user_query": "What's the best way to learn Kubernetes for my DevOps role? I need to get certified in 3 months.",
+      "reason_should_not_trigger": "This is a specific technical skill learning question with a clear goal, not a career direction question.",
+      "better_skill": "learning_path_planning"
+    }
+  ],
+  "ambiguous_cases": [
+    {
+      "id": "amb_01_general_unhappiness",
+      "user_query": "I'm not happy at work. What should I do?",
+      "expected_behavior": "Could trigger this skill to explore whether it's a direction problem, but might also need information_sufficiency_check first to understand why they're unhappy"
+    },
+    {
+      "id": "amb_02_promotion_vs_pivot",
+      "user_query": "I didn't get promoted this cycle and I'm wondering if I should even stay in this field.",
+      "expected_behavior": "Ambiguous between performance review analysis and career direction exploration. The 'should I stay in this field' part leans toward this skill."
+    }
+  ]
+}

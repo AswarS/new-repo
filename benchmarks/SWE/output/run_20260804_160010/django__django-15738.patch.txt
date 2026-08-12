@@ -1,0 +1,43 @@
+diff --git a/django/db/migrations/autodetector.py b/django/db/migrations/autodetector.py
+index 5f41053283..fc52d2b36f 100644
+--- a/django/db/migrations/autodetector.py
++++ b/django/db/migrations/autodetector.py
+@@ -1022,8 +1022,11 @@ class MigrationAutodetector:
+ 
+     def _generate_added_field(self, app_label, model_name, field_name):
+         field = self.to_state.models[app_label, model_name].get_field(field_name)
+-        # Fields that are foreignkeys/m2ms depend on stuff
+-        dependencies = []
++        # Adding a field with the same name as a removed field requires the
++        # removal to happen first so the add can proceed correctly.
++        dependencies = [
++            (app_label, model_name, field_name, False),
++        ]
+         if field.remote_field and field.remote_field.model:
+             dependencies.extend(
+                 self._get_dependencies_for_foreign_key(
+diff --git a/tests/migrations/test_autodetector.py b/tests/migrations/test_autodetector.py
+index 547e0b32c5..a442846a5e 100644
+--- a/tests/migrations/test_autodetector.py
++++ b/tests/migrations/test_autodetector.py
+@@ -3798,16 +3798,16 @@ class AutodetectorTests(TestCase):
+         # Right number/type of migrations?
+         self.assertNumberMigrations(changes, "testapp", 1)
+         self.assertOperationTypes(
+-            changes, "testapp", 0, ["RemoveField", "AddField", "DeleteModel"]
++            changes, "testapp", 0, ["RemoveField", "DeleteModel", "AddField"]
+         )
+         self.assertOperationAttributes(
+             changes, "testapp", 0, 0, name="publishers", model_name="author"
+         )
++        self.assertOperationAttributes(changes, "testapp", 0, 1, name="Publisher")
+         self.assertOperationAttributes(
+-            changes, "testapp", 0, 1, name="publishers", model_name="author"
++            changes, "testapp", 0, 2, name="publishers", model_name="author"
+         )
+-        self.assertOperationAttributes(changes, "testapp", 0, 2, name="Publisher")
+-        self.assertOperationFieldAttributes(changes, "testapp", 0, 1, max_length=100)
++        self.assertOperationFieldAttributes(changes, "testapp", 0, 2, max_length=100)
+ 
+     def test_non_circular_foreignkey_dependency_removal(self):
+         """

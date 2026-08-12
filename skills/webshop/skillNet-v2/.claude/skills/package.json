@@ -1,0 +1,417 @@
+{
+  "package_name": "webshop",
+  "scene_description": "WebShop benchmark environment for e-commerce task automation - AI agents navigating online shopping platforms, searching products, comparing attributes, verifying specifications, and completing purchase workflows based on user requirements and budget constraints",
+  "tags": [
+    "webshop"
+  ],
+  "curated": true,
+  "created_at": "2026-02-08T10:30:00.000000",
+  "skill_count": 23,
+  "skills": [
+    {
+      "skill_name": "webshop-product-detail-navigator",
+      "skill_description": "Navigates to and interacts with a specific product's detail page. This skill is triggered after a candidate product ID is selected from search results. It performs the click action to load the product page and then identifies available interactive elements (like flavor or size selectors) that need to be configured to match the user's requirements.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/webshop/webshop-product-detail-navigator",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "webshop"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.72
+    },
+    {
+      "skill_name": "webshop-initial-search",
+      "skill_description": "Performs the first search on an e-commerce platform using keywords derived from parsed user requirements. Trigger this skill when starting product discovery or when previous search results are insufficient. It formulates a search query from the criteria (e.g., '24 pack of 7.5 ounce bottles of non-gmo classic tonic') and executes the search action, returning the initial result page.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/webshop/webshop-initial-search",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "webshop"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.723
+    },
+    {
+      "skill_name": "webshop-action-executor",
+      "skill_description": "This skill executes a specific interface action, such as clicking a button or selecting an option, within a web shopping environment. It should be triggered when a decision has been made (e.g., to choose a color or proceed to purchase). The input is the target action identifier (e.g., 'white' or 'buy now'), and the output is the corresponding formatted action command (e.g., click[white]).",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/webshop/webshop-action-executor",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "webshop"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.726
+    },
+    {
+      "skill_name": "webshop-attribute-verifier",
+      "skill_description": "This skill confirms specific product attributes on a detailed product page. It is triggered when navigating to an individual product listing to verify details such as color options, exact price, or specifications. The skill checks available selections or displayed information against the user's requirements, ensuring the product matches before proceeding to purchase.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/webshop/webshop-attribute-verifier",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "webshop"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.729
+    },
+    {
+      "skill_name": "webshop-search-executor",
+      "skill_description": "Executes a search on an e-commerce platform using parsed keywords. Trigger when you need to find products matching specific criteria from a user query. This skill takes structured search terms and performs a search action, returning a list of product results for evaluation.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/webshop/webshop-search-executor",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "webshop"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.732
+    },
+    {
+      "skill_name": "webshop-query-parser",
+      "skill_description": "This skill extracts key constraints and product requirements from a user's shopping query. It should be triggered when the agent receives a new shopping instruction, to identify product attributes (e.g., 'gluten free'), price limits (e.g., 'lower than 140.00 dollars'), and other specifications. The skill outputs a structured set of search criteria to guide subsequent product discovery.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/webshop/webshop-query-parser",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "webshop"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.735
+    },
+    {
+      "skill_name": "webshop-product-detail-inspector",
+      "skill_description": "This skill examines a product detail page to verify specific attributes or select options like size, color, or quantity. It is used after clicking on a product, to confirm that the item matches the user's needs (e.g., checking for '10 slots' option, price, material). The input is the product page observation, and the output is an action to select a required variant (e.g., click[10 slots]) or proceed if criteria are satisfied.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/webshop/webshop-product-detail-inspector",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "webshop"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.738
+    },
+    {
+      "skill_name": "webshop-purchase-executor",
+      "skill_description": "This skill executes the purchase action for a confirmed suitable product on an e-commerce page. It is triggered after product verification when the user decision is to buy. The skill clicks the purchase button (e.g., 'Buy Now') to complete the transaction.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/webshop/webshop-purchase-executor",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "webshop"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.741
+    },
+    {
+      "skill_name": "webshop-variant-chooser",
+      "skill_description": "This skill selects a product variant (e.g., size, quantity) from available options on a product detail page. It is triggered when a product page displays multiple choices, assessing the options (like '1.1 pound (pack of 1)' or 'pack of 2') and selecting one that aligns with user needs, often defaulting to a standard single unit if unspecified.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/webshop/webshop-variant-chooser",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "webshop"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.744
+    },
+    {
+      "skill_name": "webshop-attribute-selector",
+      "skill_description": "Selects specific product attributes (e.g., flavor, size) on a product detail page to match user requirements. Triggered when a product page presents configurable options and the parsed query specifies needed values. It identifies the correct option from available clickables (e.g., 'smoked bacon' for flavor, '4 ounce (pack of 2)' for size) and executes the selection click.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/webshop/webshop-attribute-selector",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "webshop"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.747
+    },
+    {
+      "skill_name": "webshop-price-checker",
+      "skill_description": "This skill scans product listings or detail pages to verify if an item's price meets a specified budget constraint. It is triggered when evaluating a potential product for purchase. It extracts the price from the displayed information (e.g., '$164.95') and compares it against the maximum allowed budget, outputting a boolean decision on whether the item is within budget.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/webshop/webshop-price-checker",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "webshop"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.75
+    },
+    {
+      "skill_name": "webshop-result-page-navigator",
+      "skill_description": "Navigates through paginated search results by moving to the next or previous page. Use this skill when the current page of product listings does not contain a suitable match and you need to review more options. It identifies and clicks the appropriate pagination controls (e.g., 'next >' or '< prev') to load additional result pages for evaluation.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/webshop/webshop-result-page-navigator",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "webshop"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.753
+    },
+    {
+      "skill_name": "webshop-search-constructor",
+      "skill_description": "This skill formulates an effective search query from structured product criteria. It is used when initiating a product search on an e-commerce platform, converting attributes into a concise, relevant keyword string. The input is a set of parsed criteria (e.g., 'jewelry box', '10 slots', 'easy to clean', 'price < $60'), and the output is a formatted search action string (e.g., 'search[jewelry box, 10 slots, less than $60, easy to clean]') optimized for the platform's search engine.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/webshop/webshop-search-constructor",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "webshop"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.756
+    },
+    {
+      "skill_name": "webshop-product-detail-check",
+      "skill_description": "This skill examines a specific product's detailed page to verify it matches the user's requirements, checking price, description, features, and reviews. Trigger when a candidate product is selected from search results. It confirms alignment with constraints and provides a final suitability assessment before purchase.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/webshop/webshop-product-detail-check",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "webshop"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.759
+    },
+    {
+      "skill_name": "webshop-option-selector",
+      "skill_description": "This skill selects product options or variants (such as size, color, or quantity) on a product detail page based on user preferences or cost optimization. It should be triggered when a product page displays configurable options. The skill evaluates available choices (e.g., 1pcs vs 2pcs) and selects the one that best aligns with the user's constraints, such as minimizing cost.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/webshop/webshop-option-selector",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "webshop"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.762
+    },
+    {
+      "skill_name": "webshop-result-filter",
+      "skill_description": "This skill filters search results by evaluating product listings against specific user constraints like price, features, or ratings. It should be triggered when reviewing a page of search results to identify items that match all given criteria. The skill takes a list of products with their details and outputs a subset that meets the defined requirements for closer inspection.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/webshop/webshop-result-filter",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "webshop"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.765
+    },
+    {
+      "skill_name": "webshop-search-formulator",
+      "skill_description": "This skill generates effective search keywords based on parsed product criteria. It is triggered after query parsing, when the agent needs to perform an initial product search on an e-commerce platform. The skill takes structured attributes (e.g., 'women's size 5 patent-beige high heel') and produces a concise, platform-appropriate search string designed to return relevant results, balancing specificity with recall.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/webshop/webshop-search-formulator",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "webshop"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.768
+    },
+    {
+      "skill_name": "webshop-query-interpreter",
+      "skill_description": "This skill interprets a user's shopping query to extract key product requirements such as item type, attributes, and constraints. It should be triggered when a new shopping instruction is received, parsing natural language into structured criteria (e.g., product category, desired features, price limits). The output is a clear set of search parameters for use in subsequent product lookup steps.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/webshop/webshop-query-interpreter",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "webshop"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.771
+    },
+    {
+      "skill_name": "webshop-result-analyzer",
+      "skill_description": "This skill evaluates a list of search results against the target product criteria. Trigger it when a search result page is observed, to identify promising product listings. It analyzes each result's title, price, and brief description to shortlist items that best match the required attributes (like size, color, and price), outputting a prioritized list of candidate product IDs or links for further inspection.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/webshop/webshop-result-analyzer",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "webshop"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.774
+    },
+    {
+      "skill_name": "webshop-product-evaluator",
+      "skill_description": "This skill evaluates product listings against user requirements, such as price limits and feature matches, to identify viable options. It should be triggered when presented with a search results page containing multiple products. The skill analyzes product titles, prices, and brief descriptions to select the most promising candidate for detailed inspection.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/webshop/webshop-product-evaluator",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "webshop"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.777
+    },
+    {
+      "skill_name": "webshop-product-selector",
+      "skill_description": "Selects the most promising product candidate from a filtered shortlist for detailed inspection. Use this skill when multiple items seem viable; it makes a final selection based on a heuristic (e.g., best feature match, lowest price) and triggers the action to navigate to that product's detail page (click[product_id]).",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/webshop/webshop-product-selector",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "webshop"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.78
+    },
+    {
+      "skill_name": "webshop-product-search",
+      "skill_description": "This skill performs an initial product search using a web interface by generating appropriate search keywords based on interpreted query criteria. It is triggered when starting a product discovery task or when returning to search results. The skill inputs structured search parameters and outputs a list of candidate products from the search results page.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/webshop/webshop-product-search",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "webshop"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.783
+    },
+    {
+      "skill_name": "webshop-purchase-initiator",
+      "skill_description": "This skill initiates the purchase process by clicking the buy button once a product and its options have been selected and verified against requirements. It should be triggered when all selection criteria are satisfied and the user is ready to proceed to checkout. The skill confirms the final price meets any budget constraints before executing the purchase action.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/webshop/webshop-purchase-initiator",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "webshop"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.786
+    }
+  ],
+  "average_score": 0.753,
+  "relationships": [
+    {
+      "source": "webshop-product-search",
+      "target": "webshop-initial-search",
+      "type": "similar_to",
+      "reason": "Both skills perform an initial product search using user-defined criteria."
+    },
+    {
+      "source": "webshop-query-parser",
+      "target": "webshop-query-interpreter",
+      "type": "similar_to",
+      "reason": "Both skills extract key product requirements from a user's shopping query."
+    },
+    {
+      "source": "webshop-attribute-selector",
+      "target": "webshop-variant-chooser",
+      "type": "compose_with",
+      "reason": "Both skills select options based on user preferences from a product detail page, focusing on product attributes."
+    },
+    {
+      "source": "webshop-attribute-verifier",
+      "target": "webshop-product-detail-check",
+      "type": "similar_to",
+      "reason": "Both skills confirm specific product attributes on a detailed product page."
+    },
+    {
+      "source": "webshop-product-detail-check",
+      "target": "webshop-product-detail-inspector",
+      "type": "compose_with",
+      "reason": "Both skills inspect product details for verification, often applied sequentially."
+    },
+    {
+      "source": "webshop-product-detail-inspector",
+      "target": "webshop-product-detail-navigator",
+      "type": "belong_to",
+      "reason": "The product detail inspector skill is a step that occurs within the workflow of inspecting a product after navigating to its detail page."
+    },
+    {
+      "source": "webshop-product-detail-navigator",
+      "target": "webshop-product-selector",
+      "type": "depend_on",
+      "reason": "The product detail navigator must be executed to load a product's detail page before selecting it for further inspection."
+    },
+    {
+      "source": "webshop-result-analyzer",
+      "target": "webshop-result-filter",
+      "type": "compose_with",
+      "reason": "Both skills evaluate search results against user criteria, often used together in the workflow post-search."
+    },
+    {
+      "source": "webshop-result-page-navigator",
+      "target": "webshop-result-analyzer",
+      "type": "depend_on",
+      "reason": "Navigating through result pages is essential for getting updated search results before analyzing them."
+    },
+    {
+      "source": "webshop-product-evaluator",
+      "target": "webshop-result-analyzer",
+      "type": "depend_on",
+      "reason": "The product evaluator needs search results to take action and evaluate products against user requirements."
+    },
+    {
+      "source": "webshop-purchase-initiator",
+      "target": "webshop-purchase-executor",
+      "type": "compose_with",
+      "reason": "The purchase initiator sets up the purchase process, while the executor carries out the transaction."
+    },
+    {
+      "source": "webshop-query-parser",
+      "target": "webshop-search-constructor",
+      "type": "compose_with",
+      "reason": "webshop-query-parser explicitly 'outputs a structured set of search criteria to guide subsequent product discovery', and webshop-search-constructor 'formulates an effective search query from structured product criteria' - clear workflow connection."
+    },
+    {
+      "source": "webshop-search-constructor",
+      "target": "webshop-search-executor",
+      "type": "depend_on",
+      "reason": "webshop-search-constructor 'produces a formatted search action string', which is the input that webshop-search-executor needs to 'execute a search on an e-commerce platform using parsed keywords'."
+    },
+    {
+      "source": "webshop-search-formulator",
+      "target": "webshop-initial-search",
+      "type": "compose_with",
+      "reason": "webshop-search-formulator 'generates effective search keywords' and webshop-initial-search 'Performs the first search using keywords derived from parsed user requirements' - they work together in the initial search workflow."
+    },
+    {
+      "source": "webshop-result-analyzer",
+      "target": "webshop-product-selector",
+      "type": "compose_with",
+      "reason": "webshop-result-analyzer explicitly 'outputs a prioritized list of candidate product IDs' which is then used by webshop-product-selector to 'select the most promising product candidate from a filtered shortlist'."
+    },
+    {
+      "source": "webshop-product-selector",
+      "target": "webshop-product-detail-navigator",
+      "type": "compose_with",
+      "reason": "webshop-product-selector 'triggers the action to navigate to that product's detail page (click[product_id])', which is the exact function of webshop-product-detail-navigator that 'Navigates to and interacts with a specific product's detail page'."
+    },
+    {
+      "source": "webshop-attribute-selector",
+      "target": "webshop-purchase-initiator",
+      "type": "compose_with",
+      "reason": "After webshop-attribute-selector 'executes the selection click' to configure product options, webshop-purchase-initiator is 'triggered when all selection criteria are satisfied' - sequential workflow steps."
+    },
+    {
+      "source": "webshop-price-checker",
+      "target": "webshop-product-evaluator",
+      "type": "compose_with",
+      "reason": "webshop-price-checker 'verifies if an item's price meets a specified budget constraint', which is a key component of webshop-product-evaluator that 'evaluates product listings against user requirements, such as price limits'."
+    },
+    {
+      "source": "webshop-option-selector",
+      "target": "webshop-attribute-selector",
+      "type": "similar_to",
+      "reason": "Both skills select options/attributes on product detail pages - webshop-option-selector 'selects product options or variants (such as size, color, or quantity)' and webshop-attribute-selector 'Selects specific product attributes (e.g., flavor, size)'. They serve highly overlapping purposes."
+    },
+    {
+      "source": "webshop-result-filter",
+      "target": "webshop-product-evaluator",
+      "type": "similar_to",
+      "reason": "Both skills evaluate product listings against user constraints - webshop-result-filter 'filters search results by evaluating product listings against specific user constraints' and webshop-product-evaluator 'evaluates product listings against user requirements'. They have nearly identical functionality."
+    },
+    {
+      "source": "webshop-action-executor",
+      "target": "webshop-purchase-executor",
+      "type": "compose_with",
+      "reason": "webshop-purchase-executor is a specialized application of webshop-action-executor - the action-executor 'executes a specific interface action, such as clicking a button' and purchase-executor specifically 'clicks the purchase button', making it a domain-specific use of the general action executor."
+    }
+  ]
+}

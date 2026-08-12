@@ -1,0 +1,49 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Python and tool caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+
+# JavaScript dependencies and build caches
+node_modules/
+.bun/
+
+# Agent session/auth history
+claude-code-backend/history/
+claude-code-backend/.claude/
+experiment_queue_launcher.log
+
+# Downloaded benchmark repositories and generated artifacts
+benchmarks/SWE/repos/
+benchmarks/**/data/
+benchmarks/**/datasets/
+benchmarks/**/detectors/
+benchmarks/WebShop/search_engine/indexes/
+benchmarks/WebShop/search_engine/indexes_100k/
+benchmarks/WebShop/search_engine/resources/
+benchmarks/WebShop/search_engine/resources_100k/
+
+# Generated caches and temporary files
+*.zip
+*.tar
+*.tar.gz
+*.pth
+*.pt
+*.ckpt
+*.o
+*.so
+*.log
+tmp/
+temp/
+
+# Keep tracked experiment JSON/Markdown outputs; ignore generic top-level scratch output
+/output/

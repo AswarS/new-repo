@@ -1,0 +1,91 @@
+{
+  "task_idx": 16,
+  "goal": "Instruction: i'm looking for lead free luxury scented candle which last for 25+ hours, it should be in tin voyager, and price lower than 40.00 dollars",
+  "reward": 0.75,
+  "done": true,
+  "steps": 5,
+  "max_steps": 30,
+  "error": "",
+  "steps_log": [
+    {
+      "step": 1,
+      "observation": "WebShop [SEP] Instruction: [SEP] i'm looking for lead free luxury scented candle which last for 25+ hours, it should be in tin voyager, and price lower than 40.00 dollars [SEP] Search",
+      "action": "search[lead free luxury scented candle tin voyager 25 hours]",
+      "response": "search[lead free luxury scented candle tin voyager 25 hours]",
+      "content_blocks": [
+        {
+          "type": "tool_use",
+          "id": "tooluse_jLNkVB4w1syTSULi9YP1et",
+          "name": "Skill",
+          "input": {
+            "skill": "webshop-v4-option-gate"
+          }
+        },
+        {
+          "type": "text",
+          "text": "search[lead free luxury scented candle tin voyager 25 hours]"
+        }
+      ],
+      "latency_s": 12.3
+    },
+    {
+      "step": 2,
+      "observation": "Instruction: [SEP] i'm looking for lead free luxury scented candle which last for 25+ hours, it should be in tin voyager, and price lower than 40.00 dollars [SEP] Back to Search [SEP] Page 1 (Total results: 50) [SEP] Next > [SEP] B091D87QMM [SEP] Mer Sea Luxury Scented Candle in Tin - Voyager, 25 Hour Burn [SEP] $12.0 [SEP] B093WB62G4 [SEP] Ornite Luxury Candle Gift Set | Jasmine, Lavender, Sandalwood & Cinnamon Scented 4.4Oz Pure 100% Soy Wax Decorative Luxury for Home & Outdoor Aromatherapy St",
+      "action": "click[b091d87qmm]",
+      "response": "click[b091d87qmm]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[b091d87qmm]"
+        }
+      ],
+      "latency_s": 3.12
+    },
+    {
+      "step": 3,
+      "observation": "Instruction: [SEP] i'm looking for lead free luxury scented candle which last for 25+ hours, it should be in tin voyager, and price lower than 40.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] scent [SEP] sun kissed [SEP] cape flower [SEP] coconut sugar [SEP] dune [SEP] fog [SEP] saltaire [SEP] sea change [SEP] voyager [SEP] size [SEP] 7.5 m us [SEP] 22+ hour [SEP] 25+ hour [SEP] 40+ hour [SEP] 60+ hour [SEP] Mer Sea Luxury Scented Candle in Tin - Voyager, 25 Hour Burn [SEP] Price: $12.0 [SE",
+      "action": "click[voyager]",
+      "response": "click[voyager]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[voyager]"
+        }
+      ],
+      "latency_s": 3.37
+    },
+    {
+      "step": 4,
+      "observation": "Instruction: [SEP] i'm looking for lead free luxury scented candle which last for 25+ hours, it should be in tin voyager, and price lower than 40.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] scent [SEP] sun kissed [SEP] cape flower [SEP] coconut sugar [SEP] dune [SEP] fog [SEP] saltaire [SEP] sea change [SEP] voyager [SEP] size [SEP] 7.5 m us [SEP] 22+ hour [SEP] 25+ hour [SEP] 40+ hour [SEP] 60+ hour [SEP] Mer Sea Luxury Scented Candle in Tin - Voyager, 25 Hour Burn [SEP] Price: $12.0 [SE",
+      "action": "click[25+ hour]",
+      "response": "click[25+ hour]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[25+ hour]"
+        }
+      ],
+      "latency_s": 33.18
+    },
+    {
+      "step": 5,
+      "observation": "Instruction: [SEP] i'm looking for lead free luxury scented candle which last for 25+ hours, it should be in tin voyager, and price lower than 40.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] scent [SEP] sun kissed [SEP] cape flower [SEP] coconut sugar [SEP] dune [SEP] fog [SEP] saltaire [SEP] sea change [SEP] voyager [SEP] size [SEP] 7.5 m us [SEP] 22+ hour [SEP] 25+ hour [SEP] 40+ hour [SEP] 60+ hour [SEP] Mer Sea Luxury Scented Candle in Tin - Voyager, 25 Hour Burn [SEP] Price: $12.0 [SE",
+      "action": "click[Buy Now]",
+      "response": "click[Buy Now]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[Buy Now]"
+        }
+      ],
+      "latency_s": 10.81
+    },
+    {
+      "step": 6,
+      "observation": "Thank you for shopping with us! [SEP] Your code: [SEP] None [SEP] (Paste it in your MTurk interface.) [SEP] Purchased [SEP] asin [SEP] B091D87QMM [SEP] options [SEP] {\"scent\": \"voyager\", \"size\": \"25+ hour\"} [SEP] attrs [SEP] None [SEP] category [SEP] None [SEP] query [SEP] None [SEP] product category [SEP] None [SEP] Target [SEP] asin [SEP] options [SEP] attrs [SEP] price upper [SEP] instuction text [SEP] category [SEP] product category [SEP] query [SEP] Goal [SEP] None [SEP] Reward [SEP] Your s",
+      "action": "[DONE]",
+      "reward": 0.75
+    }
+  ],
+  "messages_count": 66
+}

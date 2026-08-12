@@ -1,0 +1,91 @@
+{
+  "task_idx": 6,
+  "goal": "Instruction: i'm looking for a queen size bedspread set in the color redwood, and price lower than 60.00 dollars",
+  "reward": 1.0,
+  "done": true,
+  "steps": 5,
+  "max_steps": 30,
+  "error": "",
+  "steps_log": [
+    {
+      "step": 1,
+      "observation": "WebShop [SEP] Instruction: [SEP] i'm looking for a queen size bedspread set in the color redwood, and price lower than 60.00 dollars [SEP] Search",
+      "action": "search[queen size bedspread set redwood]",
+      "response": "search[queen size bedspread set redwood]",
+      "content_blocks": [
+        {
+          "type": "tool_use",
+          "id": "tooluse_EBskK1ZvXRGEmZa3fkdnn3",
+          "name": "Skill",
+          "input": {
+            "skill": "webshop-v3-explicit-state"
+          }
+        },
+        {
+          "type": "text",
+          "text": "search[queen size bedspread set redwood]"
+        }
+      ],
+      "latency_s": 24.47
+    },
+    {
+      "step": 2,
+      "observation": "Instruction: [SEP] i'm looking for a queen size bedspread set in the color redwood, and price lower than 60.00 dollars [SEP] Back to Search [SEP] Page 1 (Total results: 50) [SEP] Next > [SEP] B07B4KXQZV [SEP] Lodge Bedspread Full/Queen Size Quilt with 2 Shams. Cabin 3-Piece Reversible All Season Quilt Set. Rustic Quilt Coverlet Bed Set. Stonehurst Collection. [SEP] $44.99 [SEP] B07PGQ3JYB [SEP] Lodge Bedspread Full/Queen Size Quilt with 2 Shams. Cabin 3-Piece Reversible All Season Quilt Set. Rus",
+      "action": "click[b07b4kxqzv]",
+      "response": "click[b07b4kxqzv]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[b07b4kxqzv]"
+        }
+      ],
+      "latency_s": 8.82
+    },
+    {
+      "step": 3,
+      "observation": "Instruction: [SEP] i'm looking for a queen size bedspread set in the color redwood, and price lower than 60.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] size [SEP] twin [SEP] full  |  queen [SEP] full | queen [SEP] king [SEP] color [SEP] bristol [SEP] chocolate  |  green [SEP] deer  |  trees  |  snow [SEP] festive stripes [SEP] holiday homestead [SEP] holiday wishes [SEP] moose - chocolate [SEP] moose - grey [SEP] navy  |  grey [SEP] red  |  black [SEP] redwood [SEP] rio ridge - forest gre",
+      "action": "click[full  |  queen]",
+      "response": "click[full  |  queen]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[full  |  queen]"
+        }
+      ],
+      "latency_s": 38.99
+    },
+    {
+      "step": 4,
+      "observation": "Instruction: [SEP] i'm looking for a queen size bedspread set in the color redwood, and price lower than 60.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] size [SEP] twin [SEP] full  |  queen [SEP] full | queen [SEP] king [SEP] color [SEP] bristol [SEP] chocolate  |  green [SEP] deer  |  trees  |  snow [SEP] festive stripes [SEP] holiday homestead [SEP] holiday wishes [SEP] moose - chocolate [SEP] moose - grey [SEP] navy  |  grey [SEP] red  |  black [SEP] redwood [SEP] rio ridge - forest gre",
+      "action": "click[redwood]",
+      "response": "click[redwood]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[redwood]"
+        }
+      ],
+      "latency_s": 12.37
+    },
+    {
+      "step": 5,
+      "observation": "Instruction: [SEP] i'm looking for a queen size bedspread set in the color redwood, and price lower than 60.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] size [SEP] twin [SEP] full  |  queen [SEP] full | queen [SEP] king [SEP] color [SEP] bristol [SEP] chocolate  |  green [SEP] deer  |  trees  |  snow [SEP] festive stripes [SEP] holiday homestead [SEP] holiday wishes [SEP] moose - chocolate [SEP] moose - grey [SEP] navy  |  grey [SEP] red  |  black [SEP] redwood [SEP] rio ridge - forest gre",
+      "action": "click[buy now]",
+      "response": "click[buy now]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[buy now]"
+        }
+      ],
+      "latency_s": 11.67
+    },
+    {
+      "step": 6,
+      "observation": "Thank you for shopping with us! [SEP] Your code: [SEP] None [SEP] (Paste it in your MTurk interface.) [SEP] Purchased [SEP] asin [SEP] B07B4KXQZV [SEP] options [SEP] {\"color\": \"redwood\", \"size\": \"full  |  queen\"} [SEP] attrs [SEP] None [SEP] category [SEP] None [SEP] query [SEP] None [SEP] product category [SEP] None [SEP] Target [SEP] asin [SEP] options [SEP] attrs [SEP] price upper [SEP] instuction text [SEP] category [SEP] product category [SEP] query [SEP] Goal [SEP] None [SEP] Reward [SEP] ",
+      "action": "[DONE]",
+      "reward": 1.0
+    }
+  ],
+  "messages_count": 64
+}

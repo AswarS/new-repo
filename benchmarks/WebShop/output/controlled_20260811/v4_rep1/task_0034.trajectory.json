@@ -1,0 +1,65 @@
+{
+  "task_idx": 34,
+  "goal": "Instruction: i'm looking for  made a cookies for birthday parties, and price lower than 50.00 dollars",
+  "reward": 0.25,
+  "done": true,
+  "steps": 3,
+  "max_steps": 30,
+  "error": "",
+  "steps_log": [
+    {
+      "step": 1,
+      "observation": "WebShop [SEP] Instruction: [SEP] i'm looking for  made a cookies for birthday parties, and price lower than 50.00 dollars [SEP] Search",
+      "action": "search[birthday party cookies made]",
+      "response": "search[birthday party cookies made]",
+      "content_blocks": [
+        {
+          "type": "tool_use",
+          "id": "tooluse_8S6VuEpvG3Rp0UjqJnCNpC",
+          "name": "Skill",
+          "input": {
+            "skill": "webshop-v4-option-gate"
+          }
+        },
+        {
+          "type": "text",
+          "text": "search[birthday party cookies made]"
+        }
+      ],
+      "latency_s": 6.71
+    },
+    {
+      "step": 2,
+      "observation": "Instruction: [SEP] i'm looking for  made a cookies for birthday parties, and price lower than 50.00 dollars [SEP] Back to Search [SEP] Page 1 (Total results: 50) [SEP] Next > [SEP] B000H7EXTA [SEP] Happy Birthday Fortune Cookies – Unique Gourmet Gift - Kosher Certified [SEP] $12.99 [SEP] B09JNSHVXC [SEP] Christmas Cupcake Toppers Christmas Toothpick: 30pcs Xmas Cake Picks Cake Decor for Party Holiday Supplies [SEP] $11.49 [SEP] B085ZJLM2W [SEP] OREO Birthday Cake Chocolate Sandwich Cookies, 12 -",
+      "action": "click[b09kz9cvkw]",
+      "response": "click[b09kz9cvkw]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[b09kz9cvkw]"
+        }
+      ],
+      "latency_s": 3.54
+    },
+    {
+      "step": 3,
+      "observation": "Instruction: [SEP] i'm looking for  made a cookies for birthday parties, and price lower than 50.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] flavor name [SEP] dinosaur party [SEP] ice cream cones [SEP] princess party [SEP] race cars [SEP] wedding [SEP] Dinosaur Party Gourmet Birthday Cookies, Frosted Sugar Cookies, Wrapped Individually Birthday Cookies Gifts Available in Dozen or Two Dozen, Hand Decorated Bakery & Dessert Gifts (Dinosaur Party) [SEP] Price: $29.99 [SEP] Rating: N.A. [SEP]",
+      "action": "click[Buy Now]",
+      "response": "The instruction doesn't specify a flavor, so no flavor option is required. Price is $29.99 < $50.00. Purchase gate passes.\n\nclick[Buy Now]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "The instruction doesn't specify a flavor, so no flavor option is required. Price is $29.99 < $50.00. Purchase gate passes.\n\nclick[Buy Now]"
+        }
+      ],
+      "latency_s": 3.71
+    },
+    {
+      "step": 4,
+      "observation": "Thank you for shopping with us! [SEP] Your code: [SEP] None [SEP] (Paste it in your MTurk interface.) [SEP] Purchased [SEP] asin [SEP] B09KZ9CVKW [SEP] options [SEP] {} [SEP] attrs [SEP] None [SEP] category [SEP] None [SEP] query [SEP] None [SEP] product category [SEP] None [SEP] Target [SEP] asin [SEP] options [SEP] attrs [SEP] price upper [SEP] instuction text [SEP] category [SEP] product category [SEP] query [SEP] Goal [SEP] None [SEP] Reward [SEP] Your score (min 0.0, max 1.0) [SEP] 0.25 [SE",
+      "action": "[DONE]",
+      "reward": 0.25
+    }
+  ],
+  "messages_count": 53
+}

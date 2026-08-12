@@ -1,0 +1,104 @@
+{
+  "task_idx": 14,
+  "goal": "Instruction: i am looking for dairy free and apple variety pack of chips, and price lower than 40.00 dollars",
+  "reward": 1.0,
+  "done": true,
+  "steps": 6,
+  "max_steps": 30,
+  "error": "",
+  "steps_log": [
+    {
+      "step": 1,
+      "observation": "WebShop [SEP] Instruction: [SEP] i am looking for dairy free and apple variety pack of chips, and price lower than 40.00 dollars [SEP] Search",
+      "action": "search[apple variety pack chips dairy free]",
+      "response": "search[apple variety pack chips dairy free]",
+      "content_blocks": [
+        {
+          "type": "tool_use",
+          "id": "tooluse_JziVbuvDwYkzJyjdqCQuMY",
+          "name": "Skill",
+          "input": {
+            "skill": "webshop-v1-constraint-ledger"
+          }
+        },
+        {
+          "type": "text",
+          "text": "search[apple variety pack chips dairy free]"
+        }
+      ],
+      "latency_s": 7.65
+    },
+    {
+      "step": 2,
+      "observation": "Instruction: [SEP] i am looking for dairy free and apple variety pack of chips, and price lower than 40.00 dollars [SEP] Back to Search [SEP] Page 1 (Total results: 50) [SEP] Next > [SEP] B07HRFJWP8 [SEP] Enjoy Life Foods Soft Baked Ovals, Breakfast Bars, Nut Free Bars, Soy Free, Dairy Free, Non GMO, Gluten Free, Vegan, Variety Pack, 4 Boxes (20 Bars Total) [SEP] $100.0 [SEP] B01KMHY5PG [SEP] Enjoy Life Soft Baked Chewy Bars, Variety Pack, Nut Free Bars, Soy Free, Dairy Free, Gluten Free, 6 Boxe",
+      "action": "click[b0751mzbgl]",
+      "response": "click[b0751mzbgl]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[b0751mzbgl]"
+        }
+      ],
+      "latency_s": 3.6
+    },
+    {
+      "step": 3,
+      "observation": "Instruction: [SEP] i am looking for dairy free and apple variety pack of chips, and price lower than 40.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] flavor name [SEP] fuji & reds apple [SEP] cinnamon apple [SEP] apple variety pack [SEP] fruit variety pack [SEP] variety pack [SEP] size [SEP] 2 large bags [SEP] 6 medium bags [SEP] 6 snack bags [SEP] 16 snack bags [SEP] 24 snack bags [SEP] Bare Baked Crunchy Apple Chips, Banana Chips, and Coconut Chips, Variety Pack, Gluten Free, 6 Count [SEP",
+      "action": "click[apple variety pack]",
+      "response": "click[apple variety pack]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[apple variety pack]"
+        }
+      ],
+      "latency_s": 14.09
+    },
+    {
+      "step": 4,
+      "observation": "Instruction: [SEP] i am looking for dairy free and apple variety pack of chips, and price lower than 40.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] flavor name [SEP] fuji & reds apple [SEP] cinnamon apple [SEP] apple variety pack [SEP] fruit variety pack [SEP] variety pack [SEP] size [SEP] 2 large bags [SEP] 6 medium bags [SEP] 6 snack bags [SEP] 16 snack bags [SEP] 24 snack bags [SEP] Bare Baked Crunchy Apple Chips, Banana Chips, and Coconut Chips, Variety Pack, Gluten Free, 6 Count [SEP",
+      "action": "click[features]",
+      "response": "click[features]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[features]"
+        }
+      ],
+      "latency_s": 6.3
+    },
+    {
+      "step": 5,
+      "observation": "Instruction: [SEP] i am looking for dairy free and apple variety pack of chips, and price lower than 40.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] Contains 6 1.3 1.4 ounce bags (2 Fuji & Reds Apple, 2 Simply Banana, 2 Toasted Coconut) [SEP] Real apples, bananas and coconuts baked 'til they're crave ably crunchy. Snacks gone simple [SEP] Simple Ingredients. Baked, never fried. Gluten free, dairy free, no added oil, good source of dietary fiber, Non GMO, no added preservatives [SEP] NOTHIN",
+      "action": "click[< prev]",
+      "response": "click[< prev]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[< prev]"
+        }
+      ],
+      "latency_s": 5.84
+    },
+    {
+      "step": 6,
+      "observation": "Instruction: [SEP] i am looking for dairy free and apple variety pack of chips, and price lower than 40.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] flavor name [SEP] fuji & reds apple [SEP] cinnamon apple [SEP] apple variety pack [SEP] fruit variety pack [SEP] variety pack [SEP] size [SEP] 2 large bags [SEP] 6 medium bags [SEP] 6 snack bags [SEP] 16 snack bags [SEP] 24 snack bags [SEP] Bare Baked Crunchy Apple Chips, Banana Chips, and Coconut Chips, Variety Pack, Gluten Free, 6 Count [SEP",
+      "action": "click[buy now]",
+      "response": "click[buy now]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[buy now]"
+        }
+      ],
+      "latency_s": 4.01
+    },
+    {
+      "step": 7,
+      "observation": "Thank you for shopping with us! [SEP] Your code: [SEP] None [SEP] (Paste it in your MTurk interface.) [SEP] Purchased [SEP] asin [SEP] B0751MZBGL [SEP] options [SEP] {\"flavor name\": \"apple variety pack\"} [SEP] attrs [SEP] None [SEP] category [SEP] None [SEP] query [SEP] None [SEP] product category [SEP] None [SEP] Target [SEP] asin [SEP] options [SEP] attrs [SEP] price upper [SEP] instuction text [SEP] category [SEP] product category [SEP] query [SEP] Goal [SEP] None [SEP] Reward [SEP] Your scor",
+      "action": "[DONE]",
+      "reward": 1.0
+    }
+  ],
+  "messages_count": 76
+}

@@ -1,0 +1,65 @@
+{
+  "task_idx": 48,
+  "goal": "Instruction: find me a motion detection high definition outdoor camera with 1080p hd definition, and price lower than 170.00 dollars",
+  "reward": 0.75,
+  "done": true,
+  "steps": 3,
+  "max_steps": 30,
+  "error": "",
+  "steps_log": [
+    {
+      "step": 1,
+      "observation": "WebShop [SEP] Instruction: [SEP] find me a motion detection high definition outdoor camera with 1080p hd definition, and price lower than 170.00 dollars [SEP] Search",
+      "action": "search[motion detection 1080p HD outdoor security camera]",
+      "response": "search[motion detection 1080p HD outdoor security camera]",
+      "content_blocks": [
+        {
+          "type": "tool_use",
+          "id": "tooluse_4smlQ3wypzWp9O1MPaYlbM",
+          "name": "Skill",
+          "input": {
+            "skill": "webshop-v3-explicit-state"
+          }
+        },
+        {
+          "type": "text",
+          "text": "search[motion detection 1080p HD outdoor security camera]"
+        }
+      ],
+      "latency_s": 34.37
+    },
+    {
+      "step": 2,
+      "observation": "Instruction: [SEP] find me a motion detection high definition outdoor camera with 1080p hd definition, and price lower than 170.00 dollars [SEP] Back to Search [SEP] Page 1 (Total results: 50) [SEP] Next > [SEP] B07JBHR44Z [SEP] Q-See QTH916-12GH-2 Home Security System 16 Channel 1080P HD DVR with 2TB Hard Drive, (12) 1080P Security Camera, Indoor/Outdoor, Night Vision, App, BNC, Black [SEP] $100.0 [SEP] B097DPZWL5 [SEP] Security Camera Outdoor,Besdertech 1080P WiFi Home Security Camera System P",
+      "action": "click[b09mfsbckk]",
+      "response": "click[b09mfsbckk]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[b09mfsbckk]"
+        }
+      ],
+      "latency_s": 4.04
+    },
+    {
+      "step": 3,
+      "observation": "Instruction: [SEP] find me a motion detection high definition outdoor camera with 1080p hd definition, and price lower than 170.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] Outdoor Surveillance Camera, 1080P HD Security Camera Outdoor with 103° Wide-Angle Infrared Night Vision, Motion Detection, Two-Way Communication, Waterproof IP66,SD Card and Cloud Storage. [SEP] Price: $21.99 [SEP] Rating: N.A. [SEP] Description [SEP] Features [SEP] Reviews [SEP] Buy Now",
+      "action": "click[buy now]",
+      "response": "click[buy now]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[buy now]"
+        }
+      ],
+      "latency_s": 2.61
+    },
+    {
+      "step": 4,
+      "observation": "Thank you for shopping with us! [SEP] Your code: [SEP] None [SEP] (Paste it in your MTurk interface.) [SEP] Purchased [SEP] asin [SEP] B09MFSBCKK [SEP] options [SEP] {} [SEP] attrs [SEP] None [SEP] category [SEP] None [SEP] query [SEP] None [SEP] product category [SEP] None [SEP] Target [SEP] asin [SEP] options [SEP] attrs [SEP] price upper [SEP] instuction text [SEP] category [SEP] product category [SEP] query [SEP] Goal [SEP] None [SEP] Reward [SEP] Your score (min 0.0, max 1.0) [SEP] 0.75 [SE",
+      "action": "[DONE]",
+      "reward": 0.75
+    }
+  ],
+  "messages_count": 46
+}

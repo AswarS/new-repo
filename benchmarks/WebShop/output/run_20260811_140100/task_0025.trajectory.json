@@ -1,0 +1,97 @@
+{
+  "task_idx": 25,
+  "goal": "Instruction: i'm looking for a great river organic milling flour, and price lower than 60.00 dollars",
+  "reward": 0.4,
+  "done": true,
+  "steps": 4,
+  "max_steps": 30,
+  "error": "",
+  "steps_log": [
+    {
+      "step": 1,
+      "observation": "WebShop [SEP] Instruction: [SEP] i'm looking for a great river organic milling flour, and price lower than 60.00 dollars [SEP] Search",
+      "action": "search[Great River Organic Milling flour]",
+      "response": "search[Great River Organic Milling flour]",
+      "content_blocks": [
+        {
+          "type": "tool_use",
+          "id": "fc_0c419edf9af33988016a7ac03457d88191b9e6df35f3717d8e",
+          "name": "Skill",
+          "input": {
+            "args": "i'm looking for a great river organic milling flour, and price lower than 60.00 dollars",
+            "skill": "webshop-build-constraint-led-query"
+          }
+        },
+        {
+          "type": "text",
+          "text": "search[Great River Organic Milling flour]"
+        }
+      ],
+      "latency_s": 5.21
+    },
+    {
+      "step": 2,
+      "observation": "Instruction: [SEP] i'm looking for a great river organic milling flour, and price lower than 60.00 dollars [SEP] Back to Search [SEP] Page 1 (Total results: 50) [SEP] Next > [SEP] B0049YMA9W [SEP] Great River Organic Milling, Specailty Flour, Whole Wheat Pastry Flour, Stone Ground, Organic, 25-Pounds (Pack of 1) [SEP] $48.77 [SEP] B00LVQPDGI [SEP] Great River Organic Milling, Oatmeal, Regular Rolled Oats, Organic, 25-Pounds (Pack of 1) [SEP] $57.77 [SEP] B07B45V9NK [SEP] Great River Organic Mill",
+      "action": "click[b0049yma9w]",
+      "response": "click[b0049yma9w]",
+      "content_blocks": [
+        {
+          "type": "tool_use",
+          "id": "fc_0ee6d591dedb62f2016a7ac03a5ef8819191d29d8b6f2d5e99",
+          "name": "Skill",
+          "input": {
+            "args": "candidate is on results page; control selection and avoid unnecessary loops",
+            "skill": "webshop-control-search-loop"
+          }
+        },
+        {
+          "type": "text",
+          "text": "click[b0049yma9w]"
+        }
+      ],
+      "latency_s": 5.35
+    },
+    {
+      "step": 3,
+      "observation": "Instruction: [SEP] i'm looking for a great river organic milling flour, and price lower than 60.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] size [SEP] 25 pound (pack of 1) [SEP] 50 pound (pack of 1) [SEP] style [SEP] buckwheat [SEP] cracked wheat [SEP] graham [SEP] sorghum [SEP] whole wheat [SEP] oat [SEP] oat bran [SEP] pattern name [SEP] flour [SEP] flour + dark rye flour [SEP] Great River Organic Milling, Specailty Flour, Whole Wheat Pastry Flour, Stone Ground, Organic, 25-Pounds (Pack",
+      "action": "click[b0049yma9w]",
+      "response": "click[b0049yma9w]",
+      "content_blocks": [
+        {
+          "type": "tool_use",
+          "id": "fc_05a54eb4552f408c016a7ac03e85d48191881e3fe6fa611883",
+          "name": "Skill",
+          "input": {
+            "args": "Great River Organic Milling, Specailty Flour, Whole Wheat Pastry Flour, Stone Ground, Organic, 25-Pounds (Pack of 1), Price: $48.77, options shown size/style/pattern; verify against instruction 'great river organic milling flour' under $60",
+            "skill": "webshop-gate-candidate-evidence"
+          }
+        },
+        {
+          "type": "text",
+          "text": "click[b0049yma9w]"
+        }
+      ],
+      "latency_s": 5.14
+    },
+    {
+      "step": 4,
+      "observation": "Instruction: [SEP] i'm looking for a great river organic milling flour, and price lower than 60.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] size [SEP] 25 pound (pack of 1) [SEP] 50 pound (pack of 1) [SEP] style [SEP] buckwheat [SEP] cracked wheat [SEP] graham [SEP] sorghum [SEP] whole wheat [SEP] oat [SEP] oat bran [SEP] pattern name [SEP] flour [SEP] flour + dark rye flour [SEP] Great River Organic Milling, Specailty Flour, Whole Wheat Pastry Flour, Stone Ground, Organic, 25-Pounds (Pack",
+      "action": "click[buy now]",
+      "response": "click[buy now]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[buy now]"
+        }
+      ],
+      "latency_s": 2.82
+    },
+    {
+      "step": 5,
+      "observation": "Thank you for shopping with us! [SEP] Your code: [SEP] None [SEP] (Paste it in your MTurk interface.) [SEP] Purchased [SEP] asin [SEP] B0049YMA9W [SEP] options [SEP] {} [SEP] attrs [SEP] None [SEP] category [SEP] None [SEP] query [SEP] None [SEP] product category [SEP] None [SEP] Target [SEP] asin [SEP] options [SEP] attrs [SEP] price upper [SEP] instuction text [SEP] category [SEP] product category [SEP] query [SEP] Goal [SEP] None [SEP] Reward [SEP] Your score (min 0.0, max 1.0) [SEP] 0.4 [SEP",
+      "action": "[DONE]",
+      "reward": 0.4
+    }
+  ],
+  "messages_count": 222
+}
