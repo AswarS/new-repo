@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>太阳系模拟</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #000011;
+    overflow: hidden;
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
+  }
+  canvas { display: block; }
+  #info {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: rgba(0,0,0,0.7);
+    padding: 15px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 1.8;
+    pointer-events: none;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  #info h2 { margin-bottom: 8px; font-size: 18px; color: #FFD700; }
+  #controls {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.7);
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 13px;
+    border: 1px solid rgba(255,255,255,0.1);
+    text-align: center;
+  }
+  #tooltip {
+    position: fixed;
+    display: none;
+    background: rgba(0,0,0,0.85);
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 1.6;
+    pointer-events: none;
+    border: 1px solid rgba(255,255,255,0.2);
+    max-width: 220px;
+  }
+  #tooltip .name { font-size: 16px; font-weight: bold; margin-bottom: 4px; }
+</style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<div id="info">
+  <h2>☀ 太阳系模拟</h2>
+  <span style="color:#aaa">行星按比例缩放轨道，大小适当放大以便观察</span>
+</div>
+<div id="controls">
+  滚轮缩放 | 拖拽平移 | 悬停查看信息 | 空格键暂停/继续
+</div>
+<div id="tooltip"></div>
+
+<script>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+const tooltip = document.getElementById('tooltip');
+
+let W, H;
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+// Camera
+let camX = 0, camY = 0, zoom = 1;
+let dragging = false, dragX, dragY;
+let paused = false;
+
+// Stars background
+const stars = [];
+for (let i = 0; i < 600; i++) {
+  stars.push({
+    x: Math.random() * 4000 - 2000,
+    y: Math.random() * 4000 - 2000,
+    r: Math.random() * 1.5 + 0.3,
+    brightness: Math.random()
+  });
+}
+
+const planets = [
+  { name: '水星', nameEn: 'Mercury', dist: 58, radius: 4, color: '#B5B5B5', speed: 4.15, angle: Math.random()*Math.PI*2,
+    info: '直径: 4,879 km\n距太阳: 5,790万 km\n公转: 88天\n无卫星，表面布满陨石坑' },
+  { name: '金星', nameEn: 'Venus', dist: 85, radius: 6, color: '#E8CDA0', speed: 1.62, angle: Math.random()*Math.PI*2,
+    info: '直径: 12,104 km\n距太阳: 1.08亿 km\n公转: 225天\n大气极厚，表面温度462°C' },
+  { name: '地球', nameEn: 'Earth', dist: 120, radius: 6.5, color: '#4B9CD3', speed: 1.0, angle: Math.random()*Math.PI*2,
+    info: '直径: 12,756 km\n距太阳: 1.50亿 km\n公转: 365天\n唯一已知有生命的星球',
+    moon: { dist: 14, radius: 2, color: '#CCC', speed: 13.0 } },
+  { name: '火星', nameEn: 'Mars', dist: 160, radius: 5, color: '#E27B58', speed: 0.53, angle: Math.random()*Math.PI*2,
+    info: '直径: 6,792 km\n距太阳: 2.28亿 km\n公转: 687天\n"红色星球"，有两颗小卫星' },
+  { name: '木星', nameEn: 'Jupiter', dist: 230, radius: 18, color: '#C4A882', speed: 0.084, angle: Math.random()*Math.PI*2,
+    info: '直径: 142,984 km\n距太阳: 7.78亿 km\n公转: 11.86年\n最大行星，有95颗已知卫星',
+    bands: true },
+  { name: '土星', nameEn: 'Saturn', dist: 310, radius: 15, color: '#E8D191', speed: 0.034, angle: Math.random()*Math.PI*2,
+    info: '直径: 120,536 km\n距太阳: 14.3亿 km\n公转: 29.46年\n壮观的环系统，146颗已知卫星',
+    ring: true },
+  { name: '天王星', nameEn: 'Uranus', dist: 385, radius: 10, color: '#7EC8E3', speed: 0.012, angle: Math.random()*Math.PI*2,
+    info: '直径: 51,118 km\n距太阳: 28.7亿 km\n公转: 84年\n冰巨行星，自转轴倾斜98°' },
+  { name: '海王星', nameEn: 'Neptune', dist: 450, radius: 9.5, color: '#3F54BE', speed: 0.006, angle: Math.random()*Math.PI*2,
+    info: '直径: 49,528 km\n距太阳: 45亿 km\n公转: 165年\n风速最快的行星，达2100km/h' }
+];
+
+// Asteroid belt particles
+const asteroids = [];
+for (let i = 0; i < 300; i++) {
+  asteroids.push({
+    dist: 190 + Math.random() * 30,
+    angle: Math.random() * Math.PI * 2,
+    speed: 0.02 + Math.random() * 0.02,
+    r: Math.random() * 1.2 + 0.3
+  });
+}
+
+let time = 0;
+let mouseX = 0, mouseY = 0;
+
+function worldToScreen(wx, wy) {
+  return [
+    W/2 + (wx - camX) * zoom,
+    H/2 + (wy - camY) * zoom
+  ];
+}
+
+function screenToWorld(sx, sy) {
+  return [
+    (sx - W/2) / zoom + camX,
+    (sy - H/2) / zoom + camY
+  ];
+}
+
+function drawGlow(x, y, radius, color, intensity) {
+  const grad = ctx.createRadialGradient(x, y, 0, x, y, radius);
+  grad.addColorStop(0, color);
+  grad.addColorStop(0.3, color.replace(')', `,${intensity * 0.5})`).replace('rgb', 'rgba'));
+  grad.addColorStop(1, 'transparent');
+  ctx.fillStyle = grad;
+  ctx.beginPath();
+  ctx.arc(x, y, radius, 0, Math.PI * 2);
+  ctx.fill();
+}
+
+function draw() {
+  ctx.fillStyle = '#000011';
+  ctx.fillRect(0, 0, W, H);
+
+  // Stars
+  stars.forEach(s => {
+    const [sx, sy] = worldToScreen(s.x, s.y);
+    const twinkle = 0.5 + 0.5 * Math.sin(time * 0.5 + s.brightness * 100);
+    ctx.globalAlpha = s.brightness * twinkle;
+    ctx.fillStyle = '#FFF';
+    ctx.beginPath();
+    ctx.arc(sx, sy, s.r * Math.min(zoom, 1.5), 0, Math.PI * 2);
+    ctx.fill();
+  });
+  ctx.globalAlpha = 1;
+
+  // Sun
+  const [sunX, sunY] = worldToScreen(0, 0);
+  const sunR = 30 * zoom;
+
+  // Sun glow
+  const glowGrad = ctx.createRadialGradient(sunX, sunY, sunR * 0.5, sunX, sunY, sunR * 4);
+  glowGrad.addColorStop(0, 'rgba(255,200,50,0.4)');
+  glowGrad.addColorStop(0.5, 'rgba(255,150,30,0.1)');
+  glowGrad.addColorStop(1, 'transparent');
+  ctx.fillStyle = glowGrad;
+  ctx.beginPath();
+  ctx.arc(sunX, sunY, sunR * 4, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Sun body
+  const sunGrad = ctx.createRadialGradient(sunX - sunR*0.2, sunY - sunR*0.2, sunR*0.1, sunX, sunY, sunR);
+  sunGrad.addColorStop(0, '#FFF8E0');
+  sunGrad.addColorStop(0.4, '#FFD700');
+  sunGrad.addColorStop(0.8, '#FFA500');
+  sunGrad.addColorStop(1, '#FF6600');
+  ctx.fillStyle = sunGrad;
+  ctx.beginPath();
+  ctx.arc(sunX, sunY, sunR, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Sun label
+  ctx.fillStyle = '#FFD700';
+  ctx.font = `${Math.max(11, 14 * zoom)}px sans-serif`;
+  ctx.textAlign = 'center';
+  ctx.fillText('太阳 Sun', sunX, sunY + sunR + 18 * zoom);
+
+  // Asteroid belt
+  ctx.fillStyle = 'rgba(150,140,120,0.4)';
+  asteroids.forEach(a => {
+    const ax = a.dist * Math.cos(a.angle + time * a.speed * 0.01);
+    const ay = a.dist * Math.sin(a.angle + time * a.speed * 0.01);
+    const [sx, sy] = worldToScreen(ax, ay);
+    ctx.beginPath();
+    ctx.arc(sx, sy, a.r * zoom, 0, Math.PI * 2);
+    ctx.fill();
+  });
+
+  // Planets
+  let hoveredPlanet = null;
+
+  planets.forEach(p => {
+    // Orbit
+    const [ox, oy] = worldToScreen(0, 0);
+    ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.arc(ox, oy, p.dist * zoom, 0, Math.PI * 2);
+    ctx.stroke();
+
+    // Planet position
+    const px = p.dist * Math.cos(p.angle);
+    const py = p.dist * Math.sin(p.angle);
+    const [sx, sy] = worldToScreen(px, py);
+    const screenR = p.radius * zoom;
+
+    // Check hover
+    const dx = mouseX - sx, dy = mouseY - sy;
+    const hoverDist = Math.sqrt(dx*dx + dy*dy);
+    const isHovered = hoverDist < Math.max(screenR + 10, 20);
+    if (isHovered) hoveredPlanet = { ...p, sx, sy, px, py };
+
+    // Saturn ring
+    if (p.ring) {
+      ctx.strokeStyle = 'rgba(210,190,140,0.5)';
+      ctx.lineWidth = 3 * zoom;
+      ctx.beginPath();
+      ctx.ellipse(sx, sy, screenR * 2.2, screenR * 0.6, -0.3, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.strokeStyle = 'rgba(190,170,120,0.3)';
+      ctx.lineWidth = 2 * zoom;
+      ctx.beginPath();
+      ctx.ellipse(sx, sy, screenR * 1.8, screenR * 0.5, -0.3, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+
+    // Planet body
+    const pGrad = ctx.createRadialGradient(sx - screenR*0.3, sy - screenR*0.3, screenR*0.1, sx, sy, screenR);
+    pGrad.addColorStop(0, lightenColor(p.color, 40));
+    pGrad.addColorStop(1, p.color);
+    ctx.fillStyle = pGrad;
+    ctx.beginPath();
+    ctx.arc(sx, sy, screenR, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Jupiter bands
+    if (p.bands) {
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(sx, sy, screenR, 0, Math.PI * 2);
+      ctx.clip();
+      for (let i = -3; i <= 3; i++) {
+        ctx.fillStyle = i % 2 === 0 ? 'rgba(180,140,90,0.3)' : 'rgba(200,170,120,0.2)';
+        ctx.fillRect(sx - screenR, sy + i * screenR * 0.25 - screenR*0.08, screenR*2, screenR*0.16);
+      }
+      // Great Red Spot
+      ctx.fillStyle = 'rgba(200,100,60,0.5)';
+      ctx.beginPath();
+      ctx.ellipse(sx + screenR*0.3, sy + screenR*0.2, screenR*0.25, screenR*0.15, 0, 0, Math.PI*2);
+      ctx.fill();
+      ctx.restore();
+    }
+
+    // Hover highlight
+    if (isHovered) {
+      ctx.strokeStyle = 'rgba(255,255,255,0.6)';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(sx, sy, screenR + 4, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+
+    // Moon (Earth)
+    if (p.moon) {
+      const m = p.moon;
+      const mx = px + m.dist * Math.cos(time * m.speed * 0.01);
+      const my = py + m.dist * Math.sin(time * m.speed * 0.01);
+      const [msx, msy] = worldToScreen(mx, my);
+      ctx.fillStyle = m.color;
+      ctx.beginPath();
+      ctx.arc(msx, msy, m.radius * zoom, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // Label
+    ctx.fillStyle = isHovered ? '#FFF' : 'rgba(255,255,255,0.7)';
+    ctx.font = `${isHovered ? 'bold ' : ''}${Math.max(10, 12 * zoom)}px sans-serif`;
+    ctx.textAlign = 'center';
+    ctx.fillText(p.name, sx, sy + screenR + 14 * zoom);
+  });
+
+  // Tooltip
+  if (hoveredPlanet) {
+    const p = hoveredPlanet;
+    tooltip.style.display = 'block';
+    tooltip.style.left = (p.sx + 25) + 'px';
+    tooltip.style.top = (p.sy - 20) + 'px';
+    tooltip.innerHTML = `<div class="name" style="color:${p.color}">${p.name} ${p.nameEn}</div>` +
+      p.info.split('\n').map(l => `<div>${l}</div>`).join('');
+  } else {
+    tooltip.style.display = 'none';
+  }
+
+  // Paused indicator
+  if (paused) {
+    ctx.fillStyle = 'rgba(255,255,255,0.5)';
+    ctx.font = '20px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('⏸ 已暂停', W/2, 40);
+  }
+}
+
+function lightenColor(hex, amount) {
+  const num = parseInt(hex.slice(1), 16);
+  const r = Math.min(255, (num >> 16) + amount);
+  const g = Math.min(255, ((num >> 8) & 0xFF) + amount);
+  const b = Math.min(255, (num & 0xFF) + amount);
+  return `rgb(${r},${g},${b})`;
+}
+
+function update() {
+  if (!paused) {
+    time += 0.16;
+    planets.forEach(p => {
+      p.angle += p.speed * 0.001;
+    });
+  }
+}
+
+function loop() {
+  update();
+  draw();
+  requestAnimationFrame(loop);
+}
+
+// Events
+canvas.addEventListener('wheel', e => {
+  e.preventDefault();
+  const factor = e.deltaY > 0 ? 0.9 : 1.1;
+  const [wx, wy] = screenToWorld(e.clientX, e.clientY);
+  zoom *= factor;
+  zoom = Math.max(0.2, Math.min(5, zoom));
+  camX = wx - (e.clientX - W/2) / zoom;
+  camY = wy - (e.clientY - H/2) / zoom;
+}, { passive: false });
+
+canvas.addEventListener('mousedown', e => {
+  dragging = true;
+  dragX = e.clientX;
+  dragY = e.clientY;
+  canvas.style.cursor = 'grabbing';
+});
+
+canvas.addEventListener('mousemove', e => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  if (dragging) {
+    camX -= (e.clientX - dragX) / zoom;
+    camY -= (e.clientY - dragY) / zoom;
+    dragX = e.clientX;
+    dragY = e.clientY;
+  }
+});
+
+canvas.addEventListener('mouseup', () => {
+  dragging = false;
+  canvas.style.cursor = 'default';
+});
+
+window.addEventListener('keydown', e => {
+  if (e.code === 'Space') {
+    e.preventDefault();
+    paused = !paused;
+  }
+});
+
+loop();
+</script>
+</body>
+</html>

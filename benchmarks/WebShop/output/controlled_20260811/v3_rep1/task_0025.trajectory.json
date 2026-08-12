@@ -1,0 +1,65 @@
+{
+  "task_idx": 25,
+  "goal": "Instruction: i'm looking for a great river organic milling flour, and price lower than 80.00 dollars",
+  "reward": 0.4,
+  "done": true,
+  "steps": 3,
+  "max_steps": 30,
+  "error": "",
+  "steps_log": [
+    {
+      "step": 1,
+      "observation": "WebShop [SEP] Instruction: [SEP] i'm looking for a great river organic milling flour, and price lower than 80.00 dollars [SEP] Search",
+      "action": "search[great river organic milling flour]",
+      "response": "search[great river organic milling flour]",
+      "content_blocks": [
+        {
+          "type": "tool_use",
+          "id": "tooluse_Pm9utaFPQOE07L2g2Eg4aE",
+          "name": "Skill",
+          "input": {
+            "skill": "webshop-v3-explicit-state"
+          }
+        },
+        {
+          "type": "text",
+          "text": "search[great river organic milling flour]"
+        }
+      ],
+      "latency_s": 12.28
+    },
+    {
+      "step": 2,
+      "observation": "Instruction: [SEP] i'm looking for a great river organic milling flour, and price lower than 80.00 dollars [SEP] Back to Search [SEP] Page 1 (Total results: 50) [SEP] Next > [SEP] B0049YMA9W [SEP] Great River Organic Milling, Specailty Flour, Whole Wheat Pastry Flour, Stone Ground, Organic, 25-Pounds (Pack of 1) [SEP] $48.77 [SEP] B00LVQPDGI [SEP] Great River Organic Milling, Oatmeal, Regular Rolled Oats, Organic, 25-Pounds (Pack of 1) [SEP] $57.77 [SEP] B07B45V9NK [SEP] Great River Organic Mill",
+      "action": "click[b0049yma9w]",
+      "response": "click[b0049yma9w]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[b0049yma9w]"
+        }
+      ],
+      "latency_s": 4.66
+    },
+    {
+      "step": 3,
+      "observation": "Instruction: [SEP] i'm looking for a great river organic milling flour, and price lower than 80.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] size [SEP] 25 pound (pack of 1) [SEP] 50 pound (pack of 1) [SEP] style [SEP] buckwheat [SEP] cracked wheat [SEP] graham [SEP] sorghum [SEP] whole wheat [SEP] oat [SEP] oat bran [SEP] pattern name [SEP] flour [SEP] flour + dark rye flour [SEP] Great River Organic Milling, Specailty Flour, Whole Wheat Pastry Flour, Stone Ground, Organic, 25-Pounds (Pack",
+      "action": "click[buy now]",
+      "response": "click[buy now]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[buy now]"
+        }
+      ],
+      "latency_s": 4.1
+    },
+    {
+      "step": 4,
+      "observation": "Thank you for shopping with us! [SEP] Your code: [SEP] None [SEP] (Paste it in your MTurk interface.) [SEP] Purchased [SEP] asin [SEP] B0049YMA9W [SEP] options [SEP] {} [SEP] attrs [SEP] None [SEP] category [SEP] None [SEP] query [SEP] None [SEP] product category [SEP] None [SEP] Target [SEP] asin [SEP] options [SEP] attrs [SEP] price upper [SEP] instuction text [SEP] category [SEP] product category [SEP] query [SEP] Goal [SEP] None [SEP] Reward [SEP] Your score (min 0.0, max 1.0) [SEP] 0.4 [SEP",
+      "action": "[DONE]",
+      "reward": 0.4
+    }
+  ],
+  "messages_count": 47
+}

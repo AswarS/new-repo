@@ -1,0 +1,91 @@
+{
+  "task_idx": 49,
+  "goal": "Instruction: i need an engineered wood end table, and price lower than 170.00 dollars",
+  "reward": 1.0,
+  "done": true,
+  "steps": 5,
+  "max_steps": 30,
+  "error": "",
+  "steps_log": [
+    {
+      "step": 1,
+      "observation": "WebShop [SEP] Instruction: [SEP] i need an engineered wood end table, and price lower than 170.00 dollars [SEP] Search",
+      "action": "search[engineered wood end table]",
+      "response": "search[engineered wood end table]",
+      "content_blocks": [
+        {
+          "type": "tool_use",
+          "id": "tooluse_fuV6S8giAQ5b7J9H4KGpBl",
+          "name": "Skill",
+          "input": {
+            "skill": "webshop-v3-explicit-state"
+          }
+        },
+        {
+          "type": "text",
+          "text": "search[engineered wood end table]"
+        }
+      ],
+      "latency_s": 92.78
+    },
+    {
+      "step": 2,
+      "observation": "Instruction: [SEP] i need an engineered wood end table, and price lower than 170.00 dollars [SEP] Back to Search [SEP] Page 1 (Total results: 50) [SEP] Next > [SEP] B09N9JP7GX [SEP] BOWERY HILL Transitional Engineered Wood Round End Table in Antique Teal [SEP] $234.08 [SEP] B00J8RUAYW [SEP] Baxton Studio Everdon Modern Coffee Table, Dark Brown [SEP] $100.0 [SEP] B08DK8HX2B [SEP] Tangkula Industrial Sofa Side Table, C-Shape Snack End Table with Storage Space for Sofa Couch, Bed Side Coffee Table ",
+      "action": "click[b08vgl7h48]",
+      "response": "click[b08vgl7h48]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[b08vgl7h48]"
+        }
+      ],
+      "latency_s": 3.32
+    },
+    {
+      "step": 3,
+      "observation": "Instruction: [SEP] i need an engineered wood end table, and price lower than 170.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] Nightstand with Storage Drawer and Bottom Display Shelf, Bed Table, Bedstand, Nightstand, Bedroom Furniture, Dark Brown Finish [SEP] Price: $154.9 [SEP] Rating: N.A. [SEP] Description [SEP] Features [SEP] Reviews [SEP] Buy Now",
+      "action": "click[features]",
+      "response": "click[features]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[features]"
+        }
+      ],
+      "latency_s": 3.54
+    },
+    {
+      "step": 4,
+      "observation": "Instruction: [SEP] i need an engineered wood end table, and price lower than 170.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] This petite modern end table excels in both the living room and bedroom without missing a beat. This svelte designer living room table is made of engineered wood and veneered with dark brown faux wood grain paper before being finished off with non-marking feet. A single drawer with silvertone knob is set above a small shelf to keep your important items close at hand",
+      "action": "click[< prev]",
+      "response": "click[< prev]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[< prev]"
+        }
+      ],
+      "latency_s": 3.28
+    },
+    {
+      "step": 5,
+      "observation": "Instruction: [SEP] i need an engineered wood end table, and price lower than 170.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] Nightstand with Storage Drawer and Bottom Display Shelf, Bed Table, Bedstand, Nightstand, Bedroom Furniture, Dark Brown Finish [SEP] Price: $154.9 [SEP] Rating: N.A. [SEP] Description [SEP] Features [SEP] Reviews [SEP] Buy Now",
+      "action": "click[buy now]",
+      "response": "click[buy now]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[buy now]"
+        }
+      ],
+      "latency_s": 4.0
+    },
+    {
+      "step": 6,
+      "observation": "Thank you for shopping with us! [SEP] Your code: [SEP] None [SEP] (Paste it in your MTurk interface.) [SEP] Purchased [SEP] asin [SEP] B08VGL7H48 [SEP] options [SEP] {} [SEP] attrs [SEP] None [SEP] category [SEP] None [SEP] query [SEP] None [SEP] product category [SEP] None [SEP] Target [SEP] asin [SEP] options [SEP] attrs [SEP] price upper [SEP] instuction text [SEP] category [SEP] product category [SEP] query [SEP] Goal [SEP] None [SEP] Reward [SEP] Your score (min 0.0, max 1.0) [SEP] 1.0 [SEP",
+      "action": "[DONE]",
+      "reward": 1.0
+    }
+  ],
+  "messages_count": 65
+}

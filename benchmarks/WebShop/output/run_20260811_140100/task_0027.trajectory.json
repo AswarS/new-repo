@@ -1,0 +1,66 @@
+{
+  "task_idx": 27,
+  "goal": "Instruction: i need high quality pillow covers in color a-8 and it should be fade resistant, and price lower than 60.00 dollars",
+  "reward": 0.3333333333333333,
+  "done": true,
+  "steps": 3,
+  "max_steps": 30,
+  "error": "",
+  "steps_log": [
+    {
+      "step": 1,
+      "observation": "WebShop [SEP] Instruction: [SEP] i need high quality pillow covers in color a-8 and it should be fade resistant, and price lower than 60.00 dollars [SEP] Search",
+      "action": "search[pillow covers fade resistant A-8]",
+      "response": "search[pillow covers fade resistant A-8]",
+      "content_blocks": [
+        {
+          "type": "tool_use",
+          "id": "fc_0dfc2deba0381263016a7ac09fcbbc81918d489312622467f8",
+          "name": "Skill",
+          "input": {
+            "args": "i need high quality pillow covers in color a-8 and it should be fade resistant, and price lower than 60.00 dollars",
+            "skill": "webshop-build-constraint-led-query"
+          }
+        },
+        {
+          "type": "text",
+          "text": "search[pillow covers fade resistant A-8]"
+        }
+      ],
+      "latency_s": 5.25
+    },
+    {
+      "step": 2,
+      "observation": "Instruction: [SEP] i need high quality pillow covers in color a-8 and it should be fade resistant, and price lower than 60.00 dollars [SEP] Back to Search [SEP] Page 1 (Total results: 50) [SEP] Next > [SEP] B088TTRCL4 [SEP] Embroidered Throw Pillow Covers 18X18 Decorative for Living Room Outdoor Pillow Covers for Patio Furniture Throw Pillows for Couch cojines decorativos para sala Fall Decor for Home Christmas Sofa [SEP] $19.99 [SEP] B093DVFYL6 [SEP] XSNDSENN Modern Art Geometric Colorful Throw",
+      "action": "click[b09qmh5vqf]",
+      "response": "click[b09qmh5vqf]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[b09qmh5vqf]"
+        }
+      ],
+      "latency_s": 2.49
+    },
+    {
+      "step": 3,
+      "observation": "Instruction: [SEP] i need high quality pillow covers in color a-8 and it should be fade resistant, and price lower than 60.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] color [SEP] a-1 [SEP] a-10 [SEP] a-11 [SEP] a-12 [SEP] a-13 [SEP] a-14 [SEP] a-15 [SEP] a-16 [SEP] a-17 [SEP] a-18 [SEP] a-19 [SEP] a-2 [SEP] a-20 [SEP] a-3 [SEP] a-4 [SEP] a-5 [SEP] a-6 [SEP] a-7 [SEP] a-8 [SEP] a-9 [SEP] Microfiber Standard Size Pillow Case,for Hair and Skin, Wrinkle, Fade Resistant,A-8▁45*45cm/18*18in [SE",
+      "action": "click[buy now]",
+      "response": "click[buy now]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[buy now]"
+        }
+      ],
+      "latency_s": 2.13
+    },
+    {
+      "step": 4,
+      "observation": "Thank you for shopping with us! [SEP] Your code: [SEP] None [SEP] (Paste it in your MTurk interface.) [SEP] Purchased [SEP] asin [SEP] B09QMH5VQF [SEP] options [SEP] {} [SEP] attrs [SEP] None [SEP] category [SEP] None [SEP] query [SEP] None [SEP] product category [SEP] None [SEP] Target [SEP] asin [SEP] options [SEP] attrs [SEP] price upper [SEP] instuction text [SEP] category [SEP] product category [SEP] query [SEP] Goal [SEP] None [SEP] Reward [SEP] Your score (min 0.0, max 1.0) [SEP] 0.333333",
+      "action": "[DONE]",
+      "reward": 0.3333333333333333
+    }
+  ],
+  "messages_count": 100
+}

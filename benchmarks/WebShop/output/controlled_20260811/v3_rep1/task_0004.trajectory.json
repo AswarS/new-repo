@@ -1,0 +1,65 @@
+{
+  "task_idx": 4,
+  "goal": "Instruction: find me a high speed dual style package with  12\" power amplifier car subwoofer, and price lower than 200.00 dollars",
+  "reward": 0.5,
+  "done": true,
+  "steps": 3,
+  "max_steps": 30,
+  "error": "",
+  "steps_log": [
+    {
+      "step": 1,
+      "observation": "WebShop [SEP] Instruction: [SEP] find me a high speed dual style package with  12\" power amplifier car subwoofer, and price lower than 200.00 dollars [SEP] Search",
+      "action": "search[12 inch power amplifier car subwoofer dual high speed package]",
+      "response": "search[12 inch power amplifier car subwoofer dual high speed package]",
+      "content_blocks": [
+        {
+          "type": "tool_use",
+          "id": "tooluse_iep9GTOOioIdyTm8eRIC0I",
+          "name": "Skill",
+          "input": {
+            "skill": "webshop-v3-explicit-state"
+          }
+        },
+        {
+          "type": "text",
+          "text": "search[12 inch power amplifier car subwoofer dual high speed package]"
+        }
+      ],
+      "latency_s": 23.87
+    },
+    {
+      "step": 2,
+      "observation": "Instruction: [SEP] find me a high speed dual style package with  12\" power amplifier car subwoofer, and price lower than 200.00 dollars [SEP] Back to Search [SEP] Page 1 (Total results: 50) [SEP] Next > [SEP] B06XW8PL68 [SEP] Planet Audio AC12D 12\" 1800W 4 Ohm DVC Car Subwoofer Package with Boss Audio 1500W Mono A/B Amplifier, Wiring Amp Kit and QPower Vented Sub Enclosure [SEP] $100.0 [SEP] B01BGW8GOM [SEP] MTX TNP212D2 12\" 1200 Watt 4 Ohm Dual Loaded Car Audio Subwoofer Package with Sub Enclos",
+      "action": "click[b06xw8pl68]",
+      "response": "click[b06xw8pl68]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[b06xw8pl68]"
+        }
+      ],
+      "latency_s": 4.18
+    },
+    {
+      "step": 3,
+      "observation": "Instruction: [SEP] find me a high speed dual style package with  12\" power amplifier car subwoofer, and price lower than 200.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] Planet Audio AC12D 12\" 1800W 4 Ohm DVC Car Subwoofer Package with Boss Audio 1500W Mono A/B Amplifier, Wiring Amp Kit and QPower Vented Sub Enclosure [SEP] Price: $100.0 [SEP] Rating: N.A. [SEP] Description [SEP] Features [SEP] Reviews [SEP] Buy Now",
+      "action": "click[buy now]",
+      "response": "click[buy now]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[buy now]"
+        }
+      ],
+      "latency_s": 5.81
+    },
+    {
+      "step": 4,
+      "observation": "Thank you for shopping with us! [SEP] Your code: [SEP] None [SEP] (Paste it in your MTurk interface.) [SEP] Purchased [SEP] asin [SEP] B06XW8PL68 [SEP] options [SEP] {} [SEP] attrs [SEP] None [SEP] category [SEP] None [SEP] query [SEP] None [SEP] product category [SEP] None [SEP] Target [SEP] asin [SEP] options [SEP] attrs [SEP] price upper [SEP] instuction text [SEP] category [SEP] product category [SEP] query [SEP] Goal [SEP] None [SEP] Reward [SEP] Your score (min 0.0, max 1.0) [SEP] 0.5 [SEP",
+      "action": "[DONE]",
+      "reward": 0.5
+    }
+  ],
+  "messages_count": 47
+}

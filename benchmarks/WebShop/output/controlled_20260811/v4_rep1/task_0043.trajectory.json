@@ -1,0 +1,91 @@
+{
+  "task_idx": 43,
+  "goal": "Instruction: i'm looking for some black high heeled sandals for my mom. she wears size 5.5, and price lower than 60.00 dollars",
+  "reward": 1.0,
+  "done": true,
+  "steps": 5,
+  "max_steps": 30,
+  "error": "",
+  "steps_log": [
+    {
+      "step": 1,
+      "observation": "WebShop [SEP] Instruction: [SEP] i'm looking for some black high heeled sandals for my mom. she wears size 5.5, and price lower than 60.00 dollars [SEP] Search",
+      "action": "search[black high heeled sandals size 5.5]",
+      "response": "search[black high heeled sandals size 5.5]",
+      "content_blocks": [
+        {
+          "type": "tool_use",
+          "id": "tooluse_ChgYiP1VIYbHFprFM1xB2l",
+          "name": "Skill",
+          "input": {
+            "skill": "webshop-v4-option-gate"
+          }
+        },
+        {
+          "type": "text",
+          "text": "search[black high heeled sandals size 5.5]"
+        }
+      ],
+      "latency_s": 7.86
+    },
+    {
+      "step": 2,
+      "observation": "Instruction: [SEP] i'm looking for some black high heeled sandals for my mom. she wears size 5.5, and price lower than 60.00 dollars [SEP] Back to Search [SEP] Page 1 (Total results: 50) [SEP] Next > [SEP] B09SF1D6DH [SEP] Slippers for Women Dressy Summer 2022 Womens High Wedge Beach Sandals Summer Thong Flip Flops Platform Sequin House Slippers [SEP] $8.17 to $41.41 [SEP] B09PDVQQ6W [SEP] Platform Sandals Women Fashion Fish Mouth Sandals Summer Casual Buckle Chunky Heel Sandals Slip On Cutout W",
+      "action": "click[b09slprwz8]",
+      "response": "click[b09slprwz8]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[b09slprwz8]"
+        }
+      ],
+      "latency_s": 2.96
+    },
+    {
+      "step": 3,
+      "observation": "Instruction: [SEP] i'm looking for some black high heeled sandals for my mom. she wears size 5.5, and price lower than 60.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] color [SEP] black [SEP] green [SEP] white [SEP] size [SEP] 5.5 [SEP] 6 [SEP] 6.5 [SEP] 7 [SEP] 7.5 [SEP] 8.5 [SEP] 9 [SEP] Women Stiletto Heel Square Toe Sandals Chain Decor High Heel Party Nightclub Slip on Mules Slippers [SEP] Price: $40.75 to $42.32 [SEP] Rating: N.A. [SEP] Description [SEP] Features [SEP] Reviews [SEP] Bu",
+      "action": "click[black]",
+      "response": "click[black]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[black]"
+        }
+      ],
+      "latency_s": 3.69
+    },
+    {
+      "step": 4,
+      "observation": "Instruction: [SEP] i'm looking for some black high heeled sandals for my mom. she wears size 5.5, and price lower than 60.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] color [SEP] black [SEP] green [SEP] white [SEP] size [SEP] 5.5 [SEP] 6 [SEP] 6.5 [SEP] 7 [SEP] 7.5 [SEP] 8.5 [SEP] 9 [SEP] Women Stiletto Heel Square Toe Sandals Chain Decor High Heel Party Nightclub Slip on Mules Slippers [SEP] Price: $40.75 to $42.32 [SEP] Rating: N.A. [SEP] Description [SEP] Features [SEP] Reviews [SEP] Bu",
+      "action": "click[5.5]",
+      "response": "click[5.5]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[5.5]"
+        }
+      ],
+      "latency_s": 2.73
+    },
+    {
+      "step": 5,
+      "observation": "Instruction: [SEP] i'm looking for some black high heeled sandals for my mom. she wears size 5.5, and price lower than 60.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] color [SEP] black [SEP] green [SEP] white [SEP] size [SEP] 5.5 [SEP] 6 [SEP] 6.5 [SEP] 7 [SEP] 7.5 [SEP] 8.5 [SEP] 9 [SEP] Women Stiletto Heel Square Toe Sandals Chain Decor High Heel Party Nightclub Slip on Mules Slippers [SEP] Price: $40.75 to $42.32 [SEP] Rating: N.A. [SEP] Description [SEP] Features [SEP] Reviews [SEP] Bu",
+      "action": "click[Buy Now]",
+      "response": "click[Buy Now]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[Buy Now]"
+        }
+      ],
+      "latency_s": 3.52
+    },
+    {
+      "step": 6,
+      "observation": "Thank you for shopping with us! [SEP] Your code: [SEP] None [SEP] (Paste it in your MTurk interface.) [SEP] Purchased [SEP] asin [SEP] B09SLPRWZ8 [SEP] options [SEP] {\"color\": \"black\", \"size\": \"5.5\"} [SEP] attrs [SEP] None [SEP] category [SEP] None [SEP] query [SEP] None [SEP] product category [SEP] None [SEP] Target [SEP] asin [SEP] options [SEP] attrs [SEP] price upper [SEP] instuction text [SEP] category [SEP] product category [SEP] query [SEP] Goal [SEP] None [SEP] Reward [SEP] Your score (m",
+      "action": "[DONE]",
+      "reward": 1.0
+    }
+  ],
+  "messages_count": 65
+}

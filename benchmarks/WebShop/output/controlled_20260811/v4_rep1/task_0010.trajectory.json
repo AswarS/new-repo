@@ -1,0 +1,78 @@
+{
+  "task_idx": 10,
+  "goal": "Instruction: i would like a bundle of crackers, spicy beef and cheese which is shelf stable. it also needs to be keto and gluten free, and price lower than 50.00 dollars",
+  "reward": 0.8,
+  "done": true,
+  "steps": 4,
+  "max_steps": 30,
+  "error": "",
+  "steps_log": [
+    {
+      "step": 1,
+      "observation": "WebShop [SEP] Instruction: [SEP] i would like a bundle of crackers, spicy beef and cheese which is shelf stable. it also needs to be keto and gluten free, and price lower than 50.00 dollars [SEP] Search",
+      "action": "search[crackers spicy beef cheese bundle keto gluten free shelf stable]",
+      "response": "search[crackers spicy beef cheese bundle keto gluten free shelf stable]",
+      "content_blocks": [
+        {
+          "type": "tool_use",
+          "id": "tooluse_MPK8NYMwXXaNdTXUd5vqbv",
+          "name": "Skill",
+          "input": {
+            "skill": "webshop-v4-option-gate"
+          }
+        },
+        {
+          "type": "text",
+          "text": "search[crackers spicy beef cheese bundle keto gluten free shelf stable]"
+        }
+      ],
+      "latency_s": 7.79
+    },
+    {
+      "step": 2,
+      "observation": "Instruction: [SEP] i would like a bundle of crackers, spicy beef and cheese which is shelf stable. it also needs to be keto and gluten free, and price lower than 50.00 dollars [SEP] Back to Search [SEP] Page 1 (Total results: 50) [SEP] Next > [SEP] B0978Q1KK9 [SEP] The Spicy Beef Backpacking Bundle | 1 Usinger's Hot Pepper Summer Sausage, 1 Farmers' Market Wisconsin Hot Pepper Cheddar Cheese, and Crackers | Shelf Stable Food for Backpacking, Hiking, or Snacking [SEP] $14.49 [SEP] B0978P4L31 [SEP",
+      "action": "click[b0978q1kk9]",
+      "response": "click[b0978q1kk9]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[b0978q1kk9]"
+        }
+      ],
+      "latency_s": 5.84
+    },
+    {
+      "step": 3,
+      "observation": "Instruction: [SEP] i would like a bundle of crackers, spicy beef and cheese which is shelf stable. it also needs to be keto and gluten free, and price lower than 50.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] flavor name [SEP] original beef backpack bundle [SEP] spicy beef backpack bundle [SEP] The Spicy Beef Backpacking Bundle | 1 Usinger's Hot Pepper Summer Sausage, 1 Farmers' Market Wisconsin Hot Pepper Cheddar Cheese, and Crackers | Shelf Stable Food for Backpacking, Hiking, or Snacki",
+      "action": "click[spicy beef backpack bundle]",
+      "response": "click[spicy beef backpack bundle]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[spicy beef backpack bundle]"
+        }
+      ],
+      "latency_s": 3.99
+    },
+    {
+      "step": 4,
+      "observation": "Instruction: [SEP] i would like a bundle of crackers, spicy beef and cheese which is shelf stable. it also needs to be keto and gluten free, and price lower than 50.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] flavor name [SEP] original beef backpack bundle [SEP] spicy beef backpack bundle [SEP] The Spicy Beef Backpacking Bundle | 1 Usinger's Hot Pepper Summer Sausage, 1 Farmers' Market Wisconsin Hot Pepper Cheddar Cheese, and Crackers | Shelf Stable Food for Backpacking, Hiking, or Snacki",
+      "action": "click[buy now]",
+      "response": "click[buy now]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[buy now]"
+        }
+      ],
+      "latency_s": 3.54
+    },
+    {
+      "step": 5,
+      "observation": "Thank you for shopping with us! [SEP] Your code: [SEP] None [SEP] (Paste it in your MTurk interface.) [SEP] Purchased [SEP] asin [SEP] B0978Q1KK9 [SEP] options [SEP] {\"flavor name\": \"spicy beef backpack bundle\"} [SEP] attrs [SEP] None [SEP] category [SEP] None [SEP] query [SEP] None [SEP] product category [SEP] None [SEP] Target [SEP] asin [SEP] options [SEP] attrs [SEP] price upper [SEP] instuction text [SEP] category [SEP] product category [SEP] query [SEP] Goal [SEP] None [SEP] Reward [SEP] Y",
+      "action": "[DONE]",
+      "reward": 0.8
+    }
+  ],
+  "messages_count": 57
+}

@@ -1,0 +1,66 @@
+{
+  "task_idx": 21,
+  "goal": "Instruction: can you find me a shelf stable potato side dish?  i want something that i can cook in the microwave, and price lower than 30.00 dollars",
+  "reward": 0.0,
+  "done": true,
+  "steps": 3,
+  "max_steps": 30,
+  "error": "",
+  "steps_log": [
+    {
+      "step": 1,
+      "observation": "WebShop [SEP] Instruction: [SEP] can you find me a shelf stable potato side dish?  i want something that i can cook in the microwave, and price lower than 30.00 dollars [SEP] Search",
+      "action": "search[microwave shelf stable potato side dish]",
+      "response": "search[microwave shelf stable potato side dish]",
+      "content_blocks": [
+        {
+          "type": "tool_use",
+          "id": "fc_07570fcbe10f252e016a7abf6a3b9c8191bf9888f6936629e8",
+          "name": "Skill",
+          "input": {
+            "args": "can you find me a shelf stable potato side dish? i want something that i can cook in the microwave, and price lower than 30.00 dollars",
+            "skill": "webshop-build-constraint-led-query"
+          }
+        },
+        {
+          "type": "text",
+          "text": "search[microwave shelf stable potato side dish]"
+        }
+      ],
+      "latency_s": 4.77
+    },
+    {
+      "step": 2,
+      "observation": "Instruction: [SEP] can you find me a shelf stable potato side dish?  i want something that i can cook in the microwave, and price lower than 30.00 dollars [SEP] Back to Search [SEP] Page 1 (Total results: 50) [SEP] Next > [SEP] B004PEET4K [SEP] HORMEL COMPLEATS Chicken Breast & Mashed Potatoes With Gravy Microwave Tray, 10 oz. (6 Pack) [SEP] $12.72 [SEP] B001EQ5AVI [SEP] HORMEL COMPLEATS Roast Beef & Mashed Potatoes With Gravy Microwave Tray, 9 oz. (6 Pack) [SEP] $12.36 [SEP] B000V1JVAI [SEP] HO",
+      "action": "click[b086r1lnz3]",
+      "response": "click[b086r1lnz3]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[b086r1lnz3]"
+        }
+      ],
+      "latency_s": 1.68
+    },
+    {
+      "step": 3,
+      "observation": "Instruction: [SEP] can you find me a shelf stable potato side dish?  i want something that i can cook in the microwave, and price lower than 30.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] flavor [SEP] broccoli & cauliflower [SEP] riced cauliflower [SEP] riced sweet potato [SEP] Fullgreen, Riced Sweet Potato - 99.9% Sweet Potato, 60% Less Carbs than Rice - Perfect healthy, nutritious, holiday side dish, NON-GMO and shelf-stable - case of 6 pouches [SEP] Price: $29.99 [SEP] Rating: N.A. [SE",
+      "action": "click[buy now]",
+      "response": "click[buy now]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[buy now]"
+        }
+      ],
+      "latency_s": 2.19
+    },
+    {
+      "step": 4,
+      "observation": "Thank you for shopping with us! [SEP] Your code: [SEP] None [SEP] (Paste it in your MTurk interface.) [SEP] Purchased [SEP] asin [SEP] B086R1LNZ3 [SEP] options [SEP] {} [SEP] attrs [SEP] None [SEP] category [SEP] None [SEP] query [SEP] None [SEP] product category [SEP] None [SEP] Target [SEP] asin [SEP] options [SEP] attrs [SEP] price upper [SEP] instuction text [SEP] category [SEP] product category [SEP] query [SEP] Goal [SEP] None [SEP] Reward [SEP] Your score (min 0.0, max 1.0) [SEP] 0.0 [SEP",
+      "action": "[DONE]",
+      "reward": 0.0
+    }
+  ],
+  "messages_count": 104
+}

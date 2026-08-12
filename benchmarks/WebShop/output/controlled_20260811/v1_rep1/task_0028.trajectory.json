@@ -1,0 +1,65 @@
+{
+  "task_idx": 28,
+  "goal": "Instruction: i am looking for an oral hygiene toothbrush. it should be easy to carry, and price lower than 40.00 dollars",
+  "reward": 0.06666666666666667,
+  "done": true,
+  "steps": 3,
+  "max_steps": 30,
+  "error": "",
+  "steps_log": [
+    {
+      "step": 1,
+      "observation": "WebShop [SEP] Instruction: [SEP] i am looking for an oral hygiene toothbrush. it should be easy to carry, and price lower than 40.00 dollars [SEP] Search",
+      "action": "search[oral hygiene toothbrush portable travel]",
+      "response": "search[oral hygiene toothbrush portable travel]",
+      "content_blocks": [
+        {
+          "type": "tool_use",
+          "id": "tooluse_CJ09K2DnVqRGuaSwVOgbkw",
+          "name": "Skill",
+          "input": {
+            "skill": "webshop-v1-constraint-ledger"
+          }
+        },
+        {
+          "type": "text",
+          "text": "search[oral hygiene toothbrush portable travel]"
+        }
+      ],
+      "latency_s": 7.86
+    },
+    {
+      "step": 2,
+      "observation": "Instruction: [SEP] i am looking for an oral hygiene toothbrush. it should be easy to carry, and price lower than 40.00 dollars [SEP] Back to Search [SEP] Page 1 (Total results: 50) [SEP] Next > [SEP] B09H32L9V6 [SEP] PRONY 3 in 1 Portable Travel Toothbrush with Travel Case and Extra Soft Bristles and Built-in Refillable Toothpaste Tube,Travel Essential Accessories [SEP] $9.97 [SEP] B09LVLPYH3 [SEP] Simayixx Oral Care Toothbrush 3 In 1 Portable Travel Toothbrush With Travel Case And Extra Soft Br",
+      "action": "click[b09lvtfdtk]",
+      "response": "click[b09lvtfdtk]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[b09lvtfdtk]"
+        }
+      ],
+      "latency_s": 5.07
+    },
+    {
+      "step": 3,
+      "observation": "Instruction: [SEP] i am looking for an oral hygiene toothbrush. it should be easy to carry, and price lower than 40.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] color [SEP] sky blue [SEP] white [SEP] Portable 3 in 1 Travel Toothbrush with Travel Case and Extra Soft Bristles and Built-in Refillable Toothpaste Tube,Travel Essential Accessories [SEP] Price: $5.5 [SEP] Rating: N.A. [SEP] Description [SEP] Features [SEP] Reviews [SEP] Buy Now",
+      "action": "click[buy now]",
+      "response": "click[buy now]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[buy now]"
+        }
+      ],
+      "latency_s": 2.95
+    },
+    {
+      "step": 4,
+      "observation": "Thank you for shopping with us! [SEP] Your code: [SEP] None [SEP] (Paste it in your MTurk interface.) [SEP] Purchased [SEP] asin [SEP] B09LVTFDTK [SEP] options [SEP] {} [SEP] attrs [SEP] None [SEP] category [SEP] None [SEP] query [SEP] None [SEP] product category [SEP] None [SEP] Target [SEP] asin [SEP] options [SEP] attrs [SEP] price upper [SEP] instuction text [SEP] category [SEP] product category [SEP] query [SEP] Goal [SEP] None [SEP] Reward [SEP] Your score (min 0.0, max 1.0) [SEP] 0.066666",
+      "action": "[DONE]",
+      "reward": 0.06666666666666667
+    }
+  ],
+  "messages_count": 45
+}

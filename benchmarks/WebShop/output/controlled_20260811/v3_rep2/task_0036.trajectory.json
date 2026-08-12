@@ -1,0 +1,104 @@
+{
+  "task_idx": 36,
+  "goal": "Instruction: i'm looking for a single pack of old style, brown hair dye, and price lower than 30.00 dollars",
+  "reward": 1.0,
+  "done": true,
+  "steps": 6,
+  "max_steps": 30,
+  "error": "",
+  "steps_log": [
+    {
+      "step": 1,
+      "observation": "WebShop [SEP] Instruction: [SEP] i'm looking for a single pack of old style, brown hair dye, and price lower than 30.00 dollars [SEP] Search",
+      "action": "search[old style brown hair dye single pack]",
+      "response": "search[old style brown hair dye single pack]",
+      "content_blocks": [
+        {
+          "type": "tool_use",
+          "id": "tooluse_COXy4aKVKqBllCdE22use6",
+          "name": "Skill",
+          "input": {
+            "skill": "webshop-v3-explicit-state"
+          }
+        },
+        {
+          "type": "text",
+          "text": "search[old style brown hair dye single pack]"
+        }
+      ],
+      "latency_s": 7.87
+    },
+    {
+      "step": 2,
+      "observation": "Instruction: [SEP] i'm looking for a single pack of old style, brown hair dye, and price lower than 30.00 dollars [SEP] Back to Search [SEP] Page 1 (Total results: 50) [SEP] Next > [SEP] B000209JS2 [SEP] Tints of Nature Natural Permanent Hair Dye, Nourishes hair & Covers Greys, 1 x 130ml - 8N Light Blonde [SEP] $21.58 [SEP] B08N4KLWLK [SEP] Hair Dye Natural Extract Ammonia Free,Natural Black, Instant Hair Color, 1 Minute Hair Dye, Gray Coverage, Henna Alternative, Olive Oil, Protects Scalp, Long",
+      "action": "click[b001b2s32s]",
+      "response": "click[b001b2s32s]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[b001b2s32s]"
+        }
+      ],
+      "latency_s": 3.22
+    },
+    {
+      "step": 3,
+      "observation": "Instruction: [SEP] i'm looking for a single pack of old style, brown hair dye, and price lower than 30.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] color [SEP] 003 ultra light sun blonde [SEP] 004 ultra light natural blonde [SEP] 005 ultra light ash blonde [SEP] 010 black [SEP] 011 soft black [SEP] 012 natural blue black [SEP] 020 brown black [SEP] 027 deep rich brown [SEP] 03 ultra light sun blonde [SEP] 030 dark brown [SEP] 031 dark auburn [SEP] 032 dark mahogany brown [SEP] 033 dark sof",
+      "action": "click[041 medium brown]",
+      "response": "click[041 medium brown]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[041 medium brown]"
+        }
+      ],
+      "latency_s": 2.99
+    },
+    {
+      "step": 4,
+      "observation": "Instruction: [SEP] i'm looking for a single pack of old style, brown hair dye, and price lower than 30.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] color [SEP] 003 ultra light sun blonde [SEP] 004 ultra light natural blonde [SEP] 005 ultra light ash blonde [SEP] 010 black [SEP] 011 soft black [SEP] 012 natural blue black [SEP] 020 brown black [SEP] 027 deep rich brown [SEP] 03 ultra light sun blonde [SEP] 030 dark brown [SEP] 031 dark auburn [SEP] 032 dark mahogany brown [SEP] 033 dark sof",
+      "action": "click[pack of 1]",
+      "response": "click[pack of 1]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[pack of 1]"
+        }
+      ],
+      "latency_s": 10.56
+    },
+    {
+      "step": 5,
+      "observation": "Instruction: [SEP] i'm looking for a single pack of old style, brown hair dye, and price lower than 30.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] color [SEP] 003 ultra light sun blonde [SEP] 004 ultra light natural blonde [SEP] 005 ultra light ash blonde [SEP] 010 black [SEP] 011 soft black [SEP] 012 natural blue black [SEP] 020 brown black [SEP] 027 deep rich brown [SEP] 03 ultra light sun blonde [SEP] 030 dark brown [SEP] 031 dark auburn [SEP] 032 dark mahogany brown [SEP] 033 dark sof",
+      "action": "click[old version]",
+      "response": "click[old version]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[old version]"
+        }
+      ],
+      "latency_s": 34.9
+    },
+    {
+      "step": 6,
+      "observation": "Instruction: [SEP] i'm looking for a single pack of old style, brown hair dye, and price lower than 30.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] color [SEP] 003 ultra light sun blonde [SEP] 004 ultra light natural blonde [SEP] 005 ultra light ash blonde [SEP] 010 black [SEP] 011 soft black [SEP] 012 natural blue black [SEP] 020 brown black [SEP] 027 deep rich brown [SEP] 03 ultra light sun blonde [SEP] 030 dark brown [SEP] 031 dark auburn [SEP] 032 dark mahogany brown [SEP] 033 dark sof",
+      "action": "click[buy now]",
+      "response": "click[buy now]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[buy now]"
+        }
+      ],
+      "latency_s": 61.83
+    },
+    {
+      "step": 7,
+      "observation": "Thank you for shopping with us! [SEP] Your code: [SEP] None [SEP] (Paste it in your MTurk interface.) [SEP] Purchased [SEP] asin [SEP] B001B2S32S [SEP] options [SEP] {\"color\": \"041 medium brown\", \"size\": \"pack of 1\", \"style\": \"old version\"} [SEP] attrs [SEP] None [SEP] category [SEP] None [SEP] query [SEP] None [SEP] product category [SEP] None [SEP] Target [SEP] asin [SEP] options [SEP] attrs [SEP] price upper [SEP] instuction text [SEP] category [SEP] product category [SEP] query [SEP] Goal [S",
+      "action": "[DONE]",
+      "reward": 1.0
+    }
+  ],
+  "messages_count": 76
+}

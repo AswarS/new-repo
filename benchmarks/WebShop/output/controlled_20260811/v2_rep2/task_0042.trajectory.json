@@ -1,0 +1,92 @@
+{
+  "task_idx": 42,
+  "goal": "Instruction: i would like a 8 fluid ounce bottle of tea tree lotion, and price lower than 40.00 dollars",
+  "reward": 0.5,
+  "done": true,
+  "steps": 5,
+  "max_steps": 30,
+  "error": "",
+  "steps_log": [
+    {
+      "step": 1,
+      "observation": "WebShop [SEP] Instruction: [SEP] i would like a 8 fluid ounce bottle of tea tree lotion, and price lower than 40.00 dollars [SEP] Search",
+      "action": "search[tea tree lotion 8 fl oz]",
+      "response": "search[tea tree lotion 8 fl oz]",
+      "content_blocks": [
+        {
+          "id": "tooluse_jL6b5XcI7c4dHN1QNbhD4K",
+          "input": {
+            "skill": "webshop-v2-enforced-loop",
+            "args": "Instruction: i would like a 8 fluid ounce bottle of tea tree lotion, and price lower than 40.00 dollars\n\nObservation:\nWebShop [SEP] Instruction: [SEP] i would like a 8 fluid ounce bottle of tea tree lotion, and price lower than 40.00 dollars [SEP] Search\n\nAvailable actions:\n- search[query]\n- click[element]: Available: [search]"
+          },
+          "name": "Skill",
+          "type": "tool_use"
+        },
+        {
+          "text": "search[tea tree lotion 8 fl oz]",
+          "type": "text"
+        }
+      ],
+      "latency_s": 14.88
+    },
+    {
+      "step": 2,
+      "observation": "Instruction: [SEP] i would like a 8 fluid ounce bottle of tea tree lotion, and price lower than 40.00 dollars [SEP] Back to Search [SEP] Page 1 (Total results: 50) [SEP] Next > [SEP] B09BK8BFBY [SEP] Bath & Body Works Aromatherapy gift set - TEA TREE LAVENDER - Body Wash and Foam Bath - Body Lotion and Body Cream - Includes a 4 oz Marbela Artisan Bar Soap [SEP] $52.95 [SEP] B09LRDLS5J [SEP] Bath & Body Works Aromatherapy Gift Set - TEA TREE + PEPPERMINT - Body Wash and Foam - Body Lotion - Essen",
+      "action": "click[next >]",
+      "response": "click[next >]",
+      "content_blocks": [
+        {
+          "text": "click[next >]",
+          "type": "text"
+        }
+      ],
+      "latency_s": 3.66
+    },
+    {
+      "step": 3,
+      "observation": "Instruction: [SEP] i would like a 8 fluid ounce bottle of tea tree lotion, and price lower than 40.00 dollars [SEP] Back to Search [SEP] Page 2 (Total results: 50) [SEP] < Prev [SEP] Next > [SEP] B000BIVY24 [SEP] Bumble and Bumble Tonic Lotion, 8 Fl Oz Spray Bottle [SEP] $23.0 [SEP] B000MC5VM8 [SEP] Nubian Heritage Body Lotion, Coconut and Papaya, 13 Fl Oz [SEP] $12.79 [SEP] B01ETEJNPK [SEP] TreeActiv Acne Eliminating Body Lotion, 8 fl oz, Moisturizes Acne-Prone Skin, Shoulder, Eliminates Chest,",
+      "action": "click[b08ksjzj5z]",
+      "response": "click[b08ksjzj5z]",
+      "content_blocks": [
+        {
+          "text": "click[b08ksjzj5z]",
+          "type": "text"
+        }
+      ],
+      "latency_s": 3.79
+    },
+    {
+      "step": 4,
+      "observation": "Instruction: [SEP] i would like a 8 fluid ounce bottle of tea tree lotion, and price lower than 40.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] scent [SEP] lavender [SEP] sun kissed [SEP] tea tree [SEP] unscented [SEP] Plant Therapy Tea Tree Body Lotion with Aloe and Shea, Hydrate and Nourish Skin with Botanical Ingredients, 8 oz [SEP] Price: $10.95 [SEP] Rating: N.A. [SEP] Description [SEP] Features [SEP] Reviews [SEP] Buy Now",
+      "action": "click[tea tree]",
+      "response": "click[tea tree]",
+      "content_blocks": [
+        {
+          "text": "click[tea tree]",
+          "type": "text"
+        }
+      ],
+      "latency_s": 8.68
+    },
+    {
+      "step": 5,
+      "observation": "Instruction: [SEP] i would like a 8 fluid ounce bottle of tea tree lotion, and price lower than 40.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] scent [SEP] lavender [SEP] sun kissed [SEP] tea tree [SEP] unscented [SEP] Plant Therapy Tea Tree Body Lotion with Aloe and Shea, Hydrate and Nourish Skin with Botanical Ingredients, 8 oz [SEP] Price: $10.95 [SEP] Rating: N.A. [SEP] Description [SEP] Features [SEP] Reviews [SEP] Buy Now",
+      "action": "click[buy now]",
+      "response": "click[buy now]",
+      "content_blocks": [
+        {
+          "text": "click[buy now]",
+          "type": "text"
+        }
+      ],
+      "latency_s": 8.66
+    },
+    {
+      "step": 6,
+      "observation": "Thank you for shopping with us! [SEP] Your code: [SEP] None [SEP] (Paste it in your MTurk interface.) [SEP] Purchased [SEP] asin [SEP] B08KSJZJ5Z [SEP] options [SEP] {\"scent\": \"tea tree\"} [SEP] attrs [SEP] None [SEP] category [SEP] None [SEP] query [SEP] None [SEP] product category [SEP] None [SEP] Target [SEP] asin [SEP] options [SEP] attrs [SEP] price upper [SEP] instuction text [SEP] category [SEP] product category [SEP] query [SEP] Goal [SEP] None [SEP] Reward [SEP] Your score (min 0.0, max ",
+      "action": "[DONE]",
+      "reward": 0.5
+    }
+  ],
+  "messages_count": 123
+}

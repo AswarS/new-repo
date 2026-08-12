@@ -1,0 +1,867 @@
+{
+  "package_name": "scienceworld",
+  "scene_description": "ScienceWorld benchmark environment for scientific experiment automation - AI agents conducting laboratory experiments including measurement, mixing, heating, planting, circuit building, and systematic investigation in simulated STEM environments across physics, chemistry, and biology domains",
+  "tags": [
+    "scienceworld"
+  ],
+  "curated": true,
+  "created_at": "2026-02-08T10:30:00.000000",
+  "skill_count": 61,
+  "skills": [
+    {
+      "skill_name": "scienceworld-pot-preparer",
+      "skill_description": "Prepares a planting pot by moving soil from inventory into an empty or water-filled pot. Use this when setting up a growth environment for seeds or plants. It performs the 'move soil to flower pot X' action, transforming the container into a viable planting medium. This skill is atomic and can be repeated for multiple pots.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-pot-preparer",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.72
+    },
+    {
+      "skill_name": "scienceworld-recipe-retriever",
+      "skill_description": "This skill locates and acquires a recipe or instruction document by using 'pick up' on the recipe object. It should be triggered when the task involves following a specific procedure (e.g., crafting, mixing) and the agent needs to obtain the written instructions. The skill assumes the recipe is visible in the current room and moves it to the inventory, allowing the agent to read it later to understand required ingredients and steps.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-recipe-retriever",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.723
+    },
+    {
+      "skill_name": "scienceworld-room-teleporter",
+      "skill_description": "Teleports the agent to a specified room within the ScienceWorld environment. Use this skill when the target object or location for a task is known to be in a different room, enabling efficient navigation. It takes a target room name as input and outputs a successful teleportation observation.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-room-teleporter",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.726
+    },
+    {
+      "skill_name": "scienceworld-item-fetcher",
+      "skill_description": "This skill picks up a specified object from the environment and moves it into the agent's inventory. It should be triggered when the agent identifies a required tool or material (e.g., thermometer, metal pot) that needs to be collected for later use. The skill takes an object name as input and confirms the item's transfer to inventory, facilitating object manipulation across locations.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-item-fetcher",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.729
+    },
+    {
+      "skill_name": "scienceworld-container-relocator",
+      "skill_description": "Moves an object from inventory to a specified container in a target room. Triggered when the task requires placing an item into a particular receptacle (e.g., 'move it to the orange box').",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-container-relocator",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.732
+    },
+    {
+      "skill_name": "scienceworld-task-parser",
+      "skill_description": "Analyzes user instructions in ScienceWorld environments to extract specific task requirements and constraints. Use this skill when receiving a new task to identify required objects, target locations, and action sequences.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-task-parser",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.735
+    },
+    {
+      "skill_name": "scienceworld-temperature-measurer",
+      "skill_description": "This skill uses a thermometer on a substance to measure its temperature. It should be triggered when the agent needs to determine the temperature of a material (e.g., lead) to assess if it has reached a specific melting point or threshold. The skill requires a thermometer in inventory and a target substance, outputting the measured temperature in degrees Celsius, which is key for scientific measurement tasks.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-temperature-measurer",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.738
+    },
+    {
+      "skill_name": "scienceworld-planting-coordinator",
+      "skill_description": "This skill plants a seed or small plant into a suitable growth container (e.g., a flower pot with soil and water). It should be triggered when the agent has acquired a seed and needs to initiate the plant growth process by placing it into a prepared environment. The skill coordinates the 'move' action to transfer the seed from inventory to the target container, resolving any ambiguity if multiple instances exist.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-planting-coordinator",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.741
+    },
+    {
+      "skill_name": "scienceworld-circuit-builder",
+      "skill_description": "This skill constructs a simple electrical circuit by connecting components like batteries, wires, and light bulbs. It should be triggered when the agent needs to test electrical conductivity or create a functional circuit for an experiment. The input is a set of available components, and the output is a fully connected circuit ready for activation.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-circuit-builder",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.744
+    },
+    {
+      "skill_name": "scienceworld-object-selector",
+      "skill_description": "Selects appropriate objects from available options based on task criteria. Use this skill when you need to choose a specific object type (e.g., non-living thing) from multiple candidates. It evaluates object properties against task requirements and selects the most suitable candidate for further manipulation.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-object-selector",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.747
+    },
+    {
+      "skill_name": "scienceworld-room-explorer",
+      "skill_description": "This skill performs an initial survey of a specified room to identify all visible objects and their states. It should be triggered when the agent first enters a new location or needs to refresh its understanding of the environment. The skill uses the 'look around' action and returns a detailed observation of the room's contents, which serves as the foundational context for subsequent object interaction tasks.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-room-explorer",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.75
+    },
+    {
+      "skill_name": "scienceworld-material-classifier",
+      "skill_description": "This skill makes a determination about a material's property (e.g., conductivity) based on environmental cues or domain knowledge when direct testing fails. Trigger it when experimental actions are invalid or unavailable, requiring a logical inference. It uses observed object properties and common-sense reasoning to classify the material and decide its final disposition.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-material-classifier",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.753
+    },
+    {
+      "skill_name": "scienceworld-object-focuser",
+      "skill_description": "This skill selects and focuses on a specific object to signal task intent or prepare it for manipulation. It is triggered after identifying a target object that meets task criteria (e.g., a living thing). The skill uses the 'focus on OBJ' action, taking the object name as input, which is often required before performing actions like moving or using the object in scienceWorld tasks.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-object-focuser",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.756
+    },
+    {
+      "skill_name": "scienceworld-substance-preparator",
+      "skill_description": "This skill transfers a target substance into an appropriate container for processing (e.g., a pot for heating, a beaker for mixing). It should be triggered after acquiring the substance and before setting up an apparatus. The skill selects a suitable empty container and moves the substance into it.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-substance-preparator",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.759
+    },
+    {
+      "skill_name": "scienceworld-animal-identifier",
+      "skill_description": "This skill identifies and focuses on specific animals or biological entities present in the environment. It should be triggered when the task requires examining, comparing, or interacting with animals, such as determining lifespan attributes. The skill takes an animal identifier as input and outputs a confirmation of focus, aiding in targeted analysis for scientific experiments or comparisons.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-animal-identifier",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.762
+    },
+    {
+      "skill_name": "scienceworld-process-pauser",
+      "skill_description": "This skill introduces deliberate pauses in task execution. It should be triggered when the agent needs to consider next steps, evaluate intermediate results, or wait for processes to complete. The skill uses the 'wait1' or 'wait' actions to temporarily halt activity, preventing rushed decisions in complex experimental procedures.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-process-pauser",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.765
+    },
+    {
+      "skill_name": "scienceworld-room-scanner",
+      "skill_description": "This skill performs a 'look around' action to scan and describe the current room's contents, including visible objects, containers, and doors. It should be triggered upon entering a new room or when the agent needs to locate specific items or assess the environment state. The skill outputs a detailed room description, which is essential for inventory discovery and situational awareness.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-room-scanner",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.768
+    },
+    {
+      "skill_name": "scienceworld-result-archiver",
+      "skill_description": "Places an object into a designated container (like a colored box) based on a test outcome. It should be triggered when the agent needs to finalize a task by storing an object according to a rule (e.g., conductive → blue box, non-conductive → orange box). The input is the object and the rule, and the output is the object moved to the correct container.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-result-archiver",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.771
+    },
+    {
+      "skill_name": "scienceworld-task-focuser",
+      "skill_description": "This skill directs the agent's attention to a specific object, either in the environment or inventory, to signal intent or prepare for an operation. It should be triggered before performing a critical action on an object, such as measuring or using it, to ensure the agent is properly aligned with the task. The skill outputs a confirmation of focus, which often is required for subsequent interactive steps in experimental procedures.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-task-focuser",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.774
+    },
+    {
+      "skill_name": "scienceworld-environment-isolation",
+      "skill_description": "Closes doors or openings to create a contained environment for controlled processes. Trigger this when you need to isolate a space (like a greenhouse) to optimize conditions for pollination or other environmental-sensitive tasks. This modifies room connectivity to create optimal conditions for specific processes.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-environment-isolation",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.777
+    },
+    {
+      "skill_name": "scienceworld-living-entity-identifier",
+      "skill_description": "Analyzes room observations to identify potential living things (e.g., eggs, plants, animals) among listed objects. Processes observation text, flags candidate living items based on domain knowledge, and outputs a focused target for subsequent actions.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-living-entity-identifier",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.78
+    },
+    {
+      "skill_name": "scienceworld-liquid-pourer",
+      "skill_description": "This skill transfers the contents of a source liquid container into a target container for mixing or preparation. It should be triggered when combining multiple substances, such as paints or chemicals, into a single vessel.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-liquid-pourer",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.783
+    },
+    {
+      "skill_name": "scienceworld-circuit-connector",
+      "skill_description": "This skill connects two electrical components (e.g., wires, batteries, devices) by their terminals to build or modify a circuit. It should be triggered when constructing electrical setups for testing, such as conductivity checks or device activation. The input includes two component identifiers and their connection points, and the output is an established electrical connection.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-circuit-connector",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.786
+    },
+    {
+      "skill_name": "scienceworld-conditional-focus-executor",
+      "skill_description": "Executes a 'focus' action on a specific object based on the outcome of a prior conditional evaluation. It should be triggered when task instructions specify focusing on different objects (e.g., different colored boxes) depending on a measurement result. The skill takes the conditional outcome as input and performs the corresponding focus action.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-conditional-focus-executor",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.789
+    },
+    {
+      "skill_name": "scienceworld-heating-apparatus-setup",
+      "skill_description": "This skill positions a container with a substance onto a heating device (stove, oven) and activates the device. It should be triggered when a task requires melting, boiling, or heating a substance. The skill moves the prepared container to the heating element and turns it on.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-heating-apparatus-setup",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.792
+    },
+    {
+      "skill_name": "scienceworld-container-item-retriever",
+      "skill_description": "This skill retrieves a specified item from a container by using the 'pick up' action. It should be triggered when the agent has identified a needed item inside an open container (e.g., a jar, box, or hive) and must transfer it to inventory for later use. The skill handles the object transfer, assuming the container is already accessible, and outputs confirmation that the item is now in the agent's inventory.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-container-item-retriever",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.795
+    },
+    {
+      "skill_name": "scienceworld-inventory-focus",
+      "skill_description": "This skill focuses on a specific item within the agent's inventory to confirm its identity or prepare it for use. It should be triggered before using an inventory item in an experiment or when verifying that the correct item has been collected. The skill helps ensure operational readiness and intentional task progression.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-inventory-focus",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.798
+    },
+    {
+      "skill_name": "scienceworld-target-locator",
+      "skill_description": "This skill determines the most likely location for a target object based on domain knowledge and environmental clues. Trigger this when the agent needs to find a specific item (like an animal) but it is not in the current room. It analyzes the environment description and suggests a room to teleport to for further investigation.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-target-locator",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.801
+    },
+    {
+      "skill_name": "scienceworld-inventory-manager",
+      "skill_description": "This skill handles picking up objects from the environment into the agent's inventory or moving them out. It should be triggered when the agent needs to acquire an object for later use or place an object into a container. The input is an object name and location, and the output is the object being transferred to or from inventory.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-inventory-manager",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.804
+    },
+    {
+      "skill_name": "scienceworld-conditional-placer",
+      "skill_description": "Places an object into one of several designated containers based on a measured condition, such as a temperature threshold. It is triggered after a measurement or assessment when the task requires sorting or storing the object according to a rule.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-conditional-placer",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.807
+    },
+    {
+      "skill_name": "scienceworld-controlled-waiting",
+      "skill_description": "Executes timed waiting to allow processes like plant growth or pollination to progress. Use this skill when you need to advance time for biological or mechanical processes to reach their next stages. This enables progression in tasks that require temporal development rather than immediate actions.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-controlled-waiting",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.81
+    },
+    {
+      "skill_name": "scienceworld-measurement-taker",
+      "skill_description": "This skill uses a measurement tool (like a thermometer) on a target substance or object to obtain a quantitative reading. It should be triggered when the task requires assessing a property (e.g., temperature) to make a conditional decision. The skill outputs the measured value, which determines subsequent actions such as classification or placement.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-measurement-taker",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.813
+    },
+    {
+      "skill_name": "scienceworld-liquid-filler",
+      "skill_description": "This skill fills a container with liquid from a source by first placing the container at the source, then activating the source (e.g., turning on a sink), and finally deactivating it. It should be triggered when the agent has an empty or partially filled container and needs to add a liquid component. The skill results in the container containing the liquid, ready for mixing or further use.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-liquid-filler",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.816
+    },
+    {
+      "skill_name": "soil-extraction",
+      "skill_description": "Uses a shovel tool to dig soil from the ground in outdoor environments. Execute this skill when you need to obtain soil for planting tasks and have both the shovel in inventory and access to an appropriate digging location. The skill produces soil that can then be collected and transported.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/soil-extraction",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.819
+    },
+    {
+      "skill_name": "scienceworld-liquid-source-find",
+      "skill_description": "This skill searches rooms for a liquid source (e.g., sink, toilet, jug) by sequentially surveying different locations. It should be triggered when the task requires obtaining a liquid (like water) and the agent does not have immediate access to it. The skill involves teleporting to candidate rooms, looking around, and identifying potential sources, guiding the agent toward the nearest available liquid.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-liquid-source-find",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.822
+    },
+    {
+      "skill_name": "scienceworld-object-classifier",
+      "skill_description": "Moves a tested or examined object into a designated container (e.g., a specific colored box) based on a determined property. Trigger this skill after completing a test or inspection to fulfill a classification or sorting subtask. It takes the object and target container as inputs and performs the move action.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-object-classifier",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.825
+    },
+    {
+      "skill_name": "scienceworld-conductivity-tester",
+      "skill_description": "Determines if an object is electrically conductive by integrating it into a circuit and observing a light bulb. Triggered when classifying an object based on conductivity.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-conductivity-tester",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.828
+    },
+    {
+      "skill_name": "scienceworld-object-locator",
+      "skill_description": "This skill searches for a specific target object across multiple rooms by systematically teleporting to likely locations and examining each room. It should be triggered when the agent needs to find an object whose exact location is unknown. The skill involves iterating through candidate rooms, using room exploration to check for the object, and continues until the target is found, providing the object's location as output.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-object-locator",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.831
+    },
+    {
+      "skill_name": "scienceworld-container-transfer",
+      "skill_description": "Moves a substance or object from one container to another (e.g., moving lead to a metal pot). Triggered when the agent needs to prepare materials for processing, such as transferring a substance into a heat-resistant container for heating experiments.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-container-transfer",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.834
+    },
+    {
+      "skill_name": "scienceworld-device-activator",
+      "skill_description": "This skill activates a device (e.g., blast furnace, stove) to initiate a process like heating. It should be triggered when the agent has placed materials in a device and needs to start the device's operation. The skill takes a device name as input and outputs a confirmation of activation, which is critical for progressing tasks that require energy or processing.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-device-activator",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.837
+    },
+    {
+      "skill_name": "scienceworld-container-inspector",
+      "skill_description": "This skill performs a 'look at' action to inspect the contents of a specific container or device. It should be triggered when the agent needs to verify what is inside a container (e.g., checking if lead is in the blast furnace) or monitor the state of contents (e.g., solid vs. liquid). The skill outputs a detailed list of contents and their states, providing essential feedback for process monitoring.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-container-inspector",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.84
+    },
+    {
+      "skill_name": "scienceworld-substance-fetcher",
+      "skill_description": "This skill locates and retrieves a target substance or material from a container in the environment. It should be triggered when the core task involves processing a specific substance (e.g., chocolate, a chemical). The skill finds the substance, often inside a fridge or cupboard, and acquires it via a pick-up or move action.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-substance-fetcher",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.843
+    },
+    {
+      "skill_name": "scienceworld-room-navigator",
+      "skill_description": "Teleports the agent to a specified room within the ScienceWorld environment. It should be triggered when the agent needs to move between different locations to locate objects or access specific facilities. The input is a target room name, and the output is the agent arriving at that room, ready for further interaction.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-room-navigator",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.846
+    },
+    {
+      "skill_name": "scienceworld-conditional-box-placer",
+      "skill_description": "Moves an object to one of two destination containers based on a numeric threshold check. Trigger after a measurement (e.g., temperature) is taken. Place object in 'green' box if value > threshold, or 'blue' box if value < threshold.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-conditional-box-placer",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.849
+    },
+    {
+      "skill_name": "scienceworld-target-identifier",
+      "skill_description": "Analyzes room observations to identify objects matching a given target description (e.g., 'living thing'). Triggered after exploring a room when the agent needs to locate a specific type of item. Processes the observation list, filters objects based on target criteria, and returns candidate objects for further action.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-target-identifier",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.852
+    },
+    {
+      "skill_name": "scienceworld-planting-operation",
+      "skill_description": "Plants seeds into prepared containers with soil to initiate plant growth. Execute this when you have both seeds and properly prepared planting containers available. This skill handles the specific action pattern of transferring seeds from storage to growth containers to begin cultivation processes.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-planting-operation",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.855
+    },
+    {
+      "skill_name": "scienceworld-tool-user",
+      "skill_description": "Uses a tool from inventory on a target object or location to perform a specific environmental interaction, such as digging or cutting. Activate this skill when a task requires modifying the environment or manipulating materials, like using a shovel to dig soil. It takes the tool and target as inputs and outputs the result of the interaction, enabling physical task progression.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-tool-user",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.858
+    },
+    {
+      "skill_name": "scienceworld-tool-validator",
+      "skill_description": "This skill performs a basic functionality check on a tool in the agent's inventory. It should be triggered after acquiring a tool and before its first use in a critical task step to ensure it is operational. The skill typically uses a 'focus' or 'examine' action on the tool and confirms its readiness state.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-tool-validator",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.861
+    },
+    {
+      "skill_name": "scienceworld-tool-fetcher",
+      "skill_description": "This skill locates and picks up a specified tool or instrument from the environment. It should be triggered when a task requires a specific tool (e.g., thermometer, stopwatch) for measurement or manipulation. The skill identifies the tool's location via observation and executes a pick-up action, moving the tool to inventory.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-tool-fetcher",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.864
+    },
+    {
+      "skill_name": "scienceworld-instruction-reader",
+      "skill_description": "This skill reads a recipe or note from the inventory using the 'read' action. It should be triggered after acquiring a recipe or document to extract explicit instructions, ingredient lists, or procedural steps. The skill parses the text content and outputs the key information needed to execute the task, such as required components and their combinations.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-instruction-reader",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.867
+    },
+    {
+      "skill_name": "task-completion-focus",
+      "skill_description": "Focuses on a specific target object to signal task completion. Execute this skill when you have produced the required final object (like a grown banana) and need to formally complete the assigned task. This handles the 'focus on OBJ' action that typically marks successful task execution in the environment.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/task-completion-focus",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.87
+    },
+    {
+      "skill_name": "scienceworld-object-placer",
+      "skill_description": "Moves a specified object from the environment or inventory into a target container based on a classification decision. It should be triggered when a task requires sorting or storing an object in a specific location after an assessment.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-object-placer",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.873
+    },
+    {
+      "skill_name": "scienceworld-process-monitor",
+      "skill_description": "This skill observes the state of an active apparatus and its contents to track progress. It should be triggered periodically during a heating or reaction process to check for state changes (e.g., solid to liquid). The skill uses 'look at' or 'examine' actions on the apparatus and substance.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-process-monitor",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.876
+    },
+    {
+      "skill_name": "scienceworld-substance-cooler",
+      "skill_description": "This skill initiates the cooling of a substance by moving it into a cooling appliance like a freezer. It should be triggered when a task requires lowering the temperature of a specific material to observe phase changes. The skill takes the substance (often in a container) and the target appliance as inputs, using the 'move OBJ to OBJ' action. It outputs confirmation of the new location.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-substance-cooler",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.879
+    },
+    {
+      "skill_name": "scienceworld-ambiguous-action-resolution",
+      "skill_description": "Resolves system ambiguity prompts by selecting the appropriate action from numbered options. Trigger this skill when the environment presents multiple identical action possibilities and requires explicit selection. This ensures task progression when the system cannot automatically disambiguate identical object instances.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-ambiguous-action-resolution",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.882
+    },
+    {
+      "skill_name": "scienceworld-environment-scanner",
+      "skill_description": "This skill performs an initial observation of the current location to identify available objects, containers, and connections to other rooms. Use this when starting a new task in ScienceWorld to gather situational awareness, especially when the agent needs to understand its surroundings before taking action. It outputs a detailed room description, listing visible items and accessible doors.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-environment-scanner",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.885
+    },
+    {
+      "skill_name": "scienceworld-task-interpreter",
+      "skill_description": "This skill parses a user's high-level scientific task in the ScienceWorld environment and extracts the core objective and target location. It should be triggered when a new task instruction is received, especially those involving finding, comparing, or manipulating objects. The skill interprets the query to identify the goal (e.g., 'find the animal with the shortest life span') and any specified locations (e.g., 'animals are in the outside location'), outputting a clear, actionable sub-goal for navigation or observation.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-task-interpreter",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.888
+    },
+    {
+      "skill_name": "scienceworld-growth-focuser",
+      "skill_description": "This skill applies a 'focus on' action to a specific plant or biological entity to signal intent and monitor its development. It should be triggered after planting or when the agent needs to track the growth stage of a plant (e.g., to observe sprouting, flowering, or reproduction). The skill outputs a confirmation of focus, which may be necessary for triggering or tracking life cycle progression in the environment.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-growth-focuser",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.891
+    },
+    {
+      "skill_name": "scienceworld-mixture-creator",
+      "skill_description": "This skill chemically mixes the contents of a container using the 'mix' action. It should be triggered when all required ingredients (e.g., sodium chloride and water) are present inside a container and the agent needs to combine them to produce a new substance. The skill performs the mixing operation and outputs the resulting product, completing the synthesis step of the task.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-mixture-creator",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.894
+    },
+    {
+      "skill_name": "scienceworld-threshold-evaluator",
+      "skill_description": "This skill compares a measured numerical value (e.g., temperature, weight) against a predefined threshold to determine a binary outcome. It should be triggered immediately after obtaining a measurement that has an associated conditional instruction. The skill evaluates if the value is above/below the threshold to guide the next action.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-threshold-evaluator",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.897
+    },
+    {
+      "skill_name": "scienceworld-object-retriever",
+      "skill_description": "This skill acquires a specified object by moving it from the environment into the agent's inventory. It should be triggered when a task requires an object to be manipulated, tested, or transported. The skill uses the 'pick up OBJ' action on a target object identified in the room, making it available for further actions in the inventory.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/scienceworld/scienceworld-object-retriever",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "scienceworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.9
+    }
+  ],
+  "average_score": 0.81,
+  "relationships": [
+    {
+      "source": "scienceworld-circuit-builder",
+      "target": "scienceworld-circuit-connector",
+      "type": "belong_to",
+      "reason": "The circuit builder requires the circuit connector to establish connections between components, with the connector being a specific step in the overall circuit construction process."
+    },
+    {
+      "source": "scienceworld-conditional-focus-executor",
+      "target": "scienceworld-measurement-taker",
+      "type": "depend_on",
+      "reason": "The conditional focus executor relies on the measurement taken to determine which object to focus on based on conditional evaluations."
+    },
+    {
+      "source": "scienceworld-conditional-placer",
+      "target": "scienceworld-measurement-taker",
+      "type": "depend_on",
+      "reason": "The conditional placer needs the results from a previous measurement to decide where to place an object based on conditions."
+    },
+    {
+      "source": "scienceworld-mixture-creator",
+      "target": "scienceworld-liquid-pourer",
+      "type": "compose_with",
+      "reason": "Both skills are involved in preparing mixtures; the liquid pourer transfers contents, which might be necessary before the mixture is created."
+    },
+    {
+      "source": "scienceworld-device-activator",
+      "target": "scienceworld-heating-apparatus-setup",
+      "type": "compose_with",
+      "reason": "The device activator initiates operation of the heating apparatus after setting it up, linking both processes in the workflow."
+    },
+    {
+      "source": "scienceworld-instruction-reader",
+      "target": "scienceworld-recipe-retriever",
+      "type": "depend_on",
+      "reason": "The instruction reader requires a recipe document to be retrieved first before it can read and parse the instructions from it."
+    },
+    {
+      "source": "scienceworld-recipe-retriever",
+      "target": "scienceworld-instruction-reader",
+      "type": "compose_with",
+      "reason": "The recipe retriever collects documents that are then interpreted by the instruction reader to provide the steps needed for tasks."
+    },
+    {
+      "source": "scienceworld-object-selector",
+      "target": "scienceworld-object-locator",
+      "type": "compose_with",
+      "reason": "Both skills are used in conjunction when an agent needs to locate and select a specific object based on task criteria."
+    },
+    {
+      "source": "scienceworld-room-teleporter",
+      "target": "scienceworld-room-navigator",
+      "type": "similar_to",
+      "reason": "Both skills teleport the agent to a specified room within the ScienceWorld environment using a target room name as input, providing identical functionality for room navigation."
+    },
+    {
+      "source": "scienceworld-item-fetcher",
+      "target": "scienceworld-object-retriever",
+      "type": "similar_to",
+      "reason": "Both skills pick up a specified object from the environment and move it into the agent's inventory using the 'pick up' action, serving the same purpose of object acquisition."
+    },
+    {
+      "source": "scienceworld-room-scanner",
+      "target": "scienceworld-environment-scanner",
+      "type": "similar_to",
+      "reason": "Both skills perform a 'look around' action to scan and describe the current location's contents, providing detailed room descriptions for situational awareness."
+    },
+    {
+      "source": "scienceworld-conductivity-tester",
+      "target": "scienceworld-circuit-builder",
+      "type": "depend_on",
+      "reason": "Testing electrical conductivity by observing a light bulb requires a functional circuit to be constructed first, integrating the test object into that circuit."
+    },
+    {
+      "source": "scienceworld-planting-coordinator",
+      "target": "scienceworld-pot-preparer",
+      "type": "depend_on",
+      "reason": "Planting a seed into a growth container requires the pot to be prepared first with soil and water as a suitable growth environment."
+    },
+    {
+      "source": "scienceworld-conditional-box-placer",
+      "target": "scienceworld-threshold-evaluator",
+      "type": "depend_on",
+      "reason": "Placing an object into different boxes based on a threshold requires the threshold evaluation to be performed first to determine which container to use."
+    },
+    {
+      "source": "scienceworld-temperature-measurer",
+      "target": "scienceworld-tool-fetcher",
+      "type": "compose_with",
+      "reason": "Temperature measurement requires a thermometer to be fetched first; these skills work together with tool-fetcher acquiring the thermometer and temperature-measurer using it."
+    },
+    {
+      "source": "scienceworld-object-locator",
+      "target": "scienceworld-room-navigator",
+      "type": "compose_with",
+      "reason": "Locating objects across multiple rooms uses room navigation to systematically teleport to candidate locations while searching."
+    },
+    {
+      "source": "scienceworld-threshold-evaluator",
+      "target": "scienceworld-measurement-taker",
+      "type": "compose_with",
+      "reason": "Evaluating if a value meets a threshold requires measurement data to be obtained first; measurement-taker provides the numerical value that threshold-evaluator compares."
+    },
+    {
+      "source": "scienceworld-temperature-measurer",
+      "target": "scienceworld-measurement-taker",
+      "type": "belong_to",
+      "reason": "Temperature measurement using a thermometer is a specific type of measurement operation, fitting within the broader measurement-taker functionality."
+    },
+    {
+      "source": "scienceworld-tool-fetcher",
+      "target": "scienceworld-inventory-manager",
+      "type": "belong_to",
+      "reason": "Fetching tools is a specialized form of picking up objects, which is part of the broader inventory management functionality."
+    },
+    {
+      "source": "scienceworld-heating-apparatus-setup",
+      "target": "scienceworld-substance-preparator",
+      "type": "compose_with",
+      "reason": "Setting up a heating apparatus typically requires the substance to be prepared and placed in an appropriate container first, making these complementary steps in heating experiments."
+    }
+  ]
+}

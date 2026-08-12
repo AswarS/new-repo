@@ -1,0 +1,65 @@
+{
+  "task_idx": 1,
+  "goal": "Instruction: i want a noise cancelling cosycost usb microphone, and price lower than 70.00 dollars",
+  "reward": 1.0,
+  "done": true,
+  "steps": 3,
+  "max_steps": 30,
+  "error": "",
+  "steps_log": [
+    {
+      "step": 1,
+      "observation": "WebShop [SEP] Instruction: [SEP] i want a noise cancelling cosycost usb microphone, and price lower than 70.00 dollars [SEP] Search",
+      "action": "search[cosycost usb microphone noise cancelling]",
+      "response": "search[cosycost usb microphone noise cancelling]",
+      "content_blocks": [
+        {
+          "type": "tool_use",
+          "id": "tooluse_yZxki5AwB5SjGkktgqHN60",
+          "name": "Skill",
+          "input": {
+            "skill": "webshop-v4-option-gate"
+          }
+        },
+        {
+          "type": "text",
+          "text": "search[cosycost usb microphone noise cancelling]"
+        }
+      ],
+      "latency_s": 8.18
+    },
+    {
+      "step": 2,
+      "observation": "Instruction: [SEP] i want a noise cancelling cosycost usb microphone, and price lower than 70.00 dollars [SEP] Back to Search [SEP] Page 1 (Total results: 50) [SEP] Next > [SEP] B0972Q1T8T [SEP] Cosycost USB Microphone,Condenser Computer PC Gaming Microphone for PS4/5 Laptop Windows Mac OS Android Phone,Noise Cancelling Instant Mute,Studio Mic for Voice,Music Recording,Podcasting,Streaming [SEP] $32.99 [SEP] B072L2D6LY [SEP] Andrea Communications NC-255VM USB On-Ear Stereo USB Computer Headset w",
+      "action": "click[b0972q1t8t]",
+      "response": "click[b0972q1t8t]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[b0972q1t8t]"
+        }
+      ],
+      "latency_s": 2.72
+    },
+    {
+      "step": 3,
+      "observation": "Instruction: [SEP] i want a noise cancelling cosycost usb microphone, and price lower than 70.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] Cosycost USB Microphone,Condenser Computer PC Gaming Microphone for PS4/5 Laptop Windows Mac OS Android Phone,Noise Cancelling Instant Mute,Studio Mic for Voice,Music Recording,Podcasting,Streaming [SEP] Price: $32.99 [SEP] Rating: N.A. [SEP] Description [SEP] Features [SEP] Reviews [SEP] Buy Now",
+      "action": "click[Buy Now]",
+      "response": "click[Buy Now]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[Buy Now]"
+        }
+      ],
+      "latency_s": 3.06
+    },
+    {
+      "step": 4,
+      "observation": "Thank you for shopping with us! [SEP] Your code: [SEP] None [SEP] (Paste it in your MTurk interface.) [SEP] Purchased [SEP] asin [SEP] B0972Q1T8T [SEP] options [SEP] {} [SEP] attrs [SEP] None [SEP] category [SEP] None [SEP] query [SEP] None [SEP] product category [SEP] None [SEP] Target [SEP] asin [SEP] options [SEP] attrs [SEP] price upper [SEP] instuction text [SEP] category [SEP] product category [SEP] query [SEP] Goal [SEP] None [SEP] Reward [SEP] Your score (min 0.0, max 1.0) [SEP] 1.0 [SEP",
+      "action": "[DONE]",
+      "reward": 1.0
+    }
+  ],
+  "messages_count": 45
+}

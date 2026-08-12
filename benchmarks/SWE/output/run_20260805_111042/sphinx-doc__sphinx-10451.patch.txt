@@ -1,0 +1,102 @@
+diff --git a/.gitignore b/.gitignore
+index 8d33409d5..1e9e2ae00 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -33,3 +33,7 @@ tests/build/
+ utils/regression_test.js
+ 
+ node_modules/
++
++# SWE Runner temp files
++.swe-runner-*
++.claude/settings.local.json
+diff --git a/sphinx/ext/autodoc/typehints.py b/sphinx/ext/autodoc/typehints.py
+index d912cd7d5..0da028e5f 100644
+--- a/sphinx/ext/autodoc/typehints.py
++++ b/sphinx/ext/autodoc/typehints.py
+@@ -27,7 +27,13 @@ def record_typehints(app: Sphinx, objtype: str, name: str, obj: Any,
+             sig = inspect.signature(obj, type_aliases=app.config.autodoc_type_aliases)
+             for param in sig.parameters.values():
+                 if param.annotation is not param.empty:
+-                    annotation[param.name] = typing.stringify(param.annotation, mode)
++                    if param.kind == param.VAR_POSITIONAL:
++                        name = '*' + param.name
++                    elif param.kind == param.VAR_KEYWORD:
++                        name = '**' + param.name
++                    else:
++                        name = param.name
++                    annotation[name] = typing.stringify(param.annotation, mode)
+             if sig.return_annotation is not sig.empty:
+                 annotation['return'] = typing.stringify(sig.return_annotation, mode)
+     except (TypeError, ValueError):
+diff --git a/tests/roots/test-ext-autodoc/target/typehints.py b/tests/roots/test-ext-autodoc/target/typehints.py
+index 6b0d6142c..d04a2e2b8 100644
+--- a/tests/roots/test-ext-autodoc/target/typehints.py
++++ b/tests/roots/test-ext-autodoc/target/typehints.py
+@@ -99,3 +99,15 @@ class _ClassWithDocumentedInit:
+ 
+         :param x: Some integer
+         """
++
++
++class _ClassWithDocumentedInitAndStarArgs:
++    """Class docstring."""
++
++    def __init__(self, x: int, *args: int, **kwargs: int) -> None:
++        """Init docstring.
++
++        :param x: Some integer
++        :param *args: Some integer
++        :param **kwargs: Some integer
++        """
+diff --git a/tests/test_ext_autodoc_configs.py b/tests/test_ext_autodoc_configs.py
+index c075a8e2d..f0f69b910 100644
+--- a/tests/test_ext_autodoc_configs.py
++++ b/tests/test_ext_autodoc_configs.py
+@@ -1052,6 +1052,46 @@ def test_autodoc_typehints_description_with_documented_init(app):
+             '         None\n' == context)
+ 
+ 
++@pytest.mark.sphinx('text', testroot='ext-autodoc',
++                    confoverrides={'autodoc_typehints': "description"})
++def test_autodoc_typehints_description_with_documented_init_and_star_args(app):
++    (app.srcdir / 'index.rst').write_text(
++        '.. autoclass:: target.typehints._ClassWithDocumentedInitAndStarArgs\n'
++        '   :special-members: __init__\n',
++        encoding='utf8'
++    )
++    app.build()
++    context = (app.outdir / 'index.txt').read_text(encoding='utf8')
++    assert ('class target.typehints._ClassWithDocumentedInitAndStarArgs(x, *args, **kwargs)\n'
++            '\n'
++            '   Class docstring.\n'
++            '\n'
++            '   Parameters:\n'
++            '      * **x** (*int*) --\n'
++            '\n'
++            '      * ***args** (*int*) --\n'
++            '\n'
++            '      * ****kwargs** (*int*) --\n'
++            '\n'
++            '   __init__(x, *args, **kwargs)\n'
++            '\n'
++            '      Init docstring.\n'
++            '\n'
++            '      Parameters:\n'
++            '         * **x** (*int*) -- Some integer\n'
++            '\n'
++            '         * ***args** (*int*) --\n'
++            '\n'
++            '           Some integer\n'
++            '\n'
++            '         * ****kwargs** (*int*) --\n'
++            '\n'
++            '           Some integer\n'
++            '\n'
++            '      Return type:\n'
++            '         None\n' == context)
++
++
+ @pytest.mark.sphinx('text', testroot='ext-autodoc',
+                     confoverrides={'autodoc_typehints': "description",
+                                    'autodoc_typehints_description_target': 'documented'})

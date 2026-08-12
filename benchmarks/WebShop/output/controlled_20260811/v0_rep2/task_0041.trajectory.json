@@ -1,0 +1,66 @@
+{
+  "task_idx": 41,
+  "goal": "Instruction: i'm trying to find white bluetooth speakers that are not only water resistant but also come with stereo sound, and price lower than 60.00 dollars",
+  "reward": 0.75,
+  "done": true,
+  "steps": 3,
+  "max_steps": 30,
+  "error": "",
+  "steps_log": [
+    {
+      "step": 1,
+      "observation": "WebShop [SEP] Instruction: [SEP] i'm trying to find white bluetooth speakers that are not only water resistant but also come with stereo sound, and price lower than 60.00 dollars [SEP] Search",
+      "action": "search[white bluetooth speakers water resistant stereo sound]",
+      "response": "search[white bluetooth speakers water resistant stereo sound]",
+      "content_blocks": [
+        {
+          "id": "tooluse_0rn7BAzsDAWOl2IRUPykay",
+          "input": {
+            "skill": "webshop-v0-common-control",
+            "args": "Instruction: i'm trying to find white bluetooth speakers that are not only water resistant but also come with stereo sound, and price lower than 60.00 dollars\n\nObservation:\nWebShop [SEP] Instruction: [SEP] i'm trying to find white bluetooth speakers that are not only water resistant but also come with stereo sound, and price lower than 60.00 dollars [SEP] Search\n\nAvailable actions:\n- search[query]\n- click[element]: Available: [search]"
+          },
+          "name": "Skill",
+          "type": "tool_use"
+        },
+        {
+          "text": "search[white bluetooth speakers water resistant stereo sound]",
+          "type": "text"
+        }
+      ],
+      "latency_s": 12.71
+    },
+    {
+      "step": 2,
+      "observation": "Instruction: [SEP] i'm trying to find white bluetooth speakers that are not only water resistant but also come with stereo sound, and price lower than 60.00 dollars [SEP] Back to Search [SEP] Page 1 (Total results: 50) [SEP] Next > [SEP] B076B8Y5CF [SEP] Motorola SP001 WH Sonic Play+ 200 Water Resistant Stereo Bluetooth Speaker-White [SEP] $19.99 [SEP] B01954Q028 [SEP] Wall Mount Home Speaker System - Active + Passive Pair Wireless Bluetooth Compatible Indoor / Outdoor Water-resistant Weatherpro",
+      "action": "click[b076b8y5cf]",
+      "response": "click[b076b8y5cf]",
+      "content_blocks": [
+        {
+          "text": "click[b076b8y5cf]",
+          "type": "text"
+        }
+      ],
+      "latency_s": 3.71
+    },
+    {
+      "step": 3,
+      "observation": "Instruction: [SEP] i'm trying to find white bluetooth speakers that are not only water resistant but also come with stereo sound, and price lower than 60.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] Motorola SP001 WH Sonic Play+ 200 Water Resistant Stereo Bluetooth Speaker-White [SEP] Price: $19.99 [SEP] Rating: N.A. [SEP] Description [SEP] Features [SEP] Reviews [SEP] Buy Now",
+      "action": "click[buy now]",
+      "response": "click[buy now]",
+      "content_blocks": [
+        {
+          "text": "click[buy now]",
+          "type": "text"
+        }
+      ],
+      "latency_s": 8.26
+    },
+    {
+      "step": 4,
+      "observation": "Thank you for shopping with us! [SEP] Your code: [SEP] None [SEP] (Paste it in your MTurk interface.) [SEP] Purchased [SEP] asin [SEP] B076B8Y5CF [SEP] options [SEP] {} [SEP] attrs [SEP] None [SEP] category [SEP] None [SEP] query [SEP] None [SEP] product category [SEP] None [SEP] Target [SEP] asin [SEP] options [SEP] attrs [SEP] price upper [SEP] instuction text [SEP] category [SEP] product category [SEP] query [SEP] Goal [SEP] None [SEP] Reward [SEP] Your score (min 0.0, max 1.0) [SEP] 0.75 [SE",
+      "action": "[DONE]",
+      "reward": 0.75
+    }
+  ],
+  "messages_count": 118
+}

@@ -1,0 +1,579 @@
+{
+  "package_name": "alfworld",
+  "scene_description": "ALFWorld benchmark environment for household task automation - embodied AI agents navigating rooms, manipulating objects, operating appliances, and completing multi-step interactive tasks in simulated household environments",
+  "tags": [
+    "alfworld"
+  ],
+  "curated": true,
+  "created_at": "2026-02-08T10:30:00.000000",
+  "skill_count": 37,
+  "skills": [
+    {
+      "skill_name": "alfworld-object-locator",
+      "skill_description": "This skill scans the current environment observation to identify the presence and location of a target object needed for a task. It should be triggered when the agent's goal requires an object that is not currently in the agent's inventory, and the observation does not explicitly state where the object is. The skill analyzes the textual observation to find receptacles that likely contain the target, based on common sense or domain knowledge (e.g., a 'dishsponge' might be on a 'cart'), and outputs the identified target receptacle location for navigation.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/alfworld/alfworld-object-locator",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "alfworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.72
+    },
+    {
+      "skill_name": "alfworld-search-verifier",
+      "skill_description": "This skill re-examines previously visited locations to confirm the absence of a target object or to check for overlooked items. It should be triggered when an initial search fails to find enough objects or when double-checking is required for task completion. The skill systematically revisits receptacles, ensuring no viable location is missed before concluding the search.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/alfworld/alfworld-search-verifier",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "alfworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.723
+    },
+    {
+      "skill_name": "alfworld-storage-explorer",
+      "skill_description": "This skill systematically explores storage receptacles (like drawers or cabinets) to find an appropriate placement location for an object. It should be triggered when the agent needs to store an item but the exact storage location is unknown or must be validated. The skill involves opening, inspecting, and closing receptacles to assess their suitability.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/alfworld/alfworld-storage-explorer",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "alfworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.726
+    },
+    {
+      "skill_name": "alfworld-device-operator",
+      "skill_description": "This skill operates a device or appliance (like a desklamp) to interact with another object. It should be triggered when the task requires using a tool on a target item (e.g., 'look at laptop under the desklamp'). The skill assumes the target object and the operating device are co-located, and it executes the appropriate use action (e.g., toggle, heat, clean).",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/alfworld/alfworld-device-operator",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "alfworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.729
+    },
+    {
+      "skill_name": "alfworld-environment-scanner",
+      "skill_description": "Performs an initial scan of the Alfworld environment to identify all visible objects and receptacles. Processes raw observation text into a structured list of entities to build a mental map for planning.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/alfworld/alfworld-environment-scanner",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "alfworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.732
+    },
+    {
+      "skill_name": "alfworld-receptacle-closer",
+      "skill_description": "Closes an open receptacle to maintain environment tidiness after inspection. Trigger this after you have finished searching a container and no longer need it open. It helps prevent clutter and is often used as a cleanup step following object searching inside drawers or similar containers.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/alfworld/alfworld-receptacle-closer",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "alfworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.735
+    },
+    {
+      "skill_name": "alfworld-clean-object",
+      "skill_description": "This skill cleans a specified object using an appropriate cleaning receptacle (e.g., sink). It should be triggered when a task requires an object to be in a clean state (e.g., 'clean potato') before proceeding. The skill involves navigating to the cleaning location and performing the clean action, outputting confirmation that the object is now clean.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/alfworld/alfworld-clean-object",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "alfworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.738
+    },
+    {
+      "skill_name": "alfworld-object-state-inspector",
+      "skill_description": "Checks the current state or contents of a specified object or receptacle. Trigger this skill when the agent needs to determine if an object is present, missing, or in a certain condition before proceeding with a task, such as verifying if a holder is empty or if an item is available. It typically follows navigation and involves observing the environment's feedback, providing crucial information for decision-making in the task flow.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/alfworld/alfworld-object-state-inspector",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "alfworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.741
+    },
+    {
+      "skill_name": "alfworld-receptacle-finder",
+      "skill_description": "This skill searches for a suitable empty or appropriately occupied receptacle (like a shelf) to place an object. It should be triggered when the agent needs to store or place an object and must evaluate available receptacles. The skill examines candidate receptacles and identifies one meeting the placement criteria.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/alfworld/alfworld-receptacle-finder",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "alfworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.744
+    },
+    {
+      "skill_name": "alfworld-receptacle-preparer",
+      "skill_description": "This skill verifies and prepares a target receptacle for receiving an object. It is triggered before placing an item into a receptacle (e.g., a garbage can) to ensure the receptacle is accessible and suitable. The skill involves navigating to the receptacle, observing its state (e.g., open/closed, occupied), and performing any necessary preparatory actions like opening it, resulting in a ready-to-use target location.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/alfworld/alfworld-receptacle-preparer",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "alfworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.747
+    },
+    {
+      "skill_name": "alfworld-locate-target-object",
+      "skill_description": "This skill navigates to a suspected location and identifies a target object. It should be triggered when the agent's goal requires finding a specific object (e.g., 'potato', 'plate') and its location is not immediately known. The skill involves moving to a relevant receptacle (like a fridge or cabinet) and checking its contents, outputting the object's location or confirming its absence.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/alfworld/alfworld-locate-target-object",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "alfworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.75
+    },
+    {
+      "skill_name": "alfworld-heat-object-with-appliance",
+      "skill_description": "This skill uses a heating appliance (e.g., microwave, stove) to apply heat to a specified object. It should be triggered when the task requires warming or cooking an item, and the appliance is available and properly prepared (e.g., empty, closed). The input is the object name and appliance name, and the output is the object being heated, changing its state to fulfill task goals like 'heat some egg'.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/alfworld/alfworld-heat-object-with-appliance",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "alfworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.753
+    },
+    {
+      "skill_name": "alfworld-object-state-modifier",
+      "skill_description": "This skill uses an appliance to change the state of an object (e.g., cooling, heating, cleaning). It should be triggered when the task requires altering an object's temperature or cleanliness using a specific device (like cooling with a fridge or heating with a microwave). The skill requires the object, the target state, and the appliance as inputs, and executes the corresponding modifier action (e.g., 'cool X with Y').",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/alfworld/alfworld-object-state-modifier",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "alfworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.756
+    },
+    {
+      "skill_name": "alfworld-receptacle-navigator",
+      "skill_description": "This skill plans and executes movement to a target receptacle within the environment. It should be triggered when the agent needs to interact with an object at a specific location (e.g., go to fridge to cool an item) or needs to access a receptacle itself (e.g., go to garbagecan to dispose of an item). The skill uses the receptacle name from the observation or task goal, outputs the 'go to' action, and confirms arrival at the destination.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/alfworld/alfworld-receptacle-navigator",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "alfworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.759
+    },
+    {
+      "skill_name": "alfworld-search-pattern-executor",
+      "skill_description": "Systematically searches a sequence of likely locations for a target object based on common sense. Takes a list of candidate receptacles, orchestrates navigation and inspection, and outputs when the target is found or all locations are exhausted.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/alfworld/alfworld-search-pattern-executor",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "alfworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.762
+    },
+    {
+      "skill_name": "alfworld-location-navigator",
+      "skill_description": "Moves the agent to a specified receptacle or object location within the Alfworld environment. Use this skill when the agent needs to physically approach a target to inspect or interact with it, such as when checking an object's state or preparing for pickup. The skill takes a target location name as input and executes the 'go to' action, resulting in the agent being positioned at the destination for subsequent operations.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/alfworld/alfworld-location-navigator",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "alfworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.765
+    },
+    {
+      "skill_name": "alfworld-appliance-navigator",
+      "skill_description": "This skill navigates the agent to a target appliance (like a microwave, stove, or fridge) needed for a task. It should be triggered when the agent has an object that requires processing (heating, cooling, cleaning) and needs to move to the appropriate station. The skill identifies the appliance from the environment and executes the movement action.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/alfworld/alfworld-appliance-navigator",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "alfworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.768
+    },
+    {
+      "skill_name": "alfworld-object-disposer",
+      "skill_description": "This skill disposes of an object by placing it into a disposal receptacle like a garbage can. It should be triggered when the task requires discarding an object (e.g., 'put it in garbagecan') and the agent is at the disposal location with the object in hand. The skill executes the 'put' action to place the object in/on the target receptacle, completing the disposal subtask.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/alfworld/alfworld-object-disposer",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "alfworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.771
+    },
+    {
+      "skill_name": "alfworld-object-picker",
+      "skill_description": "Picks up a specified object from a given receptacle. Use this skill when the agent has located a required object and needs to acquire it for later use, such as taking an item from a surface or container. The skill requires the object and source receptacle as inputs, executing a 'take' action to transfer the object into the agent's inventory, enabling further manipulation like placement or usage.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/alfworld/alfworld-object-picker",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "alfworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.774
+    },
+    {
+      "skill_name": "alfworld-tool-locator",
+      "skill_description": "This skill searches for a specified tool or device (e.g., a desklamp) within the environment by checking relevant surfaces. It should be triggered when the agent needs a tool to interact with another object as part of the task. The skill takes a tool name as implicit input and outputs navigation actions to likely storage spots (e.g., sidetables, shelves) until the tool is found.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/alfworld/alfworld-tool-locator",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "alfworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.777
+    },
+    {
+      "skill_name": "alfworld-receptacle-operator",
+      "skill_description": "This skill opens or closes a receptacle (like a fridge, cabinet, or microwave) to access its interior or secure it. It should be triggered when an object needs to be placed inside/retrieved from a closed container, or when an open container should be closed (e.g., for energy efficiency or task cleanliness). The skill decides the appropriate 'open' or 'close' action based on the receptacle's current state and the task context.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/alfworld/alfworld-receptacle-operator",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "alfworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.78
+    },
+    {
+      "skill_name": "alfworld-task-verifier",
+      "skill_description": "This skill checks the current state against the task goal to determine if the objective has been met or if further actions are needed. It is triggered after completing a key sub-action, such as placing an object, to assess progress. The skill evaluates the observation feedback and the remaining requirements, outputting a decision to either continue searching for missing items or conclude the task.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/alfworld/alfworld-task-verifier",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "alfworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.783
+    },
+    {
+      "skill_name": "alfworld-navigation-planner",
+      "skill_description": "Plans a path to move the agent between receptacles to search for target objects. Use this when you need to traverse the environment to reach a specific location or systematically explore multiple areas. It takes the current location and destination receptacle as input, and outputs the next 'go to' action to approach the target.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/alfworld/alfworld-navigation-planner",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "alfworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.786
+    },
+    {
+      "skill_name": "alfworld-object-retriever",
+      "skill_description": "This skill picks up a target object from a specified receptacle after the object has been visually confirmed. Use this skill when the agent has located an object in a receptacle and needs to acquire it. It requires the object and source receptacle as inputs and results in the object being added to the agent's inventory.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/alfworld/alfworld-object-retriever",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "alfworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.789
+    },
+    {
+      "skill_name": "alfworld-object-placer",
+      "skill_description": "Places a held object onto or into a target receptacle. Trigger this skill when the agent is carrying an object and needs to deposit it at a specific location to complete a task, such as installing an item on a holder or storing it in a container. It takes the object and destination receptacle as inputs, performing a 'put' action to finalize the object's positioning according to the task goal.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/alfworld/alfworld-object-placer",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "alfworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.792
+    },
+    {
+      "skill_name": "alfworld-open-receptacle",
+      "skill_description": "This skill opens a closed receptacle to access its contents. It should be triggered when an agent needs to interact with items inside a closed container (e.g., fridge, microwave, drawer). The skill takes a receptacle identifier as input, performs the open action, and outputs the observation of the interior, enabling subsequent item retrieval or placement.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/alfworld/alfworld-open-receptacle",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "alfworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.795
+    },
+    {
+      "skill_name": "alfworld-receptacle-searcher",
+      "skill_description": "This skill searches for a specific receptacle (e.g., garbage can, cabinet) by systematically exploring the environment, checking multiple locations until found. Trigger when the target receptacle is not initially visible, often after scanning nearby areas. It outputs the receptacle's location and may involve navigating through multiple waypoints.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/alfworld/alfworld-receptacle-searcher",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "alfworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.798
+    },
+    {
+      "skill_name": "alfworld-object-transporter",
+      "skill_description": "This skill picks up a target object from its current receptacle and moves it to a specified destination receptacle. It should be triggered when the agent has located an object and needs to relocate it to complete a task (e.g., moving a laptop to a desk). The skill requires the object identifier and source location as input, and it outputs the action sequence to take and transport the object.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/alfworld/alfworld-object-transporter",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "alfworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.801
+    },
+    {
+      "skill_name": "alfworld-inventory-management",
+      "skill_description": "This skill tracks which objects have been collected and which remain to be found for multi-object tasks. It should be triggered when working with tasks requiring multiple instances of the same object type. The skill maintains a count of collected vs. needed objects and guides the search for remaining items.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/alfworld/alfworld-inventory-management",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "alfworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.804
+    },
+    {
+      "skill_name": "alfworld-goal-interpreter",
+      "skill_description": "Parses the natural language task goal to extract actionable sub-objectives and required objects. Trigger this skill whenever a new task is assigned to break down complex instructions into clear, sequential targets. It interprets phrases like 'look at X under Y' to identify target objects (pillow), reference objects (desklamp), and spatial relationships (under).",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/alfworld/alfworld-goal-interpreter",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "alfworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.807
+    },
+    {
+      "skill_name": "alfworld-receptacle-opener",
+      "skill_description": "This skill opens a closed receptacle to allow access to its contents or to enable interaction with it. It should be triggered when the agent encounters a closed receptacle (e.g., 'The fridge 1 is closed.') that must be opened to proceed with a task, such as cooling an item with a fridge or taking an object from inside a cabinet. The skill outputs the 'open' action on the specified receptacle.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/alfworld/alfworld-receptacle-opener",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "alfworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.81
+    },
+    {
+      "skill_name": "alfworld-object-heater",
+      "skill_description": "This skill heats a specified object using an available heating appliance (e.g., microwave, stove). Activate this skill when the agent has an object that requires heating and the appliance is prepared. It requires the object and appliance as inputs and results in the object being heated.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/alfworld/alfworld-object-heater",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "alfworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.813
+    },
+    {
+      "skill_name": "alfworld-temperature-regulator",
+      "skill_description": "This skill manages the temperature state of an object by placing it into an appropriate environment (e.g., fridge for cooling, microwave for heating). It should be triggered when the task requires modifying an object's temperature property, such as cooling bread or heating food. The skill requires the object identifier and the target temperature-modifying receptacle as inputs and confirms the object's placement for the intended thermal effect.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/alfworld/alfworld-temperature-regulator",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "alfworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.816
+    },
+    {
+      "skill_name": "alfworld-tool-user",
+      "skill_description": "This skill uses a tool on a target object to accomplish a specific interaction, such as examining, cleaning, or manipulating. It should be triggered when both the object and the required tool are in the agent's possession or within reach. The skill takes the tool and object as implicit inputs and executes the appropriate interaction action (e.g., 'use', 'clean', 'heat') to progress the task.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/alfworld/alfworld-tool-user",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "alfworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.819
+    },
+    {
+      "skill_name": "alfworld-object-cooler",
+      "skill_description": "This skill cools a held object using an appropriate cooling appliance, such as a fridge. It should be triggered when the task requires reducing the temperature of an object (e.g., a hot pot). The skill assumes the agent is holding the object and is near the cooling receptacle; it performs the 'cool' action to achieve the desired state change, preparing the object for subsequent steps like placement or serving.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/alfworld/alfworld-object-cooler",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "alfworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.822
+    },
+    {
+      "skill_name": "alfworld-appliance-preparer",
+      "skill_description": "This skill prepares an appliance (like a microwave, oven, or toaster) for use by ensuring it is in the correct open/closed state. Trigger this when the agent needs to use an appliance for heating, cooling, or cooking and must first open or close it. It takes an appliance identifier as input and outputs a confirmation that the appliance is ready.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/alfworld/alfworld-appliance-preparer",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "alfworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.825
+    },
+    {
+      "skill_name": "alfworld-object-storer",
+      "skill_description": "This skill places an object into a selected storage receptacle after confirming its suitability. It should be triggered when the agent has identified an appropriate storage location and is ready to complete the storage task. The skill takes the object and target receptacle as inputs and results in the object being stored.",
+      "skill_url": "https://github.com/zjunlp/SkillNet/tree/main/experiments/src/skills/alfworld/alfworld-object-storer",
+      "category": "Benchmark",
+      "stars": 33,
+      "tags": [
+        "alfworld"
+      ],
+      "tag_hits": 1,
+      "semantic_score": 0.828
+    }
+  ],
+  "average_score": 0.774,
+  "relationships": [
+    {
+      "source": "alfworld-appliance-navigator",
+      "target": "alfworld-receptacle-navigator",
+      "type": "similar_to",
+      "reason": "Both skills navigate to specific locations in the environment; appliance-navigator is a specialized version targeting appliances while receptacle-navigator is more general."
+    },
+    {
+      "source": "alfworld-appliance-preparer",
+      "target": "alfworld-object-heater",
+      "type": "depend_on",
+      "reason": "The appliance preparer must be successfully executed before using the heating appliance to ensure it is ready for heating."
+    },
+    {
+      "source": "alfworld-heat-object-with-appliance",
+      "target": "alfworld-appliance-preparer",
+      "type": "depend_on",
+      "reason": "Using the heating appliance to heat an object requires the appliance to be prepared first."
+    },
+    {
+      "source": "alfworld-object-cooler",
+      "target": "alfworld-appliance-preparer",
+      "type": "depend_on",
+      "reason": "Cooling an object with an appliance necessitates that the appliance must be prepared before any cooling action is taken."
+    },
+    {
+      "source": "alfworld-object-heater",
+      "target": "alfworld-appliance-preparer",
+      "type": "depend_on",
+      "reason": "Heating an object with a specific appliance depends on the appliance being prepared beforehand."
+    },
+    {
+      "source": "alfworld-object-locator",
+      "target": "alfworld-locate-target-object",
+      "type": "similar_to",
+      "reason": "Both skills aim to identify the location of a target object within the environment."
+    },
+    {
+      "source": "alfworld-object-picker",
+      "target": "alfworld-object-retriever",
+      "type": "similar_to",
+      "reason": "Both skills involve picking up a specified object from a receptacle, but differ in that the picker may work with a known location while the retriever focuses on confirmed locations."
+    },
+    {
+      "source": "alfworld-heat-object-with-appliance",
+      "target": "alfworld-object-state-modifier",
+      "type": "belong_to",
+      "reason": "Heating objects with appliances is a specific type of state modification; heat-object is a specialized instance of the general state-modifier skill."
+    },
+    {
+      "source": "alfworld-object-cooler",
+      "target": "alfworld-object-state-modifier",
+      "type": "belong_to",
+      "reason": "Cooling objects is a specific type of state modification; object-cooler is a specialized instance of the general state-modifier skill."
+    },
+    {
+      "source": "alfworld-object-placer",
+      "target": "alfworld-object-transporter",
+      "type": "compose_with",
+      "reason": "Placing an object into a receptacle often requires moving the object to the receptacle first, creating a workflow dependency."
+    },
+    {
+      "source": "alfworld-object-placer",
+      "target": "alfworld-receptacle-preparer",
+      "type": "depend_on",
+      "reason": "An object must be placed in a prepared receptacle to ensure the receptacle is suitable for the object before placing it."
+    },
+    {
+      "source": "alfworld-open-receptacle",
+      "target": "alfworld-receptacle-operator",
+      "type": "belong_to",
+      "reason": "Opening receptacles is a specific action within the broader receptacle operator skill that handles both opening and closing receptacles."
+    },
+    {
+      "source": "alfworld-navigation-planner",
+      "target": "alfworld-location-navigator",
+      "type": "belong_to",
+      "reason": "The navigation planner is focused on planning routes, whereas the location navigator executes those actions, making it a component of the navigation process."
+    },
+    {
+      "source": "alfworld-goal-interpreter",
+      "target": "alfworld-task-verifier",
+      "type": "compose_with",
+      "reason": "Goal interpreter parses task objectives at the start, while task verifier checks completion during execution; they work together in the task lifecycle."
+    },
+    {
+      "source": "alfworld-receptacle-opener",
+      "target": "alfworld-open-receptacle",
+      "type": "similar_to",
+      "reason": "Both skills open closed receptacles to access contents; they have nearly identical functionality and can be used interchangeably."
+    },
+    {
+      "source": "alfworld-location-navigator",
+      "target": "alfworld-receptacle-navigator",
+      "type": "similar_to",
+      "reason": "Both skills move the agent to specified locations; location-navigator is general-purpose while receptacle-navigator focuses on receptacles."
+    },
+    {
+      "source": "alfworld-object-storer",
+      "target": "alfworld-object-placer",
+      "type": "similar_to",
+      "reason": "Both place objects into receptacles; object-storer specifically targets storage locations while object-placer is more general."
+    },
+    {
+      "source": "alfworld-search-pattern-executor",
+      "target": "alfworld-object-locator",
+      "type": "compose_with",
+      "reason": "Search pattern executor orchestrates systematic searches and uses object-locator to identify target objects at each location."
+    },
+    {
+      "source": "alfworld-search-pattern-executor",
+      "target": "alfworld-receptacle-navigator",
+      "type": "compose_with",
+      "reason": "Search pattern executor coordinates navigation between multiple locations, using receptacle-navigator to move between candidate receptacles."
+    },
+    {
+      "source": "alfworld-environment-scanner",
+      "target": "alfworld-object-locator",
+      "type": "compose_with",
+      "reason": "Environment scanner provides initial visibility of objects and receptacles, which object-locator uses to identify specific target locations."
+    }
+  ]
+}

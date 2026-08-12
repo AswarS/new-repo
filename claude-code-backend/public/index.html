@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code Agent</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #1a1a2e;
+    color: #e0e0e0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Header */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    background: #16213e;
+    border-bottom: 1px solid #0f3460;
+  }
+  .header h1 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #e94560;
+  }
+  .status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #666;
+  }
+  .status-dot.connected { background: #4ade80; }
+  .status-dot.connecting { background: #facc15; }
+  .btn {
+    padding: 6px 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: opacity 0.2s;
+  }
+  .btn:hover { opacity: 0.85; }
+  .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .btn-primary { background: #e94560; color: #fff; }
+  .btn-secondary { background: #333; color: #ccc; }
+  .btn-danger { background: #dc2626; color: #fff; }
+
+  /* Messages */
+  .messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .msg {
+    max-width: 80%;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 14px;
+    line-height: 1.6;
+    word-break: break-word;
+    white-space: pre-wrap;
+  }
+  .msg-user {
+    align-self: flex-end;
+    background: #0f3460;
+    color: #e0e0e0;
+    border-bottom-right-radius: 4px;
+  }
+  .msg-assistant {
+    align-self: flex-start;
+    background: #1e293b;
+    color: #d1d5db;
+    border-bottom-left-radius: 4px;
+  }
+  .msg-system {
+    align-self: center;
+    background: transparent;
+    color: #888;
+    font-size: 12px;
+    padding: 4px 0;
+  }
+  .msg-error {
+    align-self: center;
+    background: #451a1a;
+    color: #f87171;
+    font-size: 13px;
+  }
+  .msg code {
+    background: #0d1117;
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-family: 'Fira Code', 'Consolas', monospace;
+    font-size: 13px;
+  }
+  .msg pre {
+    background: #0d1117;
+    padding: 10px 12px;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin: 6px 0;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .msg pre code {
+    background: none;
+    padding: 0;
+  }
+  .msg-label {
+    font-size: 11px;
+    color: #888;
+    margin-bottom: 4px;
+  }
+  .tool-call {
+    background: #1a2744;
+    border-left: 3px solid #3b82f6;
+    padding: 6px 10px;
+    margin: 4px 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 12px;
+    color: #93c5fd;
+  }
+  .thinking {
+    color: #a78bfa;
+    font-style: italic;
+    font-size: 13px;
+  }
+
+  /* Preview panel */
+  .preview-card {
+    align-self: flex-start;
+    background: #0f2a1a;
+    border: 1px solid #22c55e;
+    border-radius: 10px;
+    padding: 12px 16px;
+    max-width: 80%;
+  }
+  .preview-card .preview-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 13px;
+    color: #4ade80;
+    font-weight: 600;
+  }
+  .preview-card .preview-url {
+    font-size: 13px;
+    color: #86efac;
+    word-break: break-all;
+    margin-bottom: 10px;
+  }
+  .preview-card .preview-url a {
+    color: #86efac;
+    text-decoration: underline;
+  }
+  .preview-card .preview-actions {
+    display: flex;
+    gap: 8px;
+  }
+  .preview-card .btn-preview {
+    background: #22c55e;
+    color: #000;
+    font-weight: 600;
+  }
+  .preview-iframe-wrap {
+    align-self: stretch;
+    border: 1px solid #22c55e;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 4px 0;
+  }
+  .preview-iframe-wrap iframe {
+    width: 100%;
+    height: 400px;
+    border: none;
+    background: #fff;
+  }
+
+  /* Input */
+  .input-area {
+    padding: 14px 20px;
+    background: #16213e;
+    border-top: 1px solid #0f3460;
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+  }
+  .input-area textarea {
+    flex: 1;
+    background: #1a1a2e;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 10px 14px;
+    color: #e0e0e0;
+    font-size: 14px;
+    font-family: inherit;
+    resize: none;
+    min-height: 44px;
+    max-height: 160px;
+    line-height: 1.5;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .input-area textarea:focus { border-color: #e94560; }
+  .input-actions {
+    display: flex;
+    gap: 6px;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Claude Code Agent</h1>
+  <div class="status">
+    <div class="status-dot" id="statusDot"></div>
+    <span id="statusText">未连接</span>
+    <button class="btn btn-primary" id="connectBtn" onclick="toggleConnection()">连接</button>
+  </div>
+</div>
+
+<div class="messages" id="messages"></div>
+
+<div class="input-area">
+  <textarea id="input" placeholder="输入消息... (Enter 发送, Shift+Enter 换行)" rows="1"></textarea>
+  <div class="input-actions">
+    <button class="btn btn-primary" id="sendBtn" onclick="sendMessage()" disabled>发送</button>
+    <button class="btn btn-danger" id="abortBtn" onclick="sendAbort()" disabled>中断</button>
+  </div>
+</div>
+
+<script>
+let ws = null
+let currentAssistantEl = null
+let currentAssistantText = ''
+let currentThinkingEl = null
+let currentThinkingText = ''
+
+const messagesEl = document.getElementById('messages')
+const inputEl = document.getElementById('input')
+const sendBtn = document.getElementById('sendBtn')
+const abortBtn = document.getElementById('abortBtn')
+const connectBtn = document.getElementById('connectBtn')
+const statusDot = document.getElementById('statusDot')
+const statusText = document.getElementById('statusText')
+
+// Auto-resize textarea
+inputEl.addEventListener('input', () => {
+  inputEl.style.height = 'auto'
+  inputEl.style.height = Math.min(inputEl.scrollHeight, 160) + 'px'
+})
+
+inputEl.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault()
+    sendMessage()
+  }
+})
+
+function setStatus(state) {
+  statusDot.className = 'status-dot ' + state
+  if (state === 'connected') {
+    statusText.textContent = '已连接'
+    connectBtn.textContent = '断开'
+    connectBtn.className = 'btn btn-secondary'
+    sendBtn.disabled = false
+  } else if (state === 'connecting') {
+    statusText.textContent = '连接中...'
+    connectBtn.disabled = true
+  } else {
+    statusText.textContent = '未连接'
+    connectBtn.textContent = '连接'
+    connectBtn.className = 'btn btn-primary'
+    connectBtn.disabled = false
+    sendBtn.disabled = true
+    abortBtn.disabled = true
+  }
+}
+
+function toggleConnection() {
+  if (ws && ws.readyState === WebSocket.OPEN) {
+    ws.close()
+  } else {
+    connect()
+  }
+}
+
+function connect() {
+  const protocol = location.protocol === 'https:' ? 'wss:' : 'ws:'
+  const url = `${protocol}//${location.host}/ws`
+  setStatus('connecting')
+
+  ws = new WebSocket(url)
+
+  ws.onopen = () => setStatus('connected')
+
+  ws.onclose = () => {
+    setStatus('')
+    ws = null
+    addSystemMessage('连接已断开')
+  }
+
+  ws.onerror = () => {
+    setStatus('')
+    addSystemMessage('连接出错')
+  }
+
+  ws.onmessage = (event) => {
+    try {
+      const data = JSON.parse(event.data)
+      handleServerMessage(data)
+    } catch {
+      console.error('Failed to parse message:', event.data)
+    }
+  }
+}
+
+function handleServerMessage(data) {
+  if (data.type === 'error') {
+    addErrorMessage(data.error)
+    abortBtn.disabled = true
+    return
+  }
+
+  if (data.type === 'stream') {
+    handleStreamEvent(data.event)
+    return
+  }
+
+  if (data.type === 'preview') {
+    addPreviewCard(data.previewType, data.url)
+    return
+  }
+
+  if (data.type === 'result') {
+    if (data.message?.type === 'session_started') {
+      addSystemMessage(`会话已建立 (${data.message.sessionId})`)
+      return
+    }
+    if (data.message?.type === 'turn_complete' || data.message?.type === 'aborted') {
+      currentAssistantEl = null
+      currentAssistantText = ''
+      currentThinkingEl = null
+      currentThinkingText = ''
+      abortBtn.disabled = true
+      return
+    }
+  }
+
+  if (data.type === 'assistant') {
+    handleAssistantMessage(data.message)
+  }
+}
+
+function handleStreamEvent(event) {
+  // content_block_delta carries incremental text or thinking
+  if (event.type === 'content_block_delta') {
+    const delta = event.delta
+    if (delta?.type === 'text_delta' && delta.text) {
+      appendAssistantText(delta.text)
+    } else if (delta?.type === 'thinking_delta' && delta.thinking) {
+      appendThinkingText(delta.thinking)
+    } else if (delta?.type === 'input_json_delta' && delta.partial_json) {
+      // Tool input streaming — ignore for display, full tool_use arrives via assistant message
+    }
+    return
+  }
+
+  // content_block_start signals a new block (text, tool_use, thinking)
+  if (event.type === 'content_block_start') {
+    const block = event.content_block
+    if (block?.type === 'thinking') {
+      // Start a new thinking section
+      currentThinkingEl = null
+      currentThinkingText = ''
+    } else if (block?.type === 'text') {
+      // Will be populated by subsequent text_delta events
+    } else if (block?.type === 'tool_use') {
+      addToolCall(block.name, null)
+    }
+    return
+  }
+
+  // content_block_stop ends the current block
+  if (event.type === 'content_block_stop') {
+    currentThinkingEl = null
+    currentThinkingText = ''
+    return
+  }
+
+  // message_start / message_delta / message_stop — lifecycle, no display action needed
+}
+
+function handleAssistantMessage(msg) {
+  // Text content
+  if (msg.type === 'assistant' && msg.message) {
+    const content = extractTextContent(msg.message)
+    if (content) {
+      appendAssistantText(content)
+    }
+    return
+  }
+
+  // Tool use
+  if (msg.type === 'tool_use' || msg.tool_name) {
+    const name = msg.tool_name || msg.name || 'tool'
+    const input = msg.tool_input || msg.input
+    addToolCall(name, input)
+    return
+  }
+
+  // Thinking
+  if (msg.type === 'thinking' && msg.thinking) {
+    addThinking(msg.thinking)
+    return
+  }
+
+  // Generic: try to extract any text
+  const text = extractTextContent(msg)
+  if (text) {
+    appendAssistantText(text)
+  }
+}
+
+function extractTextContent(msg) {
+  if (typeof msg === 'string') return msg
+  if (msg.text) return msg.text
+  if (msg.content) {
+    if (typeof msg.content === 'string') return msg.content
+    if (Array.isArray(msg.content)) {
+      return msg.content
+        .filter(b => b.type === 'text')
+        .map(b => b.text)
+        .join('')
+    }
+  }
+  return null
+}
+
+function appendAssistantText(text) {
+  // When streaming starts, close any open thinking block
+  currentThinkingEl = null
+  currentThinkingText = ''
+
+  if (!currentAssistantEl) {
+    currentAssistantEl = addMessage('', 'msg-assistant')
+    currentAssistantText = ''
+  }
+  currentAssistantText += text
+  currentAssistantEl.innerHTML = renderMarkdown(currentAssistantText)
+  scrollToBottom()
+}
+
+function appendThinkingText(text) {
+  if (!currentThinkingEl) {
+    currentThinkingEl = document.createElement('div')
+    currentThinkingEl.className = 'msg msg-assistant thinking'
+    messagesEl.appendChild(currentThinkingEl)
+    currentThinkingText = ''
+  }
+  currentThinkingText += text
+  // Show truncated thinking with prefix
+  const display = currentThinkingText.length > 500
+    ? currentThinkingText.substring(0, 500) + '...'
+    : currentThinkingText
+  currentThinkingEl.textContent = '💭 ' + display
+  scrollToBottom()
+}
+
+function addToolCall(name, input) {
+  const el = document.createElement('div')
+  el.className = 'tool-call'
+  let display = `🔧 ${name}`
+  if (input) {
+    const summary = typeof input === 'string' ? input : JSON.stringify(input)
+    if (summary.length > 200) {
+      display += `\n${summary.substring(0, 200)}...`
+    } else {
+      display += `\n${summary}`
+    }
+  }
+  el.textContent = display
+  messagesEl.appendChild(el)
+  scrollToBottom()
+}
+
+function addThinking(text) {
+  const el = document.createElement('div')
+  el.className = 'msg msg-assistant thinking'
+  el.textContent = '💭 ' + (text.length > 300 ? text.substring(0, 300) + '...' : text)
+  messagesEl.appendChild(el)
+  scrollToBottom()
+}
+
+function addMessage(text, className) {
+  const el = document.createElement('div')
+  el.className = 'msg ' + className
+  el.innerHTML = renderMarkdown(text)
+  messagesEl.appendChild(el)
+  scrollToBottom()
+  return el
+}
+
+function addSystemMessage(text) {
+  addMessage(text, 'msg-system')
+}
+
+function addErrorMessage(text) {
+  addMessage('⚠ ' + text, 'msg-error')
+}
+
+function renderMarkdown(text) {
+  if (!text) return ''
+  // Escape HTML
+  let html = text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+
+  // Code blocks
+  html = html.replace(/```(\w*)\n([\s\S]*?)```/g, (_, lang, code) => {
+    return `<pre><code>${code.trim()}</code></pre>`
+  })
+
+  // Inline code
+  html = html.replace(/`([^`]+)`/g, '<code>$1</code>')
+
+  // Bold
+  html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+
+  return html
+}
+
+function addPreviewCard(previewType, url) {
+  const card = document.createElement('div')
+  card.className = 'preview-card'
+
+  const typeLabel = previewType === 'dev_server' ? 'Dev Server' : '静态文件'
+  const icon = previewType === 'dev_server' ? '🚀' : '📄'
+
+  // For file:// URLs, only the "open in browser" option makes sense (iframes block file://)
+  const isFileUrl = url.startsWith('file://')
+
+  card.innerHTML = `
+    <div class="preview-header">${icon} 网页预览 — ${typeLabel}</div>
+    <div class="preview-url"><a href="${url}" target="_blank">${url}</a></div>
+    <div class="preview-actions">
+      <button class="btn btn-preview" onclick="window.open('${url}', '_blank')">在浏览器中打开</button>
+      ${isFileUrl ? '' : `<button class="btn btn-secondary" onclick="togglePreviewIframe(this, '${url}')">内嵌预览</button>`}
+    </div>
+  `
+  messagesEl.appendChild(card)
+  scrollToBottom()
+}
+
+function togglePreviewIframe(btn, url) {
+  const card = btn.closest('.preview-card')
+  const existing = card.nextElementSibling
+  if (existing && existing.classList.contains('preview-iframe-wrap')) {
+    existing.remove()
+    btn.textContent = '内嵌预览'
+    return
+  }
+  const wrap = document.createElement('div')
+  wrap.className = 'preview-iframe-wrap'
+  wrap.innerHTML = `<iframe src="${url}" sandbox="allow-scripts allow-same-origin"></iframe>`
+  card.after(wrap)
+  btn.textContent = '关闭预览'
+  scrollToBottom()
+}
+
+function sendMessage() {
+  const text = inputEl.value.trim()
+  if (!text || !ws || ws.readyState !== WebSocket.OPEN) return
+
+  addMessage(text, 'msg-user')
+  ws.send(JSON.stringify({ type: 'user_message', content: text }))
+
+  inputEl.value = ''
+  inputEl.style.height = 'auto'
+  abortBtn.disabled = false
+  currentAssistantEl = null
+  currentAssistantText = ''
+  currentThinkingEl = null
+  currentThinkingText = ''
+}
+
+function sendAbort() {
+  if (ws && ws.readyState === WebSocket.OPEN) {
+    ws.send(JSON.stringify({ type: 'abort' }))
+  }
+}
+
+function scrollToBottom() {
+  messagesEl.scrollTop = messagesEl.scrollHeight
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+{
+  "experiment": "webshop-controlled-skill-dimensions-v0-v4",
+  "common_controls": [
+    "same single-action output contract",
+    "same basic search-result-detail-option-purchase lifecycle",
+    "same WebShop action grammar",
+    "one skill per experimental condition"
+  ],
+  "variants": [
+    {
+      "id": "v0",
+      "skill": "webshop-v0-common-control",
+      "manipulated_dimension": "none",
+      "behavior_targets": ["baseline behavior"]
+    },
+    {
+      "id": "v1",
+      "skill": "webshop-v1-constraint-ledger",
+      "manipulated_dimension": "constraint_structuring",
+      "behavior_targets": ["initial_query_constraint_coverage", "constraint_loss_count", "query_reformulation_count"]
+    },
+    {
+      "id": "v2",
+      "skill": "webshop-v2-enforced-loop",
+      "manipulated_dimension": "search_boundedness",
+      "behavior_targets": ["duplicate_query_count", "revisited_candidate_count", "same_state_action_repeat", "steps"]
+    },
+    {
+      "id": "v3",
+      "skill": "webshop-v3-explicit-state",
+      "manipulated_dimension": "state_persistence",
+      "behavior_targets": ["duplicate_option_clicks", "duplicate_queries", "candidate_revisits", "inconsistent_recovery"]
+    },
+    {
+      "id": "v4",
+      "skill": "webshop-v4-option-gate",
+      "manipulated_dimension": "option_completeness",
+      "behavior_targets": ["option_completion_rate", "missing_option_at_purchase", "wrong_option_count", "reward"]
+    }
+  ]
+}

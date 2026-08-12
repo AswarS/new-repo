@@ -1,0 +1,78 @@
+{
+  "task_idx": 32,
+  "goal": "Instruction: i am looking for a black fast wireless universal charging stand, and price lower than 60.00 dollars",
+  "reward": 0.75,
+  "done": true,
+  "steps": 4,
+  "max_steps": 30,
+  "error": "",
+  "steps_log": [
+    {
+      "step": 1,
+      "observation": "WebShop [SEP] Instruction: [SEP] i am looking for a black fast wireless universal charging stand, and price lower than 60.00 dollars [SEP] Search",
+      "action": "search[black fast wireless universal charging stand]",
+      "response": "search[black fast wireless universal charging stand]",
+      "content_blocks": [
+        {
+          "type": "tool_use",
+          "id": "tooluse_j9TxUg34VSQWbQda7AyYLK",
+          "name": "Skill",
+          "input": {
+            "skill": "webshop-v4-option-gate"
+          }
+        },
+        {
+          "type": "text",
+          "text": "search[black fast wireless universal charging stand]"
+        }
+      ],
+      "latency_s": 7.01
+    },
+    {
+      "step": 2,
+      "observation": "Instruction: [SEP] i am looking for a black fast wireless universal charging stand, and price lower than 60.00 dollars [SEP] Back to Search [SEP] Page 1 (Total results: 50) [SEP] Next > [SEP] B0797F2V5C [SEP] SAMSUNG Qi Certified Fast Charge Wireless Charger Stand (2018 Edition) Universally Compatible with Qi Enabled Smartphones - US Version - Black - EP-N5100TBEGUS [SEP] $52.0 [SEP] B07FX8Q28N [SEP] Ventev Wireless Charger Qi Chargepad+ | Fast Charging Wireless Charge Pad | Universally Compatib",
+      "action": "click[b0797f2v5c]",
+      "response": "click[b0797f2v5c]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[b0797f2v5c]"
+        }
+      ],
+      "latency_s": 3.25
+    },
+    {
+      "step": 3,
+      "observation": "Instruction: [SEP] i am looking for a black fast wireless universal charging stand, and price lower than 60.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] color [SEP] black [SEP] blue [SEP] white [SEP] SAMSUNG Qi Certified Fast Charge Wireless Charger Stand (2018 Edition) Universally Compatible with Qi Enabled Smartphones - US Version - Black - EP-N5100TBEGUS [SEP] Price: $52.0 [SEP] Rating: N.A. [SEP] Description [SEP] Features [SEP] Reviews [SEP] Buy Now",
+      "action": "click[black]",
+      "response": "click[black]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[black]"
+        }
+      ],
+      "latency_s": 2.64
+    },
+    {
+      "step": 4,
+      "observation": "Instruction: [SEP] i am looking for a black fast wireless universal charging stand, and price lower than 60.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] color [SEP] black [SEP] blue [SEP] white [SEP] SAMSUNG Qi Certified Fast Charge Wireless Charger Stand (2018 Edition) Universally Compatible with Qi Enabled Smartphones - US Version - Black - EP-N5100TBEGUS [SEP] Price: $52.0 [SEP] Rating: N.A. [SEP] Description [SEP] Features [SEP] Reviews [SEP] Buy Now",
+      "action": "click[Buy Now]",
+      "response": "click[Buy Now]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[Buy Now]"
+        }
+      ],
+      "latency_s": 3.4
+    },
+    {
+      "step": 5,
+      "observation": "Thank you for shopping with us! [SEP] Your code: [SEP] None [SEP] (Paste it in your MTurk interface.) [SEP] Purchased [SEP] asin [SEP] B0797F2V5C [SEP] options [SEP] {\"color\": \"black\"} [SEP] attrs [SEP] None [SEP] category [SEP] None [SEP] query [SEP] None [SEP] product category [SEP] None [SEP] Target [SEP] asin [SEP] options [SEP] attrs [SEP] price upper [SEP] instuction text [SEP] category [SEP] product category [SEP] query [SEP] Goal [SEP] None [SEP] Reward [SEP] Your score (min 0.0, max 1.0",
+      "action": "[DONE]",
+      "reward": 0.75
+    }
+  ],
+  "messages_count": 54
+}

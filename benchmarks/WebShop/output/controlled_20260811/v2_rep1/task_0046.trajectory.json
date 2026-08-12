@@ -1,0 +1,79 @@
+{
+  "task_idx": 46,
+  "goal": "Instruction: i'm looking for hair extensions for natural hair and straight hair so need to buy it, and price lower than 50.00 dollars",
+  "reward": 0.75,
+  "done": true,
+  "steps": 4,
+  "max_steps": 30,
+  "error": "",
+  "steps_log": [
+    {
+      "step": 1,
+      "observation": "WebShop [SEP] Instruction: [SEP] i'm looking for hair extensions for natural hair and straight hair so need to buy it, and price lower than 50.00 dollars [SEP] Search",
+      "action": "search[natural hair extensions straight hair]",
+      "response": "search[natural hair extensions straight hair]",
+      "content_blocks": [
+        {
+          "id": "tooluse_L9ZRxsLGTPrKelQaAKYvJ6",
+          "input": {
+            "skill": "webshop-v2-enforced-loop",
+            "args": "Instruction: i'm looking for hair extensions for natural hair and straight hair so need to buy it, and price lower than 50.00 dollars\n\nObservation:\nWebShop [SEP] Instruction: [SEP] i'm looking for hair extensions for natural hair and straight hair so need to buy it, and price lower than 50.00 dollars [SEP] Search\n\nAvailable actions:\n- search[query]\n- click[element]: Available: [search]"
+          },
+          "name": "Skill",
+          "type": "tool_use"
+        },
+        {
+          "text": "search[natural hair extensions straight hair]",
+          "type": "text"
+        }
+      ],
+      "latency_s": 13.97
+    },
+    {
+      "step": 2,
+      "observation": "Instruction: [SEP] i'm looking for hair extensions for natural hair and straight hair so need to buy it, and price lower than 50.00 dollars [SEP] Back to Search [SEP] Page 1 (Total results: 50) [SEP] Next > [SEP] B01N9C657C [SEP] 18\" Wavy Curly Wrap Around Ponytail Extension for Woman Synthetic Hair Extension [SEP] $12.69 [SEP] B08QVHK3KT [SEP] KOLCY Long Body Curly Ponytail Hairpiece Synthetic Magic Paste Wrap Around 22 Inch Wavy Ponytail Extension Clip in Ponytail Hair Extensions for Women (Bl",
+      "action": "click[b09nfhj5zc]",
+      "response": "click[b09nfhj5zc]",
+      "content_blocks": [
+        {
+          "text": "click[b09nfhj5zc]",
+          "type": "text"
+        }
+      ],
+      "latency_s": 4.2
+    },
+    {
+      "step": 3,
+      "observation": "Instruction: [SEP] i'm looking for hair extensions for natural hair and straight hair so need to buy it, and price lower than 50.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] color [SEP] 18inch 18inch medium brown #4 [SEP] 18inch straight natural black #1b [SEP] 22inch #bug burgundy [SEP] 22inch curly dark brown #2 [SEP] 22inch curly medium brown #4 [SEP] 22inch curly natural black #1b [SEP] 22inch straight dark brown #2 [SEP] 22inch straight natural black #1b [SEP] Long Clip in Hair Extens",
+      "action": "click[18inch straight natural black #1b]",
+      "response": "click[18inch straight natural black #1b]",
+      "content_blocks": [
+        {
+          "text": "click[18inch straight natural black #1b]",
+          "type": "text"
+        }
+      ],
+      "latency_s": 3.45
+    },
+    {
+      "step": 4,
+      "observation": "Instruction: [SEP] i'm looking for hair extensions for natural hair and straight hair so need to buy it, and price lower than 50.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] color [SEP] 18inch 18inch medium brown #4 [SEP] 18inch straight natural black #1b [SEP] 22inch #bug burgundy [SEP] 22inch curly dark brown #2 [SEP] 22inch curly medium brown #4 [SEP] 22inch curly natural black #1b [SEP] 22inch straight dark brown #2 [SEP] 22inch straight natural black #1b [SEP] Long Clip in Hair Extens",
+      "action": "click[buy now]",
+      "response": "click[buy now]",
+      "content_blocks": [
+        {
+          "text": "click[buy now]",
+          "type": "text"
+        }
+      ],
+      "latency_s": 4.24
+    },
+    {
+      "step": 5,
+      "observation": "Thank you for shopping with us! [SEP] Your code: [SEP] None [SEP] (Paste it in your MTurk interface.) [SEP] Purchased [SEP] asin [SEP] B09NFHJ5ZC [SEP] options [SEP] {\"color\": \"18inch straight natural black #1b\"} [SEP] attrs [SEP] None [SEP] category [SEP] None [SEP] query [SEP] None [SEP] product category [SEP] None [SEP] Target [SEP] asin [SEP] options [SEP] attrs [SEP] price upper [SEP] instuction text [SEP] category [SEP] product category [SEP] query [SEP] Goal [SEP] None [SEP] Reward [SEP] ",
+      "action": "[DONE]",
+      "reward": 0.75
+    }
+  ],
+  "messages_count": 121
+}

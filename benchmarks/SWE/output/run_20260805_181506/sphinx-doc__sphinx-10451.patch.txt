@@ -1,0 +1,136 @@
+diff --git a/.gitignore b/.gitignore
+index 8d33409d5..1e9e2ae00 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -33,3 +33,7 @@ tests/build/
+ utils/regression_test.js
+ 
+ node_modules/
++
++# SWE Runner temp files
++.swe-runner-*
++.claude/settings.local.json
+diff --git a/sphinx/ext/autodoc/typehints.py b/sphinx/ext/autodoc/typehints.py
+index d912cd7d5..3567b1f3c 100644
+--- a/sphinx/ext/autodoc/typehints.py
++++ b/sphinx/ext/autodoc/typehints.py
+@@ -86,6 +86,10 @@ def insert_field_list(node: Element) -> nodes.field_list:
+     return field_list
+ 
+ 
++def _normalize_field_name(name: str) -> str:
++    return name.lstrip('*')
++
++
+ def modify_field_list(node: nodes.field_list, annotations: Dict[str, str],
+                       suppress_rtype: bool = False) -> None:
+     arguments: Dict[str, Dict[str, bool]] = {}
+@@ -96,16 +100,16 @@ def modify_field_list(node: nodes.field_list, annotations: Dict[str, str],
+         if parts[0] == 'param':
+             if len(parts) == 2:
+                 # :param xxx:
+-                arg = arguments.setdefault(parts[1], {})
++                arg = arguments.setdefault(_normalize_field_name(parts[1]), {})
+                 arg['param'] = True
+             elif len(parts) > 2:
+                 # :param xxx yyy:
+-                name = ' '.join(parts[2:])
++                name = _normalize_field_name(' '.join(parts[2:]))
+                 arg = arguments.setdefault(name, {})
+                 arg['param'] = True
+                 arg['type'] = True
+         elif parts[0] == 'type':
+-            name = ' '.join(parts[1:])
++            name = _normalize_field_name(' '.join(parts[1:]))
+             arg = arguments.setdefault(name, {})
+             arg['type'] = True
+         elif parts[0] == 'rtype':
+@@ -152,14 +156,14 @@ def augment_descriptions_with_types(
+         if parts[0] == 'param':
+             if len(parts) == 2:
+                 # :param xxx:
+-                has_description.add(parts[1])
++                has_description.add(_normalize_field_name(parts[1]))
+             elif len(parts) > 2:
+                 # :param xxx yyy:
+-                name = ' '.join(parts[2:])
++                name = _normalize_field_name(' '.join(parts[2:]))
+                 has_description.add(name)
+                 has_type.add(name)
+         elif parts[0] == 'type':
+-            name = ' '.join(parts[1:])
++            name = _normalize_field_name(' '.join(parts[1:]))
+             has_type.add(name)
+         elif parts[0] in ('return', 'returns'):
+             has_description.add('return')
+diff --git a/tests/roots/test-ext-autodoc/target/typehints.py b/tests/roots/test-ext-autodoc/target/typehints.py
+index 6b0d6142c..d04a2e2b8 100644
+--- a/tests/roots/test-ext-autodoc/target/typehints.py
++++ b/tests/roots/test-ext-autodoc/target/typehints.py
+@@ -99,3 +99,15 @@ class _ClassWithDocumentedInit:
+ 
+         :param x: Some integer
+         """
++
++
++class _ClassWithDocumentedInitAndStarArgs:
++    """Class docstring."""
++
++    def __init__(self, x: int, *args: int, **kwargs: int) -> None:
++        """Init docstring.
++
++        :param x: Some integer
++        :param *args: Some integer
++        :param **kwargs: Some integer
++        """
+diff --git a/tests/test_ext_autodoc_configs.py b/tests/test_ext_autodoc_configs.py
+index c075a8e2d..cc295f31b 100644
+--- a/tests/test_ext_autodoc_configs.py
++++ b/tests/test_ext_autodoc_configs.py
+@@ -1052,6 +1052,46 @@ def test_autodoc_typehints_description_with_documented_init(app):
+             '         None\n' == context)
+ 
+ 
++@pytest.mark.sphinx('text', testroot='ext-autodoc',
++                    confoverrides={'autodoc_typehints': "description"})
++def test_autodoc_typehints_description_with_documented_init_and_star_args(app):
++    (app.srcdir / 'index.rst').write_text(
++        '.. autoclass:: target.typehints._ClassWithDocumentedInitAndStarArgs\n'
++        '   :special-members: __init__\n',
++        encoding='utf8'
++    )
++    app.build()
++    context = (app.outdir / 'index.txt').read_text(encoding='utf8')
++    assert ('class target.typehints._ClassWithDocumentedInitAndStarArgs(x, *args, **kwargs)\n'
++            '\n'
++            '   Class docstring.\n'
++            '\n'
++            '   Parameters:\n'
++            '      * **x** (*int*) --\n'
++            '\n'
++            '      * **args** (*int*) --\n'
++            '\n'
++            '      * **kwargs** (*int*) --\n'
++            '\n'
++            '   __init__(x, *args, **kwargs)\n'
++            '\n'
++            '      Init docstring.\n'
++            '\n'
++            '      Parameters:\n'
++            '         * **x** (*int*) -- Some integer\n'
++            '\n'
++            '         * ***args** --\n'
++            '\n'
++            '           Some integer\n'
++            '\n'
++            '         * ****kwargs** --\n'
++            '\n'
++            '           Some integer\n'
++            '\n'
++            '      Return type:\n'
++            '         None\n' == context)
++
++
+ @pytest.mark.sphinx('text', testroot='ext-autodoc',
+                     confoverrides={'autodoc_typehints': "description",
+                                    'autodoc_typehints_description_target': 'documented'})

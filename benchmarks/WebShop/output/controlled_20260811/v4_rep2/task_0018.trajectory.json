@@ -1,0 +1,65 @@
+{
+  "task_idx": 18,
+  "goal": "Instruction: i want double horn bluetooth wireless speakers which is portable and easy to carry, and price lower than 60.00 dollars",
+  "reward": 0.25,
+  "done": true,
+  "steps": 3,
+  "max_steps": 30,
+  "error": "",
+  "steps_log": [
+    {
+      "step": 1,
+      "observation": "WebShop [SEP] Instruction: [SEP] i want double horn bluetooth wireless speakers which is portable and easy to carry, and price lower than 60.00 dollars [SEP] Search",
+      "action": "search[double horn bluetooth wireless speakers portable]",
+      "response": "search[double horn bluetooth wireless speakers portable]",
+      "content_blocks": [
+        {
+          "type": "tool_use",
+          "id": "tooluse_Yu6XW1XloBBTKHTHTgKyhU",
+          "name": "Skill",
+          "input": {
+            "skill": "webshop-v4-option-gate"
+          }
+        },
+        {
+          "type": "text",
+          "text": "search[double horn bluetooth wireless speakers portable]"
+        }
+      ],
+      "latency_s": 6.29
+    },
+    {
+      "step": 2,
+      "observation": "Instruction: [SEP] i want double horn bluetooth wireless speakers which is portable and easy to carry, and price lower than 60.00 dollars [SEP] Back to Search [SEP] Page 1 (Total results: 50) [SEP] Next > [SEP] B08DXY5N2B [SEP] Cuifati Wireless Soundbar Speaker,F1 Plus Soundbar Portable Bluetooth Speaker,Loud Voice Bluetooth Speaker Low Power Consumption,High Power Hi-Fi Speaker [SEP] $35.69 [SEP] B08CV37N71 [SEP] 125 Soundbar, Notebook Speaker, Wireless Soundbar Portable Loud Voice Bluetooth Sp",
+      "action": "click[b08j411h7m]",
+      "response": "click[b08j411h7m]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[b08j411h7m]"
+        }
+      ],
+      "latency_s": 2.94
+    },
+    {
+      "step": 3,
+      "observation": "Instruction: [SEP] i want double horn bluetooth wireless speakers which is portable and easy to carry, and price lower than 60.00 dollars [SEP] Back to Search [SEP] < Prev [SEP] Wireless Soundbar Music Speaker, Bluetooth Speaker Heavy Bass Music Player, Music Speaker 45MM Double Horn Low Power Consumption and Long Standby time [SEP] Price: $35.69 [SEP] Rating: N.A. [SEP] Description [SEP] Features [SEP] Reviews [SEP] Buy Now",
+      "action": "click[Buy Now]",
+      "response": "click[Buy Now]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[Buy Now]"
+        }
+      ],
+      "latency_s": 2.7
+    },
+    {
+      "step": 4,
+      "observation": "Thank you for shopping with us! [SEP] Your code: [SEP] None [SEP] (Paste it in your MTurk interface.) [SEP] Purchased [SEP] asin [SEP] B08J411H7M [SEP] options [SEP] {} [SEP] attrs [SEP] None [SEP] category [SEP] None [SEP] query [SEP] None [SEP] product category [SEP] None [SEP] Target [SEP] asin [SEP] options [SEP] attrs [SEP] price upper [SEP] instuction text [SEP] category [SEP] product category [SEP] query [SEP] Goal [SEP] None [SEP] Reward [SEP] Your score (min 0.0, max 1.0) [SEP] 0.25 [SE",
+      "action": "[DONE]",
+      "reward": 0.25
+    }
+  ],
+  "messages_count": 45
+}

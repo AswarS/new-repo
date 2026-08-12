@@ -1,0 +1,78 @@
+{
+  "task_idx": 9,
+  "goal": "Instruction: i am looking for a grey sectional sofa for my living room",
+  "reward": 1.0,
+  "done": true,
+  "steps": 4,
+  "max_steps": 30,
+  "error": "",
+  "steps_log": [
+    {
+      "step": 1,
+      "observation": "WebShop [SEP] Instruction: [SEP] i am looking for a grey sectional sofa for my living room [SEP] Search",
+      "action": "search[grey sectional sofa living room]",
+      "response": "search[grey sectional sofa living room]",
+      "content_blocks": [
+        {
+          "type": "tool_use",
+          "id": "tooluse_nLmkjzRY5Z8hdbe3HzVLQU",
+          "name": "Skill",
+          "input": {
+            "skill": "webshop-v4-option-gate"
+          }
+        },
+        {
+          "type": "text",
+          "text": "search[grey sectional sofa living room]"
+        }
+      ],
+      "latency_s": 6.26
+    },
+    {
+      "step": 2,
+      "observation": "Instruction: [SEP] i am looking for a grey sectional sofa for my living room [SEP] Back to Search [SEP] Page 1 (Total results: 50) [SEP] Next > [SEP] B09JKW2W67 [SEP] 14-Position Floor Sofa, Grey Sectional Sofa Sofa Bed Futon Sofa Bed Couches for Living Room Sleeper Sofa Sofa Table Sofas for Living Room Living Room Sets Furniture Cool Stuff for Your Room [SEP] $100.0 [SEP] B09F2VQY3T [SEP] Sofa Sectional Sofa Furniture Set Futon Sofa Modern Convertible L-Shaped Couches Sofa Set Fabric Sofa Corne",
+      "action": "click[b09f2vqy3t]",
+      "response": "click[b09f2vqy3t]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[b09f2vqy3t]"
+        }
+      ],
+      "latency_s": 3.15
+    },
+    {
+      "step": 3,
+      "observation": "Instruction: [SEP] i am looking for a grey sectional sofa for my living room [SEP] Back to Search [SEP] < Prev [SEP] color [SEP] blue [SEP] grey [SEP] Sofa Sectional Sofa Furniture Set Futon Sofa Modern Convertible L-Shaped Couches Sofa Set Fabric Sofa Corner Sofa with Upholstered Contemporary for Living Room (Grey) [SEP] Price: $389.99 [SEP] Rating: N.A. [SEP] Description [SEP] Features [SEP] Reviews [SEP] Buy Now",
+      "action": "click[grey]",
+      "response": "click[grey]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[grey]"
+        }
+      ],
+      "latency_s": 3.39
+    },
+    {
+      "step": 4,
+      "observation": "Instruction: [SEP] i am looking for a grey sectional sofa for my living room [SEP] Back to Search [SEP] < Prev [SEP] color [SEP] blue [SEP] grey [SEP] Sofa Sectional Sofa Furniture Set Futon Sofa Modern Convertible L-Shaped Couches Sofa Set Fabric Sofa Corner Sofa with Upholstered Contemporary for Living Room (Grey) [SEP] Price: $389.99 [SEP] Rating: N.A. [SEP] Description [SEP] Features [SEP] Reviews [SEP] Buy Now",
+      "action": "click[Buy Now]",
+      "response": "click[Buy Now]",
+      "content_blocks": [
+        {
+          "type": "text",
+          "text": "click[Buy Now]"
+        }
+      ],
+      "latency_s": 2.74
+    },
+    {
+      "step": 5,
+      "observation": "Thank you for shopping with us! [SEP] Your code: [SEP] None [SEP] (Paste it in your MTurk interface.) [SEP] Purchased [SEP] asin [SEP] B09F2VQY3T [SEP] options [SEP] {\"color\": \"grey\"} [SEP] attrs [SEP] None [SEP] category [SEP] None [SEP] query [SEP] None [SEP] product category [SEP] None [SEP] Target [SEP] asin [SEP] options [SEP] attrs [SEP] price upper [SEP] instuction text [SEP] category [SEP] product category [SEP] query [SEP] Goal [SEP] None [SEP] Reward [SEP] Your score (min 0.0, max 1.0)",
+      "action": "[DONE]",
+      "reward": 1.0
+    }
+  ],
+  "messages_count": 55
+}

@@ -1,0 +1,83 @@
+diff --git a/.gitignore b/.gitignore
+index 8d33409d5..1e9e2ae00 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -33,3 +33,7 @@ tests/build/
+ utils/regression_test.js
+ 
+ node_modules/
++
++# SWE Runner temp files
++.swe-runner-*
++.claude/settings.local.json
+diff --git a/sphinx/ext/autodoc/typehints.py b/sphinx/ext/autodoc/typehints.py
+index d912cd7d5..8ecf21184 100644
+--- a/sphinx/ext/autodoc/typehints.py
++++ b/sphinx/ext/autodoc/typehints.py
+@@ -96,16 +96,16 @@ def modify_field_list(node: nodes.field_list, annotations: Dict[str, str],
+         if parts[0] == 'param':
+             if len(parts) == 2:
+                 # :param xxx:
+-                arg = arguments.setdefault(parts[1], {})
++                arg = arguments.setdefault(parts[1].lstrip('*'), {})
+                 arg['param'] = True
+             elif len(parts) > 2:
+                 # :param xxx yyy:
+-                name = ' '.join(parts[2:])
++                name = ' '.join(parts[2:]).lstrip('*')
+                 arg = arguments.setdefault(name, {})
+                 arg['param'] = True
+                 arg['type'] = True
+         elif parts[0] == 'type':
+-            name = ' '.join(parts[1:])
++            name = ' '.join(parts[1:]).lstrip('*')
+             arg = arguments.setdefault(name, {})
+             arg['type'] = True
+         elif parts[0] == 'rtype':
+diff --git a/tests/roots/test-ext-autodoc/target/typehints.py b/tests/roots/test-ext-autodoc/target/typehints.py
+index 6b0d6142c..d04a2e2b8 100644
+--- a/tests/roots/test-ext-autodoc/target/typehints.py
++++ b/tests/roots/test-ext-autodoc/target/typehints.py
+@@ -99,3 +99,15 @@ class _ClassWithDocumentedInit:
+ 
+         :param x: Some integer
+         """
++
++
++class _ClassWithDocumentedInitAndStarArgs:
++    """Class docstring."""
++
++    def __init__(self, x: int, *args: int, **kwargs: int) -> None:
++        """Init docstring.
++
++        :param x: Some integer
++        :param *args: Some integer
++        :param **kwargs: Some integer
++        """
+diff --git a/tests/test_ext_autodoc_configs.py b/tests/test_ext_autodoc_configs.py
+index c075a8e2d..f3c427f0d 100644
+--- a/tests/test_ext_autodoc_configs.py
++++ b/tests/test_ext_autodoc_configs.py
+@@ -1052,6 +1052,22 @@ def test_autodoc_typehints_description_with_documented_init(app):
+             '         None\n' == context)
+ 
+ 
++@pytest.mark.sphinx('text', testroot='ext-autodoc',
++                    confoverrides={'autodoc_typehints': "description"})
++def test_autodoc_typehints_description_with_documented_init_and_star_args(app):
++    (app.srcdir / 'index.rst').write_text(
++        '.. autoclass:: target.typehints._ClassWithDocumentedInitAndStarArgs\n'
++        '   :special-members: __init__\n',
++        encoding='utf8'
++    )
++    app.build()
++    context = (app.outdir / 'index.txt').read_text(encoding='utf8')
++    assert '* **args** (*int*) --' in context
++    assert '* **kwargs** (*int*) --' in context
++    assert '* **args** (*int*) --\n\n      * **args** --' not in context
++    assert '* **kwargs** (*int*) --\n\n      * **kwargs** --' not in context
++
++
+ @pytest.mark.sphinx('text', testroot='ext-autodoc',
+                     confoverrides={'autodoc_typehints': "description",
+                                    'autodoc_typehints_description_target': 'documented'})
